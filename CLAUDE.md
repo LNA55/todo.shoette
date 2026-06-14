@@ -2,6 +2,11 @@
 
 Dossier de travail de l'app **todo.shoette.com** (hébergement OVH mutualisé d'Elena).
 
+## Dépôt Git
+- Remote : **`git@github.com:LNA55/todo.shoette.git`** (branche `main`, accès SSH OK).
+- Source de vérité du code. Le **déploiement reste séparé** (FTP, voir ci-dessous) : pousser sur GitHub ne met **pas** le site en ligne.
+- `config.php` (identifiants MySQL) est dans `.gitignore` → **jamais commité**.
+
 ## Déploiement
 Utiliser le skill **`shoette-deploy`** (skill utilisateur global, `~/.claude/skills/shoette-deploy/`).
 - Connexion : `lftp shoette` (bookmark déjà configuré ; identifiants jamais en clair).
