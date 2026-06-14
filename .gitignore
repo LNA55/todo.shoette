@@ -1,0 +1,9 @@
+# Identifiants MySQL & config locale — NE JAMAIS pousser sur le dépôt
+config.php
+tasks/config.php
+
+# macOS
+.DS_Store
+
+# Données locales de Claude Code
+.claude/

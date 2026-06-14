@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>todo.shoette.com</title>
+  <style>
+    html, body { height: 100%; margin: 0; }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #ffffff;
+      color: #111111;
+    }
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0 1rem;
+    }
+    h1 {
+      margin: 0;
+      text-align: center;
+      font-size: clamp(2rem, 10vw, 6rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .sub {
+      font-size: 1.25rem;
+      color: #111111;
+      text-decoration: none;
+      border-bottom: 1px solid #cccccc;
+      padding-bottom: 1px;
+    }
+    .sub:hover {
+      color: #111111;
+      border-color: #111111;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>todo.shoette.com</h1>
+    <a class="sub" href="/tasks">tasks</a>
+  </main>
+</body>
+</html>
