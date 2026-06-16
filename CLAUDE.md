@@ -23,7 +23,15 @@ Utiliser le skill **`shoette-deploy`** (skill utilisateur global, `~/.claude/ski
 - BDD : tables `tasks` (`parent_id` imbrication ≤ 6 niveaux, `position`, `done`/`done_at`, `collapsed`, `hidden`, `owner_id` **nullable**), `tags`, `task_tags`. Tables `users` et `task_events` (journal « qui coche quoi/quand ») **prévues mais non créées** — l'ajout ne cassera rien.
 - Aujourd'hui : **pas d'auth**, page publique et éditable par tous (choix d'Elena). À terme : comptes utilisateurs (admin), vues par utilisateur, journal des actions.
 
-## État au 2026-06-14
-- Code de l'app **écrit en local**, relu (pas de lint possible : ni php ni node sur la machine). **Pas encore déployé.**
-- **En attente** : Elena crée la base MySQL côté OVH puis fournit hôte / nom de base / utilisateur / mot de passe → remplir `config.php`, déployer, lancer `install.php`, tester.
-- En ligne actuellement : `index.html` placeholder (pas encore remplacé). **http://todo.shoette.com** (le `https://` échoue tant que le certificat SSL du sous-domaine n'est pas activé côté OVH).
+## Pages-listes multiples (depuis 2026-06-16)
+- Chaque page (`/tasks`, `/papa`, …) = **une liste dédiée**, données séparées par la colonne `list_key` (tables `tasks` et `tags`).
+- **Template partagé** `tasks/page.php` (`$LIST_KEY` + `$PAGE_TITLE`) ; **API partagée** `tasks/api.php` scopée par `?list=` ; front partagé `tasks/assets/`. Une page = un `<slug>/index.php` d'une ligne incluant `../tasks/page.php`.
+- En-tête « façon page d'accueil » (grand titre centré) pour toutes les pages-listes.
+- **Créer une nouvelle page** : skill **`todo-new-page`** (global). En redéployant `tasks/`, EXCLURE les scripts admin : `--exclude-glob 'install.php' --exclude-glob 'migrate*.php' --exclude-glob 'seed_*.php'`.
+
+## État au 2026-06-16
+- ✅ **Déployé et en ligne** : http://todo.shoette.com (accueil + lien `tasks`), http://todo.shoette.com/tasks, et http://todo.shoette.com/papa (liste « papa » pré-remplie de 19 questions).
+- Base MySQL OVH créée : base/utilisateur `shoettetodo`, hôte `shoettetodo.mysql.db` (serveur physique `mysql638.eu004`). Identifiants dans `tasks/config.php` (local + serveur, **non versionné**).
+- Tables créées via `install.php`, qui a ensuite été **supprimé du serveur** (ne reste qu'en local). Jeu d'exemple (3 tâches + 1 tag) présent en base, supprimable depuis l'app.
+- `https://` **pas encore actif** : certificat SSL du sous-domaine à activer dans l'espace OVH (manuel, hors FTP).
+- À terme : comptes utilisateurs (admin) + journal « qui coche quoi/quand » (schéma déjà prêt, tables non créées).

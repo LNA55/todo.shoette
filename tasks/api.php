@@ -34,6 +34,18 @@ function now(): string
     return date('Y-m-d H:i:s');
 }
 
+// Clé de la liste courante : scope toutes les données (tâches + tags). Défaut 'tasks'.
+function listKey(array $in): string
+{
+    $raw = $_GET['list'] ?? ($in['list'] ?? 'tasks');
+    $raw = strtolower((string) $raw);
+    $raw = preg_replace('/[^a-z0-9_-]/', '', $raw);
+    if ($raw === '' || strlen($raw) > 64) {
+        $raw = 'tasks';
+    }
+    return $raw;
+}
+
 /* ---------- connexion ---------- */
 try {
     $pdo = db();
@@ -44,6 +56,7 @@ try {
 $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 $action = $_GET['action'] ?? '';
 $in     = ($method === 'POST') ? input() : [];
+$list   = listKey($in);
 
 $writeActions = [
     'task.add', 'task.rename', 'task.toggle', 'task.delete',
@@ -63,6 +76,19 @@ function getTask(PDO $pdo, int $id): ?array
     $st->execute([$id]);
     $r = $st->fetch();
     return $r ?: null;
+}
+
+// Tâche restreinte à une liste (null si absente ou appartenant à une autre liste).
+function getTaskInList(PDO $pdo, int $id, string $list): ?array
+{
+    $t = getTask($pdo, $id);
+    if (!$t) {
+        return null;
+    }
+    if (($t['list_key'] ?? 'tasks') !== $list) {
+        return null;
+    }
+    return $t;
 }
 
 // Niveau (1 = racine) d'une tâche existante.
@@ -98,10 +124,10 @@ function heightOf(PDO $pdo, int $id): int
     return $h;
 }
 
-function siblingMaxPos(PDO $pdo, ?int $parentId): int
+function siblingMaxPos(PDO $pdo, ?int $parentId, string $list): int
 {
-    $st = $pdo->prepare('SELECT COALESCE(MAX(position), -1) FROM tasks WHERE parent_id <=> ?');
-    $st->execute([$parentId]);
+    $st = $pdo->prepare('SELECT COALESCE(MAX(position), -1) FROM tasks WHERE parent_id <=> ? AND list_key = ?');
+    $st->execute([$parentId, $list]);
     return (int) $st->fetchColumn();
 }
 
@@ -111,10 +137,11 @@ try {
     switch ($action) {
 
         case 'state': {
-            $tasks = $pdo->query(
+            $st = $pdo->prepare(
                 'SELECT id, parent_id, title, done, done_at, collapsed, hidden, position
-                 FROM tasks ORDER BY position ASC, id ASC'
-            )->fetchAll();
+                 FROM tasks WHERE list_key = ? ORDER BY position ASC, id ASC'
+            );
+            $st->execute([$list]);
             $tasks = array_map(static function ($r) {
                 return [
                     'id'        => (int) $r['id'],
@@ -126,19 +153,24 @@ try {
                     'hidden'    => (int) $r['hidden'] === 1,
                     'position'  => (int) $r['position'],
                 ];
-            }, $tasks);
+            }, $st->fetchAll());
 
-            $tags = $pdo->query('SELECT id, name, color FROM tags ORDER BY name ASC')->fetchAll();
+            $st = $pdo->prepare('SELECT id, name, color FROM tags WHERE list_key = ? ORDER BY name ASC');
+            $st->execute([$list]);
             $tags = array_map(static function ($r) {
                 return ['id' => (int) $r['id'], 'name' => $r['name'], 'color' => $r['color']];
-            }, $tags);
+            }, $st->fetchAll());
 
-            $links = $pdo->query('SELECT task_id, tag_id FROM task_tags')->fetchAll();
+            $st = $pdo->prepare(
+                'SELECT tt.task_id, tt.tag_id FROM task_tags tt
+                 JOIN tasks t ON t.id = tt.task_id WHERE t.list_key = ?'
+            );
+            $st->execute([$list]);
             $links = array_map(static function ($r) {
                 return ['task_id' => (int) $r['task_id'], 'tag_id' => (int) $r['tag_id']];
-            }, $links);
+            }, $st->fetchAll());
 
-            out(['tasks' => $tasks, 'tags' => $tags, 'task_tags' => $links, 'max_level' => MAX_LEVEL]);
+            out(['tasks' => $tasks, 'tags' => $tags, 'task_tags' => $links, 'max_level' => MAX_LEVEL, 'list' => $list]);
         }
 
         case 'task.add': {
@@ -150,7 +182,7 @@ try {
             $parentId = isset($in['parent_id']) && $in['parent_id'] !== null ? (int) $in['parent_id'] : null;
 
             if ($parentId !== null) {
-                if (!getTask($pdo, $parentId)) {
+                if (!getTaskInList($pdo, $parentId, $list)) {
                     fail('Tâche parente introuvable.');
                 }
                 if (levelOf($pdo, $parentId) + 1 > MAX_LEVEL) {
@@ -158,18 +190,18 @@ try {
                 }
             }
 
-            $pos = siblingMaxPos($pdo, $parentId) + 1;
+            $pos = siblingMaxPos($pdo, $parentId, $list) + 1;
             $st = $pdo->prepare(
-                'INSERT INTO tasks (parent_id, title, position, created_at, updated_at)
-                 VALUES (?,?,?,?,?)'
+                'INSERT INTO tasks (parent_id, title, position, list_key, created_at, updated_at)
+                 VALUES (?,?,?,?,?,?)'
             );
-            $st->execute([$parentId, $title, $pos, now(), now()]);
+            $st->execute([$parentId, $title, $pos, $list, now(), now()]);
             out(['ok' => true, 'id' => (int) $pdo->lastInsertId()]);
         }
 
         case 'task.rename': {
             $id = (int) ($in['id'] ?? 0);
-            if (!getTask($pdo, $id)) {
+            if (!getTaskInList($pdo, $id, $list)) {
                 fail('Tâche introuvable.');
             }
             $title = trim((string) ($in['title'] ?? ''));
@@ -184,7 +216,7 @@ try {
 
         case 'task.toggle': {
             $id = (int) ($in['id'] ?? 0);
-            if (!getTask($pdo, $id)) {
+            if (!getTaskInList($pdo, $id, $list)) {
                 fail('Tâche introuvable.');
             }
             $done = !empty($in['done']);
@@ -195,7 +227,7 @@ try {
 
         case 'task.delete': {
             $id = (int) ($in['id'] ?? 0);
-            if (!getTask($pdo, $id)) {
+            if (!getTaskInList($pdo, $id, $list)) {
                 fail('Tâche introuvable.');
             }
             $pdo->prepare('DELETE FROM tasks WHERE id = ?')->execute([$id]); // cascade enfants + tags
@@ -204,17 +236,16 @@ try {
 
         case 'task.indent': {
             $id = (int) ($in['id'] ?? 0);
-            $t = getTask($pdo, $id);
+            $t = getTaskInList($pdo, $id, $list);
             if (!$t) {
                 fail('Tâche introuvable.');
             }
             $parentId = $t['parent_id'] !== null ? (int) $t['parent_id'] : null;
-            // frère immédiatement au-dessus (même parent)
             $st = $pdo->prepare(
-                'SELECT id FROM tasks WHERE parent_id <=> ? AND position < ?
+                'SELECT id FROM tasks WHERE parent_id <=> ? AND list_key = ? AND position < ?
                  ORDER BY position DESC, id DESC LIMIT 1'
             );
-            $st->execute([$parentId, (int) $t['position']]);
+            $st->execute([$parentId, $list, (int) $t['position']]);
             $prev = $st->fetchColumn();
             if ($prev === false) {
                 fail("Impossible d'imbriquer : aucune tâche au-dessus au même niveau.");
@@ -223,7 +254,7 @@ try {
             if (levelOf($pdo, $prevId) + heightOf($pdo, $id) > MAX_LEVEL) {
                 fail('Profondeur maximale atteinte (' . MAX_LEVEL . ' niveaux).');
             }
-            $pos = siblingMaxPos($pdo, $prevId) + 1;
+            $pos = siblingMaxPos($pdo, $prevId, $list) + 1;
             $pdo->prepare('UPDATE tasks SET parent_id = ?, position = ?, updated_at = ? WHERE id = ?')
                 ->execute([$prevId, $pos, now(), $id]);
             out(['ok' => true]);
@@ -231,7 +262,7 @@ try {
 
         case 'task.outdent': {
             $id = (int) ($in['id'] ?? 0);
-            $t = getTask($pdo, $id);
+            $t = getTaskInList($pdo, $id, $list);
             if (!$t) {
                 fail('Tâche introuvable.');
             }
@@ -241,9 +272,8 @@ try {
             $parent = getTask($pdo, (int) $t['parent_id']);
             $gp = $parent['parent_id'] !== null ? (int) $parent['parent_id'] : null;
             $insertPos = (int) $parent['position'] + 1;
-            // on décale les frères du grand-parent pour insérer juste après l'ancien parent
-            $pdo->prepare('UPDATE tasks SET position = position + 1 WHERE parent_id <=> ? AND position >= ?')
-                ->execute([$gp, $insertPos]);
+            $pdo->prepare('UPDATE tasks SET position = position + 1 WHERE parent_id <=> ? AND list_key = ? AND position >= ?')
+                ->execute([$gp, $list, $insertPos]);
             $pdo->prepare('UPDATE tasks SET parent_id = ?, position = ?, updated_at = ? WHERE id = ?')
                 ->execute([$gp, $insertPos, now(), $id]);
             out(['ok' => true]);
@@ -252,23 +282,23 @@ try {
         case 'task.moveUp':
         case 'task.moveDown': {
             $id = (int) ($in['id'] ?? 0);
-            $t = getTask($pdo, $id);
+            $t = getTaskInList($pdo, $id, $list);
             if (!$t) {
                 fail('Tâche introuvable.');
             }
             $parentId = $t['parent_id'] !== null ? (int) $t['parent_id'] : null;
             if ($action === 'task.moveUp') {
                 $st = $pdo->prepare(
-                    'SELECT id, position FROM tasks WHERE parent_id <=> ? AND position < ?
+                    'SELECT id, position FROM tasks WHERE parent_id <=> ? AND list_key = ? AND position < ?
                      ORDER BY position DESC, id DESC LIMIT 1'
                 );
             } else {
                 $st = $pdo->prepare(
-                    'SELECT id, position FROM tasks WHERE parent_id <=> ? AND position > ?
+                    'SELECT id, position FROM tasks WHERE parent_id <=> ? AND list_key = ? AND position > ?
                      ORDER BY position ASC, id ASC LIMIT 1'
                 );
             }
-            $st->execute([$parentId, (int) $t['position']]);
+            $st->execute([$parentId, $list, (int) $t['position']]);
             $neighbor = $st->fetch();
             if (!$neighbor) {
                 out(['ok' => true]); // déjà en bout de liste
@@ -282,7 +312,7 @@ try {
 
         case 'task.collapse': {
             $id = (int) ($in['id'] ?? 0);
-            if (!getTask($pdo, $id)) {
+            if (!getTaskInList($pdo, $id, $list)) {
                 fail('Tâche introuvable.');
             }
             $collapsed = !empty($in['collapsed']) ? 1 : 0;
@@ -293,7 +323,7 @@ try {
 
         case 'task.hide': {
             $id = (int) ($in['id'] ?? 0);
-            $t = getTask($pdo, $id);
+            $t = getTaskInList($pdo, $id, $list);
             if (!$t) {
                 fail('Tâche introuvable.');
             }
@@ -307,7 +337,7 @@ try {
         }
 
         case 'task.showAllHidden': {
-            $pdo->exec('UPDATE tasks SET hidden = 0 WHERE hidden = 1');
+            $pdo->prepare('UPDATE tasks SET hidden = 0 WHERE hidden = 1 AND list_key = ?')->execute([$list]);
             out(['ok' => true]);
         }
 
@@ -321,15 +351,15 @@ try {
             if (!preg_match('/^#[0-9a-fA-F]{6}$/', $color)) {
                 $color = '#cccccc';
             }
-            $pdo->prepare('INSERT INTO tags (name, color, created_at) VALUES (?,?,?)')
-                ->execute([$name, $color, now()]);
+            $pdo->prepare('INSERT INTO tags (name, color, list_key, created_at) VALUES (?,?,?,?)')
+                ->execute([$name, $color, $list, now()]);
             out(['ok' => true, 'id' => (int) $pdo->lastInsertId()]);
         }
 
         case 'tag.update': {
             $id = (int) ($in['id'] ?? 0);
-            $st = $pdo->prepare('SELECT id FROM tags WHERE id = ?');
-            $st->execute([$id]);
+            $st = $pdo->prepare('SELECT id FROM tags WHERE id = ? AND list_key = ?');
+            $st->execute([$id, $list]);
             if (!$st->fetch()) {
                 fail('Tag introuvable.');
             }
@@ -361,18 +391,18 @@ try {
 
         case 'tag.delete': {
             $id = (int) ($in['id'] ?? 0);
-            $pdo->prepare('DELETE FROM tags WHERE id = ?')->execute([$id]); // cascade task_tags
+            $pdo->prepare('DELETE FROM tags WHERE id = ? AND list_key = ?')->execute([$id, $list]); // cascade task_tags
             out(['ok' => true]);
         }
 
         case 'tasktag.toggle': {
             $taskId = (int) ($in['task_id'] ?? 0);
             $tagId  = (int) ($in['tag_id'] ?? 0);
-            if (!getTask($pdo, $taskId)) {
+            if (!getTaskInList($pdo, $taskId, $list)) {
                 fail('Tâche introuvable.');
             }
-            $st = $pdo->prepare('SELECT id FROM tags WHERE id = ?');
-            $st->execute([$tagId]);
+            $st = $pdo->prepare('SELECT id FROM tags WHERE id = ? AND list_key = ?');
+            $st->execute([$tagId, $list]);
             if (!$st->fetch()) {
                 fail('Tag introuvable.');
             }

@@ -1,22 +1,25 @@
 'use strict';
 
 const API = '/tasks/api.php';
+// Clé de la liste de cette page (définie par index.php via window.TODO_LIST). Défaut 'tasks'.
+const LIST = (typeof window !== 'undefined' && window.TODO_LIST && /^[a-z0-9_-]+$/i.test(window.TODO_LIST))
+  ? window.TODO_LIST : 'tasks';
 
 /* ---------- état ---------- */
 let STATE = { tasks: [], tags: [], task_tags: [], max_level: 6 };
 let byId = new Map();          // id -> tâche (avec .children et .tagIds)
-let view = loadView();         // préférences d'affichage (persistées)
+let view = loadView();         // préférences d'affichage (persistées, par liste)
 
 function loadView() {
   try {
-    const v = JSON.parse(localStorage.getItem('tasksView') || '{}');
+    const v = JSON.parse(localStorage.getItem('tasksView:' + LIST) || '{}');
     return { depth: v.depth || '6', filterTags: new Set(v.filterTags || []) };
   } catch (_) {
     return { depth: '6', filterTags: new Set() };
   }
 }
 function saveView() {
-  localStorage.setItem('tasksView', JSON.stringify({
+  localStorage.setItem('tasksView:' + LIST, JSON.stringify({
     depth: view.depth,
     filterTags: [...view.filterTags],
   }));
@@ -29,7 +32,7 @@ async function api(action, data = null, method = 'POST') {
     opts.headers = { 'Content-Type': 'application/json' };
     opts.body = JSON.stringify(data || {});
   }
-  const res = await fetch(`${API}?action=${encodeURIComponent(action)}`, opts);
+  const res = await fetch(`${API}?action=${encodeURIComponent(action)}&list=${encodeURIComponent(LIST)}`, opts);
   let json;
   try { json = await res.json(); } catch (_) { json = { error: 'Réponse invalide du serveur.' }; }
   if (!res.ok || json.error) throw new Error(json.error || `Erreur ${res.status}`);

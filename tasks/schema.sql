@@ -1,6 +1,7 @@
--- Schéma de la base — todo.shoette.com / page "tasks"
+-- Schéma de la base — todo.shoette.com / pages-listes (tasks, papa, ...)
 -- Encodage utf8mb4 (emojis OK). Moteur InnoDB (clés étrangères + cascade).
 -- Idempotent : peut être rejoué sans risque (CREATE TABLE IF NOT EXISTS).
+-- list_key = scope d'une liste dédiée (une page = une valeur de list_key).
 
 SET NAMES utf8mb4;
 
@@ -13,12 +14,14 @@ CREATE TABLE IF NOT EXISTS tasks (
     collapsed  TINYINT(1) NOT NULL DEFAULT 0,
     hidden     TINYINT(1) NOT NULL DEFAULT 0,
     position   INT NOT NULL DEFAULT 0,
+    list_key   VARCHAR(64) NOT NULL DEFAULT 'tasks',
     owner_id   INT UNSIGNED NULL,
     created_at DATETIME NOT NULL,
     updated_at DATETIME NOT NULL,
     PRIMARY KEY (id),
     KEY idx_parent (parent_id),
     KEY idx_done (done),
+    KEY idx_tasks_list (list_key),
     CONSTRAINT fk_task_parent FOREIGN KEY (parent_id)
         REFERENCES tasks (id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -27,9 +30,11 @@ CREATE TABLE IF NOT EXISTS tags (
     id         INT UNSIGNED NOT NULL AUTO_INCREMENT,
     name       VARCHAR(80) NOT NULL,
     color      VARCHAR(7) NOT NULL DEFAULT '#cccccc',
+    list_key   VARCHAR(64) NOT NULL DEFAULT 'tasks',
     owner_id   INT UNSIGNED NULL,
     created_at DATETIME NOT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    KEY idx_tags_list (list_key)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS task_tags (
