@@ -165,3 +165,29 @@ dialog#tag-dialog::backdrop { background: rgba(0,0,0,.35); }
   margin: .15em 0 0; font-weight: 700; letter-spacing: -.02em;
   font-size: clamp(1.9rem, 7vw, 3.4rem);
 }
+
+/* ---- note de texte (repliable) sous un item ---- */
+.note-btn {
+  font-weight: 700; font-family: Georgia, "Times New Roman", serif;
+  opacity: 0; transition: opacity .12s;
+}
+.row:hover .note-btn { opacity: 1; }
+.note-btn.has-note { opacity: 1; background: #ececec; }
+@media (hover: none) { .note-btn { opacity: 1; } }
+.note-panel {
+  margin: 2px 0 8px; padding: 7px 10px; background: #fafafa;
+  border: 1px solid var(--line); border-left: 3px solid #d0d0d0; border-radius: 6px;
+  max-width: 660px;
+}
+.note-text {
+  width: 100%; border: none; background: transparent; resize: none;
+  font: inherit; font-size: .92rem; line-height: 1.45; padding: 0;
+  overflow: hidden; min-height: 1.4em;
+}
+.note-text:focus { outline: none; }
+.note-colors { display: flex; gap: 7px; margin-top: 7px; }
+.note-swatch {
+  width: 14px; height: 14px; border-radius: 50%; cursor: pointer; padding: 0;
+  border: 2px solid #fff; box-shadow: 0 0 0 1px var(--line);
+}
+.note-swatch.active { box-shadow: 0 0 0 2px #111; }

@@ -13,7 +13,7 @@ $PAGE_TITLE = isset($PAGE_TITLE) && $PAGE_TITLE !== '' ? (string) $PAGE_TITLE : 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= htmlspecialchars($PAGE_TITLE, ENT_QUOTES, 'UTF-8') ?> — todo.shoette.com</title>
-  <link rel="stylesheet" href="/tasks/assets/style.css">
+  <link rel="stylesheet" href="/tasks/assets/style.css?v=<?= @filemtime(__DIR__ . '/assets/style.css') ?: '1' ?>">
   <script>window.TODO_LIST = <?= json_encode($LIST_KEY, JSON_UNESCAPED_SLASHES) ?>;</script>
 </head>
 <body class="listpage">
@@ -83,6 +83,6 @@ $PAGE_TITLE = isset($PAGE_TITLE) && $PAGE_TITLE !== '' ? (string) $PAGE_TITLE : 
 
   <div id="toast" class="toast" hidden></div>
 
-  <script src="/tasks/assets/app.js" defer></script>
+  <script src="/tasks/assets/app.js?v=<?= @filemtime(__DIR__ . '/assets/app.js') ?: '1' ?>" defer></script>
 </body>
 </html>

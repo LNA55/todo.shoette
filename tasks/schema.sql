@@ -15,6 +15,8 @@ CREATE TABLE IF NOT EXISTS tasks (
     hidden     TINYINT(1) NOT NULL DEFAULT 0,
     position   INT NOT NULL DEFAULT 0,
     list_key   VARCHAR(64) NOT NULL DEFAULT 'tasks',
+    note       TEXT NULL,
+    note_color VARCHAR(16) NOT NULL DEFAULT 'black',
     owner_id   INT UNSIGNED NULL,
     created_at DATETIME NOT NULL,
     updated_at DATETIME NOT NULL,

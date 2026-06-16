@@ -25,6 +25,17 @@ function saveView() {
   }));
 }
 
+/* ---------- notes (texte repliable par item) ---------- */
+const NOTE_COLORS = { black: '#111111', green: '#1a7f37', red: '#cf222e' };
+let openNotes = loadOpenNotes();           // ids des notes dépliées (état client, persisté par liste)
+function loadOpenNotes() {
+  try { return new Set(JSON.parse(localStorage.getItem('notesOpen:' + LIST) || '[]')); }
+  catch (_) { return new Set(); }
+}
+function saveOpenNotes() {
+  localStorage.setItem('notesOpen:' + LIST, JSON.stringify([...openNotes]));
+}
+
 /* ---------- API ---------- */
 async function api(action, data = null, method = 'POST') {
   const opts = { method };
@@ -198,6 +209,13 @@ function renderNode(container, t, level, isDone, childrenOf, depthLimit) {
   const act = el('span', { class: 'actions' });
   if (!isDone) act.append(actBtn('＋', 'Ajouter une sous-tâche', () => addSubtask(t, li, level)));
   act.append(actBtn('🏷', 'Tags', (ev) => { ev.stopPropagation(); openTaskTagPop(t, ev.currentTarget); }));
+  const noteBtn = actBtn('T', (t.note && String(t.note).trim()) ? 'Voir / éditer la note' : 'Ajouter une note', (ev) => { ev.stopPropagation(); toggleNote(t); });
+  noteBtn.classList.add('note-btn');
+  if (t.note && String(t.note).trim() !== '') {
+    noteBtn.classList.add('has-note');
+    noteBtn.style.color = NOTE_COLORS[t.note_color] || NOTE_COLORS.black;
+  }
+  row.append(noteBtn);
   if (!isDone) {
     act.append(actBtn('→', 'Imbriquer (sous la tâche du dessus)', () => simpleAction('task.indent', t)));
     act.append(actBtn('←', 'Désimbriquer', () => simpleAction('task.outdent', t)));
@@ -211,6 +229,9 @@ function renderNode(container, t, level, isDone, childrenOf, depthLimit) {
   row.append(act);
 
   li.append(row);
+
+  // note de texte (repliable)
+  if (openNotes.has(t.id)) li.append(renderNotePanel(t, level));
 
   // enfants
   if (hasKids && !t.collapsed && level < depthLimit) {
@@ -245,6 +266,80 @@ async function deleteTask(t) {
   if (!confirm('Supprimer cette tâche et ses sous-tâches ?')) return;
   try { await api('task.delete', { id: t.id }); await loadState(); }
   catch (e) { toast(e.message); }
+}
+
+/* ---------- note de texte (repliable) ---------- */
+function toggleNote(t) {
+  if (openNotes.has(t.id)) openNotes.delete(t.id); else openNotes.add(t.id);
+  saveOpenNotes();
+  render();
+  if (openNotes.has(t.id)) {
+    const li = document.querySelector(`li.node[data-id="${t.id}"]`);
+    const ta = li && li.querySelector(':scope > .note-panel .note-text');
+    if (ta) ta.focus();
+  }
+}
+
+function autoGrow(ta) {
+  ta.style.height = 'auto';
+  ta.style.height = Math.min(ta.scrollHeight, 400) + 'px';
+}
+
+function renderNotePanel(t, level) {
+  const panel = el('div', { class: 'note-panel' });
+  panel.style.marginLeft = ((level - 1) * 22 + 28) + 'px';
+
+  const ta = el('textarea', { class: 'note-text', placeholder: "Note… (s'enregistre toute seule)" });
+  ta.value = t.note || '';
+  ta.style.color = NOTE_COLORS[t.note_color] || NOTE_COLORS.black;
+  ta.addEventListener('input', () => autoGrow(ta));
+  ta.addEventListener('blur', () => saveNote(t, ta.value));
+  panel.append(ta);
+  setTimeout(() => autoGrow(ta), 0);
+
+  const colors = el('div', { class: 'note-colors' });
+  for (const key of ['black', 'green', 'red']) {
+    const sw = el('button', {
+      class: 'note-swatch' + ((t.note_color || 'black') === key ? ' active' : ''),
+      type: 'button', title: key, style: `background:${NOTE_COLORS[key]}`,
+    });
+    sw.addEventListener('click', () => setNoteColor(t, key, ta, colors));
+    colors.append(sw);
+  }
+  panel.append(colors);
+  return panel;
+}
+
+async function saveNote(t, value) {
+  const v = (value || '').trim();
+  if (v === (t.note || '')) return;
+  try {
+    await api('task.note', { id: t.id, note: v });
+    t.note = v;
+    const li = document.querySelector(`li.node[data-id="${t.id}"]`);
+    const btn = li && li.querySelector(':scope > .row .note-btn');
+    if (btn) {
+      if (v) { btn.classList.add('has-note'); btn.style.color = NOTE_COLORS[t.note_color] || NOTE_COLORS.black; }
+      else { btn.classList.remove('has-note'); btn.style.color = ''; }
+    }
+  } catch (e) { toast(e.message); }
+}
+
+async function setNoteColor(t, color, ta, colorsEl) {
+  try {
+    await api('task.note', { id: t.id, color });
+    t.note_color = color;
+    if (ta) ta.style.color = NOTE_COLORS[color];
+    if (colorsEl) {
+      const sw = colorsEl.querySelectorAll('.note-swatch');
+      sw.forEach((b) => b.classList.remove('active'));
+      const idx = ['black', 'green', 'red'].indexOf(color);
+      if (sw[idx]) sw[idx].classList.add('active');
+    }
+    const li = document.querySelector(`li.node[data-id="${t.id}"]`);
+    const btn = li && li.querySelector(':scope > .row .note-btn');
+    if (btn && btn.classList.contains('has-note')) btn.style.color = NOTE_COLORS[color];
+  } catch (e) { toast(e.message); }
 }
 
 function editTitle(t, span) {

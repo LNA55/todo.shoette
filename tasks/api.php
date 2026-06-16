@@ -61,7 +61,7 @@ $list   = listKey($in);
 $writeActions = [
     'task.add', 'task.rename', 'task.toggle', 'task.delete',
     'task.indent', 'task.outdent', 'task.moveUp', 'task.moveDown',
-    'task.collapse', 'task.hide', 'task.showAllHidden',
+    'task.collapse', 'task.hide', 'task.showAllHidden', 'task.note',
     'tag.add', 'tag.update', 'tag.delete', 'tasktag.toggle',
 ];
 if (in_array($action, $writeActions, true) && $method !== 'POST') {
@@ -138,20 +138,22 @@ try {
 
         case 'state': {
             $st = $pdo->prepare(
-                'SELECT id, parent_id, title, done, done_at, collapsed, hidden, position
+                'SELECT id, parent_id, title, done, done_at, collapsed, hidden, position, note, note_color
                  FROM tasks WHERE list_key = ? ORDER BY position ASC, id ASC'
             );
             $st->execute([$list]);
             $tasks = array_map(static function ($r) {
                 return [
-                    'id'        => (int) $r['id'],
-                    'parent_id' => $r['parent_id'] !== null ? (int) $r['parent_id'] : null,
-                    'title'     => $r['title'],
-                    'done'      => (int) $r['done'] === 1,
-                    'done_at'   => $r['done_at'],
-                    'collapsed' => (int) $r['collapsed'] === 1,
-                    'hidden'    => (int) $r['hidden'] === 1,
-                    'position'  => (int) $r['position'],
+                    'id'         => (int) $r['id'],
+                    'parent_id'  => $r['parent_id'] !== null ? (int) $r['parent_id'] : null,
+                    'title'      => $r['title'],
+                    'done'       => (int) $r['done'] === 1,
+                    'done_at'    => $r['done_at'],
+                    'collapsed'  => (int) $r['collapsed'] === 1,
+                    'hidden'     => (int) $r['hidden'] === 1,
+                    'position'   => (int) $r['position'],
+                    'note'       => $r['note'],
+                    'note_color' => $r['note_color'] ?? 'black',
                 ];
             }, $st->fetchAll());
 
@@ -413,6 +415,37 @@ try {
                 $pdo->prepare('DELETE FROM task_tags WHERE task_id = ? AND tag_id = ?')
                     ->execute([$taskId, $tagId]);
             }
+            out(['ok' => true]);
+        }
+
+        case 'task.note': {
+            $id = (int) ($in['id'] ?? 0);
+            if (!getTaskInList($pdo, $id, $list)) {
+                fail('Tâche introuvable.');
+            }
+            $fields = [];
+            $params = [];
+            if (array_key_exists('note', $in)) {
+                $note = trim((string) $in['note']);
+                $note = mb_substr($note, 0, 10000);
+                $fields[] = 'note = ?';
+                $params[] = ($note === '') ? null : $note;
+            }
+            if (array_key_exists('color', $in)) {
+                $color = (string) $in['color'];
+                if (!in_array($color, ['black', 'green', 'red'], true)) {
+                    fail('Couleur invalide.');
+                }
+                $fields[] = 'note_color = ?';
+                $params[] = $color;
+            }
+            if (!$fields) {
+                out(['ok' => true]);
+            }
+            $fields[] = 'updated_at = ?';
+            $params[] = now();
+            $params[] = $id;
+            $pdo->prepare('UPDATE tasks SET ' . implode(', ', $fields) . ' WHERE id = ?')->execute($params);
             out(['ok' => true]);
         }
 
