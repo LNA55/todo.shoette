@@ -1,0 +1,5 @@
+# todo.shoette.com — empêche l'indexation par les moteurs de recherche
+# (en-tête appliqué à tout le sous-domaine ; complété par les balises <meta> des pages).
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow"
+</IfModule>

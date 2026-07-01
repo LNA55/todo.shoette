@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="he" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="robots" content="noindex, nofollow">
+<title>QuizColors</title>
+<style>
+  :root{
+    --mystery:#d7d2cb;
+    --ink:#2b2b2b;
+    --sub:#9a948c;
+    --light-bg:linear-gradient(135deg,#fff7e9 0%,#ffeaf3 55%,#eaf4ff 100%);
+    --dark-bg:radial-gradient(120% 120% at 50% 0%,#3a2150 0%,#241634 60%,#190f25 100%);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{height:100%;margin:0;}
+  body{
+    font-family:"Varela Round",ui-rounded,"SF Pro Rounded",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    color:var(--ink);
+    overflow:hidden;
+    user-select:none;-webkit-user-select:none;
+    touch-action:manipulation;
+  }
+  #app{position:fixed;inset:0;cursor:pointer;}
+  #stage{position:absolute;inset:0;}
+  .slide{
+    position:absolute;inset:0;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:clamp(18px,4vh,40px);
+    padding:clamp(16px,5vw,48px);
+    text-align:center;
+  }
+  .slide.light{background:var(--light-bg);}
+  .slide.dark{background:var(--dark-bg);color:#fff;}
+  .fw{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+  .slide > .item,.slide > .row3,.slide > .eq,.slide > .stack2,.slide > .surprise{position:relative;z-index:1;}
+  .host{z-index:2;}
+  .enter{animation:pop .42s cubic-bezier(.2,.9,.3,1.2) both;}
+  @keyframes pop{from{opacity:0;transform:scale(.94) translateY(14px);}to{opacity:1;transform:none;}}
+
+  /* discreet english host line */
+  .host{
+    position:absolute;top:clamp(10px,2.5vh,24px);left:0;right:0;
+    font-size:clamp(.85rem,2.4vw,1.15rem);
+    letter-spacing:.02em;color:var(--sub);font-weight:600;
+  }
+  .slide.dark .host{color:rgba(255,255,255,.55);}
+  .chip{
+    display:inline-block;font-size:.72em;font-weight:700;
+    color:#b9b2a8;border:1px solid #e6ddd0;border-radius:999px;
+    padding:2px 10px;margin-right:8px;vertical-align:middle;
+  }
+
+  /* equation rows */
+  .eq,.row3{display:flex;align-items:flex-start;justify-content:center;flex-wrap:wrap;
+    gap:clamp(10px,3vw,30px);}
+  .item{display:flex;flex-direction:column;align-items:center;gap:clamp(8px,1.6vh,16px);}
+  .op{font-size:clamp(2rem,7vw,3.4rem);font-weight:800;color:#6b6259;align-self:center;line-height:1;}
+  .slide.dark .op{color:rgba(255,255,255,.7);}
+
+  .dot{
+    border-radius:50%;
+    box-shadow:0 12px 26px rgba(0,0,0,.18),0 0 0 6px #fff,0 0 0 8px rgba(0,0,0,.08);
+    display:flex;align-items:center;justify-content:center;flex:none;
+  }
+  .dot.big{width:clamp(96px,20vw,176px);height:clamp(96px,20vw,176px);}
+  .dot.mid{width:clamp(66px,14vw,124px);height:clamp(66px,14vw,124px);}
+  .dot.huge{width:clamp(150px,42vw,280px);height:clamp(150px,42vw,280px);}
+  .dot.mystery{box-shadow:0 12px 26px rgba(0,0,0,.12),0 0 0 6px #fff,0 0 0 8px rgba(0,0,0,.06);}
+  .qmark{font-size:clamp(3rem,10vw,6rem);font-weight:800;color:#6b6259;line-height:1;}
+
+  /* labels */
+  .label{max-width:min(40vw,240px);}
+  .heb{font-size:clamp(1.5rem,5.2vw,2.6rem);font-weight:800;line-height:1.15;color:var(--ink);}
+  .slide.dark .heb{color:#fff;}
+  .sub{font-size:clamp(.72rem,2vw,1rem);color:var(--sub);font-weight:600;margin-top:2px;direction:ltr;}
+  .slide.dark .sub{color:rgba(255,255,255,.6);}
+
+  /* intro / final */
+  .title-heb{font-size:clamp(2.4rem,12vw,6rem);font-weight:800;margin:0;line-height:1.1;
+    text-shadow:0 4px 22px rgba(0,0,0,.35);}
+  .title-en{font-size:clamp(1rem,3.4vw,1.6rem);letter-spacing:.35em;text-transform:uppercase;
+    color:rgba(255,255,255,.6);font-weight:700;margin-top:.4em;}
+  .hint{font-size:clamp(1.6rem,6vw,2.6rem);color:rgba(255,255,255,.5);margin-top:.6em;
+    animation:nudge 1.4s ease-in-out infinite;}
+  @keyframes nudge{0%,100%{transform:translateX(0);}50%{transform:translateX(10px);}}
+  .palette{display:flex;gap:clamp(8px,2.4vw,18px);flex-wrap:wrap;justify-content:center;}
+  .pdot{width:clamp(26px,7vw,52px);height:clamp(26px,7vw,52px);border-radius:50%;
+    box-shadow:0 0 0 4px rgba(255,255,255,.9),0 8px 18px rgba(0,0,0,.3);}
+
+  /* surprise lines */
+  .stack2{display:flex;flex-direction:column;align-items:center;gap:clamp(12px,3vh,28px);}
+  .surprise{display:flex;flex-direction:column;gap:clamp(14px,3.2vh,30px);}
+  .sline{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;
+    gap:clamp(5px,1.4vw,12px);font-size:clamp(1.4rem,5vw,2.4rem);font-weight:800;color:#6b6259;
+    opacity:0;animation:fadein .5s ease both;}
+  .sline:nth-child(1){animation-delay:.15s;}
+  .sline:nth-child(2){animation-delay:.45s;}
+  .sline:nth-child(3){animation-delay:.75s;}
+  @keyframes fadein{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+  .minidot{display:inline-block;width:clamp(26px,6.5vw,46px);height:clamp(26px,6.5vw,46px);
+    border-radius:50%;box-shadow:0 0 0 3px #fff,0 4px 10px rgba(0,0,0,.18);vertical-align:middle;}
+  .paren{font-size:1.1em;color:#9a948c;}
+
+  /* cluster of all colors on final question */
+  .cluster{display:flex;flex-wrap:wrap;gap:clamp(6px,1.8vw,14px);justify-content:center;
+    max-width:min(90vw,620px);align-items:center;}
+
+  /* planning / agenda */
+  .planning{justify-content:flex-start;overflow-y:auto;
+    padding:clamp(18px,4vh,46px) clamp(16px,5vw,56px);}
+  .plan{width:min(1080px,94vw);margin:0 auto;}
+  .plan-head{margin-bottom:clamp(10px,2.6vh,24px);text-align:left;}
+  .plan-title{font-size:clamp(1.7rem,6vw,3.1rem);font-weight:800;margin:0;display:inline-block;
+    border-bottom:3px solid #111;padding-bottom:3px;line-height:1.2;}
+  .plan-title-ph{color:#2e9e4f;font-style:italic;font-weight:600;
+    font-size:clamp(.85rem,2.4vw,1.25rem);margin-top:4px;}
+  .plan-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;
+    gap:clamp(8px,2.2vh,20px);}
+  .plan-item{text-align:right;}
+  .plan-item .he{font-size:clamp(1.05rem,3vw,1.85rem);font-weight:800;color:#111;line-height:1.4;}
+  .plan-item .tr{font-size:clamp(.72rem,1.9vw,1.05rem);font-style:italic;line-height:1.45;margin-top:1px;}
+  .plan-item .ph{color:#2e9e4f;font-weight:600;}
+  .plan-item .fr{color:#2a6fdb;}
+  .plan-item .play{color:#2a6fdb;font-style:normal;font-size:.9em;}
+  .plan-item.go-quiz{cursor:pointer;border-radius:14px;padding:6px 10px;margin:-6px -10px;
+    transition:background .15s;}
+  .plan-item.go-quiz:hover{background:rgba(42,111,219,.09);}
+
+  /* nav */
+  .nav{position:fixed;bottom:clamp(10px,3vh,28px);width:clamp(44px,9vw,60px);height:clamp(44px,9vw,60px);
+    border:none;border-radius:50%;background:rgba(0,0,0,.06);color:#7a7269;
+    font-size:clamp(1.4rem,5vw,2rem);font-weight:800;cursor:pointer;opacity:.4;
+    display:flex;align-items:center;justify-content:center;padding:0;}
+  .nav:hover{opacity:.8;}
+  .nav-prev{left:clamp(10px,3vw,26px);}
+  .nav-next{right:clamp(10px,3vw,26px);}
+  .slide.dark ~ .nav{} /* nav stays neutral */
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="stage"></div>
+  <button class="nav nav-prev" aria-label="prev">‹</button>
+  <button class="nav nav-next" aria-label="next">›</button>
+</div>
+
+<script>
+/* ---------- color data ---------- */
+const C = {
+  red:        {hex:'E63329', heb:'אָדֹם',        en:'Red',          ph:'adom'},
+  yellow:     {hex:'FFD400', heb:'צָהֹב',        en:'Yellow',       ph:'tsahov'},
+  blue:       {hex:'2A6FDB', heb:'כָּחֹל',       en:'Blue',         ph:'kakhol'},
+  orange:     {hex:'F77F00', heb:'כָּתֹם',       en:'Orange',       ph:'katom'},
+  green:      {hex:'3CB043', heb:'יָרֹק',        en:'Green',        ph:'yarok'},
+  purple:     {hex:'7B2CBF', heb:'סָגֹל',        en:'Purple',       ph:'sagol'},
+  redorange:  {hex:'F4511E', heb:'אָדֹם־כָּתֹם',  en:'Red-orange',   ph:'adom-katom'},
+  redviolet:  {hex:'C71585', heb:'אָדֹם־סָגֹל',   en:'Red-violet',   ph:'adom-sagol'},
+  yellowgreen:{hex:'8AC926', heb:'צָהֹב־יָרֹק',   en:'Yellow-green', ph:'tsahov-yarok'},
+  yelloworange:{hex:'FFB300',heb:'צָהֹב־כָּתֹם',  en:'Yellow-orange',ph:'tsahov-katom'},
+  bluegreen:  {hex:'17A398', heb:'כָּחֹל־יָרֹק',  en:'Blue-green',   ph:'kakhol-yarok'},
+  blueviolet: {hex:'5E35B1', heb:'כָּחֹל־סָגֹל',  en:'Blue-violet',  ph:'kakhol-sagol'},
+  brown:      {hex:'8B5A2B', heb:'חוּם',         en:'Brown',        ph:'khum'},
+  white:      {hex:'FFFFFF', heb:'לָבָן',        en:'White',        ph:'lavan'},
+  black:      {hex:'2B2B2B', heb:'שָׁחֹר',       en:'Black',        ph:'shakhor'},
+};
+
+/* ---------- hex math for level 4 ---------- */
+function hexToRgb(h){return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)];}
+function rgbToHex(a){return a.map(c=>c.toString(16).padStart(2,'0')).join('').toUpperCase();}
+function lighten(hex){const [r,g,b]=hexToRgb(hex);return rgbToHex([r,g,b].map(c=>Math.round(c+(255-c)*0.5)));}
+function darken(hex){const [r,g,b]=hexToRgb(hex);return rgbToHex([r,g,b].map(c=>Math.round(c*0.5)));}
+
+/* ---------- html builders ---------- */
+function labelHtml(c){
+  return `<div class="label"><div class="heb" dir="rtl">${c.heb}</div>`+
+         `<div class="sub">${c.en} · ${c.ph}</div></div>`;
+}
+function pastille(c,opt){
+  opt=opt||{};
+  const size=opt.size||'big';
+  if(opt.mystery){
+    return `<div class="item"><div class="dot ${size} mystery"><span class="qmark">?</span></div></div>`;
+  }
+  return `<div class="item"><div class="dot ${size}" style="background:#${c.hex}"></div>${labelHtml(c)}</div>`;
+}
+function mini(c){return `<span class="minidot" style="background:#${c.hex}"></span>`;}
+function host(level,text){
+  const chip=level?`<span class="chip">${level}</span>`:'';
+  return `<div class="host">${chip}${text}</div>`;
+}
+function eqRow(a,b,r,reveal,size){
+  size=size||'big';
+  return `<div class="eq">${pastille(a,{size:size})}<span class="op">+</span>${pastille(b,{size:size})}`+
+         `<span class="op">=</span>${reveal?pastille(r,{size:size}):pastille(r,{mystery:true,size:size})}</div>`;
+}
+
+/* ---------- build the slide list ---------- */
+const slides=[];
+
+// intro
+slides.push({kind:'intro'});
+
+// level 1
+slides.push({kind:'q1'});
+slides.push({kind:'a1'});
+
+// level 2 : two primaries
+[['red','yellow','orange'],['blue','yellow','green'],['red','blue','purple']].forEach(([a,b,r])=>{
+  slides.push({kind:'mix',lvl:'2',a:C[a],b:C[b],r:C[r],reveal:false});
+  slides.push({kind:'mix',lvl:'2',a:C[a],b:C[b],r:C[r],reveal:true});
+});
+
+// level 3a : primary + composed that contains it
+[['red','orange','redorange'],['red','purple','redviolet'],
+ ['yellow','green','yellowgreen'],['yellow','orange','yelloworange'],
+ ['blue','green','bluegreen'],['blue','purple','blueviolet']].forEach(([a,b,r])=>{
+  slides.push({kind:'mix',lvl:'3',a:C[a],b:C[b],r:C[r],reveal:false});
+  slides.push({kind:'mix',lvl:'3',a:C[a],b:C[b],r:C[r],reveal:true});
+});
+
+// level 3b : primary + composed that does NOT contain it = brown
+[['red','green'],['yellow','purple'],['blue','orange']].forEach(([a,b])=>{
+  slides.push({kind:'mix',lvl:'3',a:C[a],b:C[b],r:C.brown,reveal:false});
+  slides.push({kind:'mix',lvl:'3',a:C[a],b:C[b],r:C.brown,reveal:true});
+});
+
+// surprise : why always brown
+slides.push({kind:'surprise'});
+
+// level 4 : lighten (+white) and darken (+black) of all 13 colors
+['red','yellow','blue','orange','green','purple','redorange','redviolet',
+ 'yellowgreen','yelloworange','bluegreen','blueviolet','brown'].forEach(k=>{
+  const base=C[k];
+  const light={hex:lighten(base.hex),heb:base.heb+' בָּהִיר',en:'Light '+base.en,ph:base.ph+' bahir'};
+  const dark={hex:darken(base.hex),heb:base.heb+' כֵּהֶה',en:'Dark '+base.en,ph:base.ph+' kehe'};
+  slides.push({kind:'mix2',base:base,light:light,dark:dark,reveal:false});
+  slides.push({kind:'mix2',base:base,light:light,dark:dark,reveal:true});
+});
+
+// final : all colors together
+slides.push({kind:'qfinal'});
+slides.push({kind:'afinal'});
+slides.push({kind:'congrats'});
+
+// agenda de la séance : tout premier écran
+slides.unshift({kind:'planning'});
+
+const ALL13=['red','yellow','blue','orange','green','purple','redorange','redviolet',
+ 'yellowgreen','yelloworange','bluegreen','blueviolet','brown'].map(k=>C[k]);
+const FINAL={hex:'3A2E28',heb:'חוּם כֵּהֶה מְאֹד',en:'Almost black',ph:"khum kehe me'od"};
+
+/* ---------- agenda de la séance (texte reproduit tel quel) ---------- */
+const PLAN=[
+ {he:'לוֹבְשִׁים כְּפָפוֹת.', ph:'Lovshim kpafot', fr:'Les gants'},
+ {he:'צוֹבְעִים אֶת הַלּוּחַ בְּצֶבַע אַקְרִילִי. זֶה יִהְיֶה צֶבַע הָרֶקַע.', ph:'Tzov\'im et ha-luah be-tseva akrili. Ze yihye tseva ha-reka.', fr:'Acrylique sèche vite et tient fort'},
+ {he:'הוֹלְכִים לֶאֱכוֹל אֲרוּחַת צָהֳרַיִם וּמְחַכִּים שֶׁיִּתְיַבֵּשׁ.', ph:'Holkhim le-ekhol arukhat tsohorayim u-mekhakhim she-yityabesh.', fr:'Déjeuner'},
+ {he:'מְסַדְּרִים יַחַד אֶת הָאוֹתִיּוֹת. כָּל אֶחָד מַנִּיחַ אוֹתָן עַל הַלּוּחַ שֶׁלּוֹ.', ph:'Mesadrim yahad et ha-otiyot. Kol ehad maniah otan al ha-luah shelo.', fr:'Ordonner les lettres, les poser sur plaques'},
+ {he:'מַדְבִּיקִים מַסְקִינְג טֵייפ. אֶפְשָׁר גַּם לְהוֹסִיף צוּרוֹת.', ph:'Madbikim masking teip. Efshar gam lehosif tsurot.', fr:'Scotch et formes'},
+ {he:'צוֹבְעִים אֶת כָּל הַלּוּחַ בְּגוּאָשׁ.', ph:'Tzov\'im et kol ha-luah be-guash', fr:'Peindre les plaques'},
+ {he:'מְחַכִּים שֶׁיִּתְיַבֵּשׁ. בַּזְּמַן הַזֶּה נְשַׂחֵק חִידוֹן עַל צְבָעִים!', ph:'Mekhakhim she-yityabesh. Ba-zman ha-ze nesahek hidon al tseva\'im', fr:'pendant que ça sèche, quiz sur les couleurs', quiz:true},
+ {he:'מְקַלְּפִים אֶת הַמַּסְקִינְג טֵייפ וְאֶת הַצּוּרוֹת.', ph:'Mekalfim et ha-masking teip ve-et ha-tsurot', fr:'Retirer les éléments collés.'},
+ {he:'עוֹשִׂים אֶת הַנְּגִיעוֹת הָאַחֲרוֹנוֹת – וְסִיַּמְנוּ!', ph:'Osim et ha-negi\'ot ha-aharonot – ve-siyamnu!', fr:'Mettre au net'},
+];
+
+/* ---------- render ---------- */
+function renderSlide(s){
+  switch(s.kind){
+    case 'planning':{
+      const items=PLAN.map(p=>`<li class="plan-item${p.quiz?' go-quiz':''}">
+        <div class="he" dir="rtl">${p.he}</div>
+        <div class="tr">${p.quiz?'<span class="play">▶</span> ':''}<span class="ph">${p.ph}</span> <span class="fr">${p.fr}</span></div>
+      </li>`).join('');
+      return `<div class="slide light planning enter">
+        <div class="plan">
+          <div class="plan-head">
+            <h1 class="plan-title" dir="rtl">סֵדֶר הַפְּעִילוּת</h1>
+            <div class="plan-title-ph">Seder ha-pe'ilut</div>
+          </div>
+          <ol class="plan-list">${items}</ol>
+        </div></div>`;
+    }
+
+    case 'intro':
+      return `<div class="slide dark enter">
+        <div class="palette">${['red','orange','yellow','green','blue','purple','redviolet'].map(k=>`<span class="pdot" style="background:#${C[k].hex}"></span>`).join('')}</div>
+        <h1 class="title-heb" dir="rtl">חִידוֹן הַצְּבָעִים</h1>
+        <div class="title-en">Colors</div>
+        <div class="hint">›</div>
+      </div>`;
+
+    case 'q1':
+      return `<div class="slide light enter">${host('Level 1',"Which 3 colors can't we make?")}
+        <div class="row3">${pastille(null,{mystery:true})}${pastille(null,{mystery:true})}${pastille(null,{mystery:true})}</div></div>`;
+    case 'a1':
+      return `<div class="slide light enter">${host('Level 1','Red · Yellow · Blue')}
+        <div class="row3">${pastille(C.red)}${pastille(C.yellow)}${pastille(C.blue)}</div></div>`;
+
+    case 'mix':{
+      const lbl='Level '+s.lvl;
+      const en=s.reveal? `${s.a.en} + ${s.b.en} = ${s.r.en}` : `${s.a.en} + ${s.b.en} = ?`;
+      return `<div class="slide light enter">${host(lbl,en)}${eqRow(s.a,s.b,s.r,s.reveal)}</div>`;
+    }
+
+    case 'mix2':{
+      const en=s.reveal? `${s.base.en}: lighter & darker` : `${s.base.en} + White / + Black = ?`;
+      return `<div class="slide light enter">${host('Level 4',en)}
+        <div class="stack2">
+          ${eqRow(s.base,C.white,s.light,s.reveal,'mid')}
+          ${eqRow(s.base,C.black,s.dark,s.reveal,'mid')}
+        </div></div>`;
+    }
+
+    case 'surprise':{
+      const sline=(p,comp,x,y)=>`<div class="sline">
+        ${mini(p)}<span class="op">+</span>${mini(comp)}
+        <span class="op">=</span>
+        ${mini(p)}<span class="paren">(</span>${mini(x)}<span class="op">+</span>${mini(y)}<span class="paren">)</span>
+        <span class="op">=</span>
+        ${mini(C.red)}${mini(C.yellow)}${mini(C.blue)}
+        <span class="op">=</span>${mini(C.brown)}</div>`;
+      return `<div class="slide light enter">${host('Level 3','Why is it always brown?')}
+        <div class="surprise">
+          ${sline(C.red,C.green,C.yellow,C.blue)}
+          ${sline(C.yellow,C.purple,C.red,C.blue)}
+          ${sline(C.blue,C.orange,C.red,C.yellow)}
+        </div></div>`;
+    }
+
+    case 'qfinal':
+      return `<div class="slide light enter">${host('Final',"Mix ALL the colors?")}
+        <div class="eq">
+          <div class="cluster">${ALL13.map(mini).join('')}</div>
+          <span class="op">=</span>${pastille(null,{mystery:true,size:'huge'})}
+        </div></div>`;
+    case 'afinal':
+      return `<div class="slide light enter"><canvas class="fw"></canvas>${host('Final','All colors = almost black')}
+        <div class="item"><div class="dot huge" style="background:#${FINAL.hex}"></div>${labelHtml(FINAL)}</div></div>`;
+
+    case 'congrats':
+      return `<div class="slide dark enter">
+        <div class="palette">${['red','orange','yellow','green','blue','purple','brown'].map(k=>`<span class="pdot" style="background:#${C[k].hex}"></span>`).join('')}</div>
+        <h1 class="title-heb" dir="rtl">כָּל הַכָּבוֹד!</h1>
+        <div class="title-en">Well done</div>
+      </div>`;
+  }
+  return '';
+}
+
+/* ---------- navigation ---------- */
+/* ---------- fireworks (final answer) ---------- */
+let fwRAF=null, fwCanvas=null;
+function stopFireworks(){if(fwRAF){cancelAnimationFrame(fwRAF);fwRAF=null;}fwCanvas=null;}
+function startFireworks(canvas){
+  stopFireworks(); fwCanvas=canvas;
+  const ctx=canvas.getContext('2d');
+  const dpr=Math.min(window.devicePixelRatio||1,2);
+  function resize(){canvas.width=Math.max(1,Math.floor(canvas.clientWidth*dpr));canvas.height=Math.max(1,Math.floor(canvas.clientHeight*dpr));}
+  resize(); window.addEventListener('resize',resize);
+  const colors=['#E63329','#FFD400','#2A6FDB','#F77F00','#3CB043','#7B2CBF','#C71585','#17A398','#FFB300'];
+  let parts=[],frame=0;
+  function burst(x,y){
+    const col=colors[Math.floor(Math.random()*colors.length)];
+    const n=70+Math.floor(Math.random()*50);
+    for(let k=0;k<n;k++){
+      const a=Math.random()*Math.PI*2, sp=(1.2+Math.random()*4.4)*dpr;
+      parts.push({x:x,y:y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,life:1,col:col,r:(1.6+Math.random()*1.9)*dpr});
+    }
+  }
+  function tick(){
+    if(fwCanvas!==canvas){window.removeEventListener('resize',resize);return;}
+    frame++;
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    if(frame===4||frame%34===0){
+      burst((0.18+Math.random()*0.64)*canvas.width,(0.16+Math.random()*0.42)*canvas.height);
+    }
+    for(const p of parts){
+      p.vx*=0.985; p.vy=p.vy*0.985+0.05*dpr; p.x+=p.vx; p.y+=p.vy; p.life-=0.012;
+      if(p.life<=0)continue;
+      ctx.globalAlpha=Math.max(p.life,0);
+      ctx.fillStyle=p.col; ctx.shadowColor=p.col; ctx.shadowBlur=10*dpr;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
+    }
+    ctx.globalAlpha=1; ctx.shadowBlur=0;
+    parts=parts.filter(p=>p.life>0);
+    fwRAF=requestAnimationFrame(tick);
+  }
+  burst(canvas.width*0.3,canvas.height*0.32);
+  burst(canvas.width*0.7,canvas.height*0.28);
+  fwRAF=requestAnimationFrame(tick);
+}
+
+let i=0;
+const QUIZ_START=slides.findIndex(s=>s.kind==='intro');
+const stage=document.getElementById('stage');
+function show(){
+  stage.innerHTML=renderSlide(slides[i]);
+  if(slides[i].kind==='afinal'){const cv=stage.querySelector('.fw'); if(cv) startFireworks(cv);}
+  else stopFireworks();
+}
+function goTo(n){if(n>=0&&n<slides.length){i=n;show();}}
+function next(){if(i<slides.length-1){i++;show();}}
+function prev(){if(i>0){i--;show();}}
+show();
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '||e.key==='Enter'){e.preventDefault();next();}
+  else if(e.key==='ArrowLeft'){e.preventDefault();prev();}
+});
+
+const app=document.getElementById('app');
+document.querySelector('.nav-prev').addEventListener('click',e=>{e.stopPropagation();prev();});
+document.querySelector('.nav-next').addEventListener('click',e=>{e.stopPropagation();next();});
+
+let swiped=false;
+app.addEventListener('click',e=>{
+  if(swiped){swiped=false;return;}
+  if(slides[i].kind==='planning'){
+    if(e.target.closest('.go-quiz')) goTo(QUIZ_START);
+    return; // sur l'agenda : seul l'item du quiz démarre le jeu
+  }
+  next();
+});
+
+let x0=null,y0=null;
+app.addEventListener('touchstart',e=>{x0=e.changedTouches[0].clientX;y0=e.changedTouches[0].clientY;},{passive:true});
+app.addEventListener('touchend',e=>{
+  if(x0===null)return;
+  const dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0;
+  if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy)){
+    swiped=true; if(dx<0)next(); else prev();
+    setTimeout(()=>{swiped=false;},450);
+  }
+  x0=null;y0=null;
+},{passive:true});
+</script>
+</body>
+</html>

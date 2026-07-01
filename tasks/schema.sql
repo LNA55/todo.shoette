@@ -48,6 +48,27 @@ CREATE TABLE IF NOT EXISTS task_tags (
     CONSTRAINT fk_tt_tag  FOREIGN KEY (tag_id)  REFERENCES tags  (id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- Documents (galerie par liste) : image stockée sur disque (tasks/uploads/<list>/),
+-- traduction française + action à faire extraites du document, lien optionnel vers une tâche.
+CREATE TABLE IF NOT EXISTS documents (
+    id          INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    list_key    VARCHAR(64) NOT NULL DEFAULT 'sante',
+    title       VARCHAR(255) NULL,
+    doc_type    VARCHAR(40) NULL,                       -- ordonnance | analyse | compte-rendu | autre
+    mime        VARCHAR(80) NOT NULL DEFAULT 'image/jpeg',
+    lang        VARCHAR(16) NOT NULL DEFAULT 'he',      -- langue d'origine du document
+    translation MEDIUMTEXT NULL,                        -- traduction française
+    action_text TEXT NULL,                              -- action à faire (résumé)
+    task_id     INT UNSIGNED NULL,                      -- tâche liée dans la to-do
+    position    INT NOT NULL DEFAULT 0,
+    created_at  DATETIME NOT NULL,
+    updated_at  DATETIME NOT NULL,
+    PRIMARY KEY (id),
+    KEY idx_documents_list (list_key),
+    KEY idx_documents_task (task_id),
+    CONSTRAINT fk_doc_task FOREIGN KEY (task_id) REFERENCES tasks (id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- ------------------------------------------------------------------
 -- Prévu pour plus tard (NON créé aujourd'hui), sans casser l'existant :
 --   users       : comptes (admin, ...). tasks.owner_id / tags.owner_id y pointeront.

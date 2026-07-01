@@ -75,10 +75,12 @@ main { margin-top: 14px; }
 .tree { list-style: none; margin: 0; padding: 0; }
 .tree .children { margin: 0; padding: 0; }
 .row {
-  display: flex; align-items: center; gap: 8px;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
   padding: 4px 6px; border-radius: 6px; min-height: 34px;
 }
 .row:hover { background: #f7f7f7; }
+.row-main { display: flex; align-items: center; gap: 8px; flex: 1 1 auto; min-width: 0; }
+.row-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 1px; margin-left: auto; }
 .twisty {
   border: none; background: none; cursor: pointer; color: var(--muted);
   width: 18px; text-align: center; font-size: .8rem; padding: 0; flex: none;
@@ -96,15 +98,27 @@ main { margin-top: 14px; }
 .tag-chip { font-size: .7rem; color: #fff; padding: 1px 8px; border-radius: 999px; white-space: nowrap; }
 .more { font-size: .72rem; color: var(--muted); background: #ececec; border-radius: 999px; padding: 0 7px; }
 
-.actions { display: flex; gap: 1px; margin-left: auto; opacity: 0; transition: opacity .12s; }
-.row:hover .actions { opacity: 1; }
+.row-tools .act, .row-tools .note-btn { opacity: 0; transition: opacity .12s; }
+.row:hover .row-tools .act, .row:hover .row-tools .note-btn { opacity: 1; }
+.row-tools .note-btn.has-note { opacity: 1; }
 .act {
   border: none; background: none; cursor: pointer; font-size: .85rem; line-height: 1;
   padding: 4px; border-radius: 5px; color: var(--muted);
 }
 .act:hover { background: #ececec; color: var(--fg); }
 .act.danger:hover { background: #fde8e8; color: #b00020; }
-@media (hover: none) { .actions { opacity: 1; } }
+@media (hover: none) {
+  .row-tools .act, .row-tools .note-btn { opacity: 1; }
+}
+/* En mobile : les options passent sur une ligne, sous le titre */
+@media (max-width: 640px) {
+  .row { gap: 5px; }
+  .row-tools {
+    flex-basis: 100%; margin-left: 28px; margin-top: 3px;
+    gap: 6px; justify-content: flex-start;
+  }
+  .row-tools .act, .row-tools .note-btn { opacity: 1; padding: 6px; font-size: 1rem; }
+}
 
 #done-section { margin-top: 26px; border-top: 1px solid var(--line); padding-top: 8px; }
 #done-section h2 {
@@ -166,14 +180,63 @@ dialog#tag-dialog::backdrop { background: rgba(0,0,0,.35); }
   font-size: clamp(1.9rem, 7vw, 3.4rem);
 }
 
-/* ---- note de texte (repliable) sous un item ---- */
-.note-btn {
-  font-weight: 700; font-family: Georgia, "Times New Roman", serif;
-  opacity: 0; transition: opacity .12s;
+/* ---- galerie de documents (bas de page) ---- */
+.doc-gallery { margin-top: 34px; border-top: 1px solid var(--line); padding-top: 8px; }
+.doc-gallery h2 {
+  font-size: .8rem; letter-spacing: .12em; color: var(--muted);
+  font-weight: 700; margin: 6px; text-transform: uppercase;
 }
-.row:hover .note-btn { opacity: 1; }
-.note-btn.has-note { opacity: 1; background: #ececec; }
-@media (hover: none) { .note-btn { opacity: 1; } }
+.doc-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(108px, 1fr));
+  gap: 12px; padding: 8px 6px 0;
+}
+.doc-thumb-btn { border: none; background: none; padding: 0; cursor: pointer; font: inherit; }
+.doc-thumb { margin: 0; }
+.doc-thumb-img {
+  width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: top; display: block;
+  border: 1px solid var(--line); border-radius: 10px; background: #f4f4f4;
+  transition: transform .12s, box-shadow .12s;
+}
+.doc-thumb-btn:hover .doc-thumb-img { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.14); }
+.doc-thumb figcaption {
+  margin-top: 5px; font-size: .74rem; color: var(--muted);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: center;
+}
+
+/* ---- visionneuse d'un document (image + traduction) ---- */
+dialog.doc-viewer {
+  border: none; border-radius: 14px; padding: 0; width: min(920px, 94vw);
+  box-shadow: 0 20px 60px rgba(0,0,0,.25); overflow: hidden;
+}
+dialog.doc-viewer::backdrop { background: rgba(0,0,0,.5); }
+.doc-viewer-body { display: flex; max-height: 80vh; }
+.doc-viewer-img {
+  flex: 1 1 50%; background: #0e0e0e; display: flex; align-items: center;
+  justify-content: center; overflow: auto;
+}
+.doc-viewer-img img { max-width: 100%; max-height: 80vh; display: block; }
+.doc-viewer-text { flex: 1 1 50%; padding: 16px 18px; overflow: auto; max-height: 80vh; }
+.doc-action {
+  background: #fff7e6; border: 1px solid #ffe1a8; border-left: 4px solid #f0a020;
+  border-radius: 8px; padding: 10px 12px; font-weight: 600;
+  margin-bottom: 14px; white-space: pre-wrap;
+}
+.doc-sec-title {
+  margin: 0 0 6px; font-size: .72rem; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--muted);
+}
+.doc-translation { white-space: pre-wrap; line-height: 1.5; font-size: .95rem; }
+.doc-viewer-foot { margin-top: 18px; padding-top: 12px; border-top: 1px solid var(--line); }
+.danger-link { color: #b00020; }
+@media (max-width: 640px) {
+  .doc-viewer-body { flex-direction: column; max-height: 88vh; }
+  .doc-viewer-img { max-height: 42vh; }
+  .doc-viewer-img img { max-height: 42vh; }
+}
+
+/* ---- note de texte (repliable) sous un item ---- */
+.note-btn { font-weight: 700; font-family: Georgia, "Times New Roman", serif; }
+.note-btn.has-note { background: #ececec; }
 .note-panel {
   margin: 2px 0 8px; padding: 7px 10px; background: #fafafa;
   border: 1px solid var(--line); border-left: 3px solid #d0d0d0; border-radius: 6px;
@@ -191,3 +254,23 @@ dialog#tag-dialog::backdrop { background: rgba(0,0,0,.35); }
   border: 2px solid #fff; box-shadow: 0 0 0 1px var(--line);
 }
 .note-swatch.active { box-shadow: 0 0 0 2px #111; }
+
+/* ---- footer : liens vers les sous-pages (affiché seulement si la page fournit $FOOTER_LINKS) ---- */
+.page-footer {
+  margin-top: 56px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  font-size: .9rem;
+  color: var(--muted);
+}
+.page-footer a {
+  color: var(--fg);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 1px;
+}
+.page-footer a:hover { border-color: var(--fg); }

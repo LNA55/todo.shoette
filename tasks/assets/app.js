@@ -35,6 +35,14 @@ function loadOpenNotes() {
 function saveOpenNotes() {
   localStorage.setItem('notesOpen:' + LIST, JSON.stringify([...openNotes]));
 }
+let collapsedNotes = loadCollapsedNotes();  // ids des notes AVEC texte repliées manuellement
+function loadCollapsedNotes() {
+  try { return new Set(JSON.parse(localStorage.getItem('notesClosed:' + LIST) || '[]')); }
+  catch (_) { return new Set(); }
+}
+function saveCollapsedNotes() {
+  localStorage.setItem('notesClosed:' + LIST, JSON.stringify([...collapsedNotes]));
+}
 
 /* ---------- API ---------- */
 async function api(action, data = null, method = 'POST') {
@@ -176,26 +184,29 @@ function renderNode(container, t, level, isDone, childrenOf, depthLimit) {
   const row = el('div', { class: 'row' + (t.done ? ' is-done' : '') });
   row.style.paddingLeft = ((level - 1) * 22) + 'px';
 
+  // ---- ligne principale : case + titre + tags ----
+  const main = el('div', { class: 'row-main' });
+
   // triangle de repli
   if (hasKids) {
-    row.append(el('button', {
+    main.append(el('button', {
       class: 'twisty', type: 'button', title: t.collapsed ? 'Déplier' : 'Replier',
       text: t.collapsed ? '▸' : '▾', onclick: () => toggleCollapse(t),
     }));
   } else {
-    row.append(el('span', { class: 'twisty placeholder', text: '·' }));
+    main.append(el('span', { class: 'twisty placeholder', text: '·' }));
   }
 
   // case à cocher
   const cb = el('input', { type: 'checkbox', class: 'check', title: 'Cocher / décocher' });
   cb.checked = !!t.done;
   cb.addEventListener('change', () => toggleDone(t, cb.checked));
-  row.append(cb);
+  main.append(cb);
 
   // titre (clic pour éditer)
   const title = el('span', { class: 'title', text: t.title, title: 'Cliquer pour modifier' });
   title.addEventListener('click', () => editTitle(t, title));
-  row.append(title);
+  main.append(title);
 
   // tags
   const tagWrap = el('span', { class: 'row-tags' });
@@ -203,35 +214,42 @@ function renderNode(container, t, level, isDone, childrenOf, depthLimit) {
     const tag = tagById(tid);
     if (tag) tagWrap.append(el('span', { class: 'tag-chip', style: `background:${tag.color}`, text: tag.name }));
   }
-  row.append(tagWrap);
+  main.append(tagWrap);
 
-  // actions
-  const act = el('span', { class: 'actions' });
-  if (!isDone) act.append(actBtn('＋', 'Ajouter une sous-tâche', () => addSubtask(t, li, level)));
-  act.append(actBtn('🏷', 'Tags', (ev) => { ev.stopPropagation(); openTaskTagPop(t, ev.currentTarget); }));
+  row.append(main);
+
+  // ---- options (note + actions) : passent sous le titre en mobile ----
+  const tools = el('div', { class: 'row-tools' });
+
   const noteBtn = actBtn('T', (t.note && String(t.note).trim()) ? 'Voir / éditer la note' : 'Ajouter une note', (ev) => { ev.stopPropagation(); toggleNote(t); });
   noteBtn.classList.add('note-btn');
   if (t.note && String(t.note).trim() !== '') {
     noteBtn.classList.add('has-note');
     noteBtn.style.color = NOTE_COLORS[t.note_color] || NOTE_COLORS.black;
   }
-  row.append(noteBtn);
+  tools.append(noteBtn);
+
+  if (!isDone) tools.append(actBtn('＋', 'Ajouter une sous-tâche', () => addSubtask(t, li, level)));
+  tools.append(actBtn('🏷', 'Tags', (ev) => { ev.stopPropagation(); openTaskTagPop(t, ev.currentTarget); }));
   if (!isDone) {
-    act.append(actBtn('→', 'Imbriquer (sous la tâche du dessus)', () => simpleAction('task.indent', t)));
-    act.append(actBtn('←', 'Désimbriquer', () => simpleAction('task.outdent', t)));
-    act.append(actBtn('↑', 'Monter', () => simpleAction('task.moveUp', t)));
-    act.append(actBtn('↓', 'Descendre', () => simpleAction('task.moveDown', t)));
-    if (t.parent_id == null) act.append(actBtn('🙈', 'Masquer ce groupe', () => hideGroup(t)));
+    tools.append(actBtn('→', 'Imbriquer (sous la tâche du dessus)', () => simpleAction('task.indent', t)));
+    tools.append(actBtn('←', 'Désimbriquer', () => simpleAction('task.outdent', t)));
+    tools.append(actBtn('↑', 'Monter', () => simpleAction('task.moveUp', t)));
+    tools.append(actBtn('↓', 'Descendre', () => simpleAction('task.moveDown', t)));
+    if (t.parent_id == null) tools.append(actBtn('🙈', 'Masquer ce groupe', () => hideGroup(t)));
   }
   const del = actBtn('🗑', 'Supprimer', () => deleteTask(t));
   del.classList.add('danger');
-  act.append(del);
-  row.append(act);
+  tools.append(del);
+
+  row.append(tools);
 
   li.append(row);
 
-  // note de texte (repliable)
-  if (openNotes.has(t.id)) li.append(renderNotePanel(t, level));
+  // note de texte : dépliée par défaut si elle contient du texte ; repliable à la main
+  const noteHasText = !!(t.note && String(t.note).trim());
+  const noteShown = noteHasText ? !collapsedNotes.has(t.id) : openNotes.has(t.id);
+  if (noteShown) li.append(renderNotePanel(t, level));
 
   // enfants
   if (hasKids && !t.collapsed && level < depthLimit) {
@@ -239,7 +257,7 @@ function renderNode(container, t, level, isDone, childrenOf, depthLimit) {
     for (const c of kids) renderNode(ul, c, level + 1, isDone, childrenOf, depthLimit);
     li.append(ul);
   } else if (hasKids) {
-    row.append(el('span', { class: 'more', title: 'Sous-tâches masquées', text: '+' + countDescendants(t, childrenOf) }));
+    main.append(el('span', { class: 'more', title: 'Sous-tâches masquées', text: '+' + countDescendants(t, childrenOf) }));
   }
 
   container.append(li);
@@ -270,10 +288,21 @@ async function deleteTask(t) {
 
 /* ---------- note de texte (repliable) ---------- */
 function toggleNote(t) {
-  if (openNotes.has(t.id)) openNotes.delete(t.id); else openNotes.add(t.id);
-  saveOpenNotes();
+  const hasText = !!(t.note && String(t.note).trim());
+  let willShow;
+  if (hasText) {
+    // note avec texte : on bascule l'état "replié" (dépliée par défaut)
+    if (collapsedNotes.has(t.id)) collapsedNotes.delete(t.id); else collapsedNotes.add(t.id);
+    saveCollapsedNotes();
+    willShow = !collapsedNotes.has(t.id);
+  } else {
+    // note vide : on bascule l'ouverture (pour saisir un texte)
+    if (openNotes.has(t.id)) openNotes.delete(t.id); else openNotes.add(t.id);
+    saveOpenNotes();
+    willShow = openNotes.has(t.id);
+  }
   render();
-  if (openNotes.has(t.id)) {
+  if (willShow) {
     const li = document.querySelector(`li.node[data-id="${t.id}"]`);
     const ta = li && li.querySelector(':scope > .note-panel .note-text');
     if (ta) ta.focus();
@@ -527,6 +556,67 @@ function toast(msg) {
   toastTimer = setTimeout(() => { t.hidden = true; }, 3500);
 }
 
+/* ---------- galerie de documents ---------- */
+const MEDIA = '/tasks/media.php';
+let DOCS = [];
+
+async function loadDocuments() {
+  try {
+    const res = await api('doc.list', null, 'GET');
+    DOCS = res.documents || [];
+  } catch (_) {
+    DOCS = [];
+  }
+  renderGallery();
+}
+
+function mediaUrl(id, thumb) {
+  return `${MEDIA}?list=${encodeURIComponent(LIST)}&id=${id}` + (thumb ? '&thumb=1' : '');
+}
+
+function renderGallery() {
+  const section = $('#doc-gallery');
+  const grid = $('#doc-grid');
+  if (!section || !grid) return;
+  grid.innerHTML = '';
+  if (!DOCS.length) { section.hidden = true; return; }
+  section.hidden = false;
+  for (const d of DOCS) {
+    const img = el('img', {
+      class: 'doc-thumb-img', src: mediaUrl(d.id, true),
+      alt: d.title || 'Document', loading: 'lazy',
+    });
+    const fig = el('figure', { class: 'doc-thumb' }, img);
+    if (d.title) fig.append(el('figcaption', { text: d.title }));
+    const btn = el('button', { class: 'doc-thumb-btn', type: 'button', title: d.title || 'Voir le document' }, fig);
+    btn.addEventListener('click', () => openDocViewer(d));
+    grid.append(btn);
+  }
+}
+
+function openDocViewer(d) {
+  $('#doc-viewer-title').textContent = d.title || 'Document';
+  $('#doc-viewer-image').src = mediaUrl(d.id, false);
+  $('#doc-viewer-link').href = mediaUrl(d.id, false);
+
+  const actionEl = $('#doc-viewer-action');
+  actionEl.textContent = d.action_text || '';
+  actionEl.style.display = d.action_text ? '' : 'none';
+
+  $('#doc-viewer-translation').textContent = d.translation || '(Pas encore de traduction.)';
+  $('#doc-viewer-delete').onclick = () => deleteDocument(d);
+  $('#doc-viewer').showModal();
+}
+
+async function deleteDocument(d) {
+  if (!confirm('Supprimer définitivement ce document ? (la tâche liée, elle, reste.)')) return;
+  try {
+    await api('doc.delete', { id: d.id });
+    $('#doc-viewer').close();
+    await loadDocuments();
+  } catch (e) { toast(e.message); }
+}
+
 /* ---------- initialisation ---------- */
 function wireStaticHandlers() {
   $('#add-form').addEventListener('submit', async (e) => {
@@ -571,4 +661,5 @@ function wireStaticHandlers() {
 document.addEventListener('DOMContentLoaded', () => {
   wireStaticHandlers();
   loadState().catch((e) => toast(e.message));
+  loadDocuments();
 });

@@ -1,0 +1,9 @@
+# Dossier des documents (images médicales) : AUCUN accès direct par URL.
+# Les fichiers ne sont servis que par ../media.php, après vérification du mot de passe.
+<IfModule mod_authz_core.c>
+  Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+  Order allow,deny
+  Deny from all
+</IfModule>

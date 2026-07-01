@@ -1,6 +1,18 @@
 # Identifiants MySQL & config locale — NE JAMAIS pousser sur le dépôt
 config.php
 tasks/config.php
+passwords.php
+tasks/passwords.php
+
+# Documents médicaux téléversés (jamais sur le dépôt) — on garde le .htaccess
+tasks/uploads/*
+!tasks/uploads/.htaccess
+
+# Documents médicaux source déposés en local dans les dossiers de pages — JAMAIS commités/déployés
+*.pdf
+sante/*.jpg
+sante/*.jpeg
+sante/*.png
 
 # macOS
 .DS_Store
