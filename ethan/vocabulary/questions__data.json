@@ -1,0 +1,867 @@
+[
+ {
+  "k": "title",
+  "title": "Questions",
+  "sub": "qui · que · où · quand · comment · pourquoi · combien · quel"
+ },
+ {
+  "k": "v",
+  "cat": "QUESTION",
+  "main": "Qui",
+  "gloss": [
+   "who"
+  ],
+  "he": [
+   {
+    "he": "מִי",
+    "phon": "mi"
+   }
+  ],
+  "notes": [
+   "מִי est invariable ; + préposition : לְמִי, עִם מִי."
+  ],
+  "ex": [
+   {
+    "label": "Q",
+    "fr": "Qui est là ?",
+    "en": "Who is there?",
+    "he": "מִי שָׁם?",
+    "phon": "mi sham?"
+   },
+   {
+    "label": "R",
+    "fr": "C'est Maman.",
+    "en": "It's Mom.",
+    "he": "זֹאת אִמָּא.",
+    "phon": "zot ima."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "QUESTION",
+  "main": "Que / Quoi",
+  "gloss": [
+   "what"
+  ],
+  "he": [
+   {
+    "he": "מָה",
+    "phon": "ma"
+   }
+  ],
+  "notes": [
+   "מָה peut s'écrire מֶה/מַה selon la lettre suivante."
+  ],
+  "ex": [
+   {
+    "label": "Q",
+    "fr": "Que fais-tu ?",
+    "en": "What are you doing?",
+    "he": "מָה אַתָּה עוֹשֶׂה?",
+    "phon": "ma ata ose?"
+   },
+   {
+    "label": "R",
+    "fr": "Je joue.",
+    "en": "I'm playing.",
+    "he": "אֲנִי מְשַׂחֵק.",
+    "phon": "ani mesachek."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "QUESTION",
+  "main": "Où",
+  "gloss": [
+   "where"
+  ],
+  "he": [
+   {
+    "he": "אֵיפֹה",
+    "phon": "eifo"
+   }
+  ],
+  "notes": [
+   "Réponse souvent avec article fusionné : בַּ, לַ, מֵהַ."
+  ],
+  "ex": [
+   {
+    "label": "Q",
+    "fr": "Où est le chat ?",
+    "en": "Where is the cat?",
+    "he": "אֵיפֹה הֶחָתוּל?",
+    "phon": "eifo hechatul?"
+   },
+   {
+    "label": "R",
+    "fr": "Sous la table.",
+    "en": "Under the table.",
+    "he": "מִתַּחַת לַשֻּׁלְחָן.",
+    "phon": "mitachat lashulchan."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "QUESTION",
+  "main": "Quand",
+  "gloss": [
+   "when"
+  ],
+  "he": [
+   {
+    "he": "מָתַי",
+    "phon": "matai"
+   }
+  ],
+  "notes": [
+   "Composés : עַד מָתַי (jusqu'à quand), מִמָּתַי (depuis quand)."
+  ],
+  "ex": [
+   {
+    "label": "Q",
+    "fr": "Quand manges-tu ?",
+    "en": "When do you eat?",
+    "he": "מָתַי אַתָּה אוֹכֵל?",
+    "phon": "matai ata ochel?"
+   },
+   {
+    "label": "R",
+    "fr": "À midi.",
+    "en": "At noon.",
+    "he": "בַּצָּהֳרַיִם.",
+    "phon": "batsohorayim."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "QUESTION",
+  "main": "Comment",
+  "gloss": [
+   "how"
+  ],
+  "he": [
+   {
+    "he": "אֵיךְ",
+    "phon": "eikh"
+   }
+  ],
+  "notes": [
+   "Synonyme soutenu : כֵּיצַד (keitsad)."
+  ],
+  "ex": [
+   {
+    "label": "Q",
+    "fr": "Comment vas-tu ?",
+    "en": "How are you?",
+    "he": "אֵיךְ אַתָּה מַרְגִּישׁ?",
+    "phon": "eikh ata margish?"
+   },
+   {
+    "label": "R",
+    "fr": "Je vais bien.",
+    "en": "I'm fine.",
+    "he": "אֲנִי מַרְגִּישׁ טוֹב.",
+    "phon": "ani margish tov."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "QUESTION",
+  "main": "Pourquoi",
+  "gloss": [
+   "why"
+  ],
+  "he": [
+   {
+    "he": "לָמָּה",
+    "phon": "lama"
+   }
+  ],
+  "notes": [
+   "Aussi מַדּוּעַ (soutenu). Réponse : כִּי (parce que)."
+  ],
+  "ex": [
+   {
+    "label": "Q",
+    "fr": "Pourquoi pleures-tu ?",
+    "en": "Why are you crying?",
+    "he": "לָמָּה אַתָּה בּוֹכֶה?",
+    "phon": "lama ata boche?"
+   },
+   {
+    "label": "R",
+    "fr": "Parce que je suis triste.",
+    "en": "Because I'm sad.",
+    "he": "כִּי אֲנִי עָצוּב.",
+    "phon": "ki ani atsuv."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "QUESTION",
+  "main": "Combien",
+  "gloss": [
+   "how much",
+   "Pour âge"
+  ],
+  "he": [
+   {
+    "he": "כַּמָּה",
+    "phon": "kama"
+   },
+   {
+    "he": "בֶּן כַּמָּה בַּת כַּמָּה",
+    "phon": null
+   }
+  ],
+  "ex": [
+   {
+    "label": "Q",
+    "fr": "Quel âge as-tu ?",
+    "en": "How old are you?",
+    "he": "בֶּן כַּמָּה אַתָּה?",
+    "phon": "ben kama ata?"
+   },
+   {
+    "label": "R",
+    "fr": "J'ai six ans.",
+    "en": "I'm six years old.",
+    "he": "אֲנִי בֶּן שֵׁשׁ.",
+    "phon": "ani ben shesh."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "QUESTION",
+  "main": "Quel / Lequel",
+  "gloss": [
+   "which",
+   "accorde pl"
+  ],
+  "he": [
+   {
+    "he": "אֵיזֶה",
+    "phon": "eize"
+   },
+   {
+    "he": "אֵיזֶה אֵיזוֹ אֵילוּ",
+    "phon": null
+   }
+  ],
+  "ex": [
+   {
+    "label": "Q",
+    "fr": "Quel livre ?",
+    "en": "Which book?",
+    "he": "אֵיזֶה סֵפֶר?",
+    "phon": "eize sefer?"
+   },
+   {
+    "label": "R",
+    "fr": "Le livre rouge.",
+    "en": "The red book.",
+    "he": "הַסֵּפֶר הָאָדוֹם.",
+    "phon": "hasefer ha'adom."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "QUESTION + PRÉPOSITION",
+  "main": "À qui",
+  "gloss": [
+   "to whom",
+   "qui"
+  ],
+  "he": [
+   {
+    "he": "לְמִי",
+    "phon": "lemi"
+   },
+   {
+    "he": "לְ מִי",
+    "phon": null
+   }
+  ],
+  "ex": [
+   {
+    "label": "Q",
+    "fr": "À qui donnes-tu le cadeau ?",
+    "en": "To whom do you give the gift?",
+    "he": "לְמִי אַתָּה נוֹתֵן אֶת הַמַּתָּנָה?",
+    "phon": "lemi ata noten et hamatana?"
+   },
+   {
+    "label": "R",
+    "fr": "À ma mère.",
+    "en": "To my mother.",
+    "he": "לְאִמָּא שֶׁלִּי.",
+    "phon": "le'ima sheli."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "QUESTION + PRÉPOSITION",
+  "main": "De qui",
+  "gloss": [
+   "about whom",
+   "sur"
+  ],
+  "he": [
+   {
+    "he": "עַל מִי",
+    "phon": "al mi"
+   },
+   {
+    "he": "עַל מִי.",
+    "phon": null
+   }
+  ],
+  "ex": [
+   {
+    "label": "Q",
+    "fr": "De qui parles-tu ?",
+    "en": "About whom are you talking?",
+    "he": "עַל מִי אַתָּה מְדַבֵּר?",
+    "phon": "al mi ata medaber?"
+   },
+   {
+    "label": "R",
+    "fr": "De ma sœur.",
+    "en": "About my sister.",
+    "he": "עַל אֲחוֹתִי.",
+    "phon": "al achoti."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "QUESTION + PRÉPOSITION",
+  "main": "Avec qui",
+  "gloss": [
+   "with whom",
+   "avec"
+  ],
+  "he": [
+   {
+    "he": "עִם מִי",
+    "phon": "im mi"
+   },
+   {
+    "he": "עִם מִי.",
+    "phon": null
+   }
+  ],
+  "ex": [
+   {
+    "label": "Q",
+    "fr": "Avec qui joues-tu ?",
+    "en": "With whom do you play?",
+    "he": "עִם מִי אַתָּה מְשַׂחֵק?",
+    "phon": "im mi ata mesachek?"
+   },
+   {
+    "label": "R",
+    "fr": "Avec mon frère.",
+    "en": "With my brother.",
+    "he": "עִם אָחִי.",
+    "phon": "im achi."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "QUESTION + PRÉPOSITION",
+  "main": "À qui (à qui est-ce)",
+  "gloss": [
+   "whose",
+   "de possession"
+  ],
+  "he": [
+   {
+    "he": "שֶׁל מִי",
+    "phon": "shel mi"
+   },
+   {
+    "he": "שֶׁל מִי",
+    "phon": null
+   }
+  ],
+  "ex": [
+   {
+    "label": "Q",
+    "fr": "C'est le livre de qui ?",
+    "en": "Whose book is it?",
+    "he": "שֶׁל מִי הַסֵּפֶר?",
+    "phon": "shel mi hasefer?"
+   },
+   {
+    "label": "R",
+    "fr": "C'est le mien.",
+    "en": "It's mine.",
+    "he": "שֶׁלִּי.",
+    "phon": "sheli."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "QUESTION + PRÉPOSITION",
+  "main": "De quoi",
+  "gloss": [
+   "about what",
+   "sur"
+  ],
+  "he": [
+   {
+    "he": "עַל מָה",
+    "phon": "al ma"
+   },
+   {
+    "he": "עַל מָה.",
+    "phon": null
+   }
+  ],
+  "ex": [
+   {
+    "label": "Q",
+    "fr": "De quoi parles-tu ?",
+    "en": "What are you talking about?",
+    "he": "עַל מָה אַתָּה מְדַבֵּר?",
+    "phon": "al ma ata medaber?"
+   },
+   {
+    "label": "R",
+    "fr": "Du film.",
+    "en": "About the movie.",
+    "he": "עַל הַסֶּרֶט.",
+    "phon": "al haseret."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "QUESTION + PRÉPOSITION",
+  "main": "Avec quoi",
+  "gloss": [
+   "with what",
+   "avec par"
+  ],
+  "he": [
+   {
+    "he": "בְּמָה",
+    "phon": "bema"
+   },
+   {
+    "he": "בְּ מָה.",
+    "phon": null
+   }
+  ],
+  "ex": [
+   {
+    "label": "Q",
+    "fr": "Avec quoi écris-tu ?",
+    "en": "What do you write with?",
+    "he": "בְּמָה אַתָּה כּוֹתֵב?",
+    "phon": "bema ata kotev?"
+   },
+   {
+    "label": "R",
+    "fr": "Avec un crayon.",
+    "en": "With a pencil.",
+    "he": "בְּעִפָּרוֹן.",
+    "phon": "be'iparon."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "QUESTION + PRÉPOSITION",
+  "main": "D'où",
+  "gloss": [
+   "from where",
+   "de Aussi"
+  ],
+  "he": [
+   {
+    "he": "מֵאַיִן",
+    "phon": "me'ayin"
+   },
+   {
+    "he": "מִן אַיִן. מֵאֵיפֹה.",
+    "phon": null
+   }
+  ],
+  "ex": [
+   {
+    "label": "Q",
+    "fr": "D'où viens-tu ?",
+    "en": "Where do you come from?",
+    "he": "מֵאַיִן אַתָּה?",
+    "phon": "me'ayin ata?"
+   },
+   {
+    "label": "R",
+    "fr": "De la maison.",
+    "en": "From home.",
+    "he": "מֵהַבַּיִת.",
+    "phon": "mehabayit."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "QUESTION + PRÉPOSITION",
+  "main": "Où (vers)",
+  "gloss": [
+   "where to",
+   "vers"
+  ],
+  "he": [
+   {
+    "he": "לְאָן",
+    "phon": "le'an"
+   },
+   {
+    "he": "לְ אָן.",
+    "phon": null
+   }
+  ],
+  "ex": [
+   {
+    "label": "Q",
+    "fr": "Où vas-tu ?",
+    "en": "Where are you going?",
+    "he": "לְאָן אַתָּה הוֹלֵךְ?",
+    "phon": "le'an ata holekh?"
+   },
+   {
+    "label": "R",
+    "fr": "À l'école.",
+    "en": "To school.",
+    "he": "לְבֵית הַסֵּפֶר.",
+    "phon": "leveit hasefer."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "QUESTION + PRÉPOSITION",
+  "main": "Jusqu'à quand",
+  "gloss": [
+   "until when",
+   "jusqu"
+  ],
+  "he": [
+   {
+    "he": "עַד מָתַי",
+    "phon": "ad matai"
+   },
+   {
+    "he": "עַד מָתַי.",
+    "phon": null
+   }
+  ],
+  "ex": [
+   {
+    "label": "Q",
+    "fr": "Jusqu'à quand restes-tu ?",
+    "en": "Until when do you stay?",
+    "he": "עַד מָתַי אַתָּה נִשְׁאָר?",
+    "phon": "ad matai ata nishar?"
+   },
+   {
+    "label": "R",
+    "fr": "Jusqu'à demain.",
+    "en": "Until tomorrow.",
+    "he": "עַד מָחָר.",
+    "phon": "ad machar."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "QUESTION + PRÉPOSITION",
+  "main": "Depuis quand",
+  "gloss": [
+   "since when",
+   "depuis"
+  ],
+  "he": [
+   {
+    "he": "מִמָּתַי",
+    "phon": "mimatai"
+   },
+   {
+    "he": "מִן מָתַי.",
+    "phon": null
+   }
+  ],
+  "ex": [
+   {
+    "label": "Q",
+    "fr": "Depuis quand es-tu ici ?",
+    "en": "Since when have you been here?",
+    "he": "מִמָּתַי אַתָּה כָּאן?",
+    "phon": "mimatai ata kan?"
+   },
+   {
+    "label": "R",
+    "fr": "Depuis hier.",
+    "en": "Since yesterday.",
+    "he": "מֵאֶתְמוֹל.",
+    "phon": "me'etmol."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "« Quel ? » selon le genre et le nombre",
+  "gloss": [
+   "Genre / nombre",
+   "Hébreu",
+   "Phon.",
+   "Exemple",
+   "Masculin sing.",
+   "eize",
+   "quel livre",
+   "Féminin sing.",
+   "eizo",
+   "quel cahier",
+   "Pluriel",
+   "eilu",
+   "quels livres",
+   "L'interrogatif « quel » s'accorde avec le nom qui suit."
+  ],
+  "he": [
+   {
+    "he": "אֵיזֶה",
+    "phon": null
+   },
+   {
+    "he": "אֵיזֶה סֵפֶר?",
+    "phon": null
+   },
+   {
+    "he": "אֵיזוֹ",
+    "phon": null
+   },
+   {
+    "he": "אֵיזוֹ מַחְבֶּרֶת?",
+    "phon": null
+   },
+   {
+    "he": "אֵילוּ",
+    "phon": null
+   },
+   {
+    "he": "אֵילוּ סְפָרִים?",
+    "phon": null
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "Mot interrogatif + préposition",
+  "gloss": [
+   "Français",
+   "Hébreu",
+   "Phonétique",
+   "Décomposition",
+   "à qui",
+   "lemi",
+   "sur / de qui",
+   "al mi",
+   "avec qui",
+   "im mi",
+   "à qui (possession)",
+   "shel mi",
+   "sur / de quoi",
+   "al ma",
+   "avec quoi",
+   "bema",
+   "d'où",
+   "me'ayin",
+   "vers où",
+   "le'an",
+   "jusqu'à quand",
+   "ad matai",
+   "depuis quand",
+   "mimatai",
+   "La préposition se colle devant le mot interrogatif."
+  ],
+  "he": [
+   {
+    "he": "לְמִי",
+    "phon": null
+   },
+   {
+    "he": "לְ מִי",
+    "phon": null
+   },
+   {
+    "he": "עַל מִי",
+    "phon": null
+   },
+   {
+    "he": "עַל מִי",
+    "phon": null
+   },
+   {
+    "he": "עִם מִי",
+    "phon": null
+   },
+   {
+    "he": "עִם מִי",
+    "phon": null
+   },
+   {
+    "he": "שֶׁל מִי",
+    "phon": null
+   },
+   {
+    "he": "שֶׁל מִי",
+    "phon": null
+   },
+   {
+    "he": "עַל מָה",
+    "phon": null
+   },
+   {
+    "he": "עַל מָה",
+    "phon": null
+   },
+   {
+    "he": "בְּמָה",
+    "phon": null
+   },
+   {
+    "he": "בְּ מָה",
+    "phon": null
+   },
+   {
+    "he": "מֵאַיִן",
+    "phon": null
+   },
+   {
+    "he": "מִן אַיִן",
+    "phon": null
+   },
+   {
+    "he": "לְאָן",
+    "phon": null
+   },
+   {
+    "he": "לְ אָן",
+    "phon": null
+   },
+   {
+    "he": "עַד מָתַי",
+    "phon": null
+   },
+   {
+    "he": "עַד מָתַי",
+    "phon": null
+   },
+   {
+    "he": "מִמָּתַי",
+    "phon": null
+   },
+   {
+    "he": "מִן מָתַי",
+    "phon": null
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "Devient",
+  "gloss": [
+   "article défini",
+   "Préposition",
+   "Exemple",
+   "enfant",
+   "dans",
+   "vers",
+   "enfant",
+   "comme",
+   "de",
+   "du jardin"
+  ],
+  "he": [
+   {
+    "he": "הַ",
+    "phon": "le / la / les"
+   },
+   {
+    "he": "הַ",
+    "phon": null
+   },
+   {
+    "he": "הַ",
+    "phon": "article seul"
+   },
+   {
+    "he": "הַ",
+    "phon": null
+   },
+   {
+    "he": "הַיֶּלֶד",
+    "phon": null
+   },
+   {
+    "he": "בְּ הַ",
+    "phon": null
+   },
+   {
+    "he": "בַּ",
+    "phon": null
+   },
+   {
+    "he": "לְ הַ",
+    "phon": null
+   },
+   {
+    "he": "לַ",
+    "phon": null
+   },
+   {
+    "he": "לַיֶּלֶד",
+    "phon": null
+   },
+   {
+    "he": "כְּ הַ",
+    "phon": null
+   },
+   {
+    "he": "כַּ",
+    "phon": null
+   },
+   {
+    "he": "מִן הַ",
+    "phon": null
+   },
+   {
+    "he": "מֵהַ",
+    "phon": null
+   },
+   {
+    "he": "מֵהַגַּן",
+    "phon": null
+   }
+  ],
+  "notes": [
+   "בַּבַּיִת — dans la maison",
+   "כַּכֶּלֶב — comme le chien",
+   "Ces fusions reviennent dans les réponses : où ? → בַּבַּיִת ; d'où ? → מֵהַגַּן ; à qui ? → לַיֶּלֶד."
+  ]
+ }
+]

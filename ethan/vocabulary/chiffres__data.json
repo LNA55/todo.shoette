@@ -1,0 +1,503 @@
+[
+ {
+  "k": "title",
+  "title": "Chiffres",
+  "sub": ""
+ },
+ {
+  "k": "v",
+  "main": "0",
+  "gloss": [
+   "Zéro",
+   "Zero"
+  ],
+  "he": [
+   {
+    "he": "אֶפֶס",
+    "phon": "efes"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "1",
+  "gloss": [
+   "Un",
+   "One"
+  ],
+  "he": [
+   {
+    "he": "אַחַת",
+    "phon": "achat – f."
+   },
+   {
+    "he": "אֶחָד",
+    "phon": "echad – m."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "2",
+  "gloss": [
+   "Deux",
+   "Two"
+  ],
+  "he": [
+   {
+    "he": "שְׁתַּיִם",
+    "phon": "shtayim – f."
+   },
+   {
+    "he": "שְׁנַיִם",
+    "phon": "shnayim – m."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "3",
+  "gloss": [
+   "Trois",
+   "Three"
+  ],
+  "he": [
+   {
+    "he": "שָׁלוֹשׁ",
+    "phon": "shalosh – f."
+   },
+   {
+    "he": "שְׁלוֹשָׁה",
+    "phon": "shlosha – m."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "4",
+  "gloss": [
+   "Quatre",
+   "Four"
+  ],
+  "he": [
+   {
+    "he": "אַרְבַּע",
+    "phon": "arba – f."
+   },
+   {
+    "he": "אַרְבָּעָה",
+    "phon": "arba'a – m."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "5",
+  "gloss": [
+   "Cinq",
+   "Five"
+  ],
+  "he": [
+   {
+    "he": "חָמֵשׁ",
+    "phon": "chamesh – f."
+   },
+   {
+    "he": "חֲמִשָּׁה",
+    "phon": "chamisha – m."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "6",
+  "gloss": [
+   "Six",
+   "Six"
+  ],
+  "he": [
+   {
+    "he": "שֵׁשׁ",
+    "phon": "shesh – f."
+   },
+   {
+    "he": "שִׁשָּׁה",
+    "phon": "shisha – m."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "7",
+  "gloss": [
+   "Sept",
+   "Seven"
+  ],
+  "he": [
+   {
+    "he": "שֶׁבַע",
+    "phon": "sheva – f."
+   },
+   {
+    "he": "שִׁבְעָה",
+    "phon": "shiv'a – m."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "8",
+  "gloss": [
+   "Huit",
+   "Eight"
+  ],
+  "he": [
+   {
+    "he": "שְׁמוֹנֶה",
+    "phon": "shmone – f."
+   },
+   {
+    "he": "שְׁמוֹנָה",
+    "phon": "shmona – m."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "9",
+  "gloss": [
+   "Neuf",
+   "Nine"
+  ],
+  "he": [
+   {
+    "he": "תֵּשַׁע",
+    "phon": "tesha – f."
+   },
+   {
+    "he": "תִּשְׁעָה",
+    "phon": "tish'a – m."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "10",
+  "gloss": [
+   "Dix",
+   "Ten"
+  ],
+  "he": [
+   {
+    "he": "עֶשֶׂר",
+    "phon": "eser – f."
+   },
+   {
+    "he": "עֲשָׂרָה",
+    "phon": "asara – m."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "11",
+  "gloss": [
+   "Onze",
+   "Eleven"
+  ],
+  "he": [
+   {
+    "he": "אַחַת עֶשְׂרֵה",
+    "phon": "achat-esre – f."
+   },
+   {
+    "he": "אַחַד עָשָׂר",
+    "phon": "achad-asar – m."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "12",
+  "gloss": [
+   "Douze",
+   "Twelve"
+  ],
+  "he": [
+   {
+    "he": "שְׁתֵּים עֶשְׂרֵה",
+    "phon": "shtem-esre – f."
+   },
+   {
+    "he": "שְׁנֵים עָשָׂר",
+    "phon": "shnem-asar – m."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "13",
+  "gloss": [
+   "Treize",
+   "Thirteen"
+  ],
+  "he": [
+   {
+    "he": "שְׁלוֹשׁ עֶשְׂרֵה",
+    "phon": "shlosh-esre – f."
+   },
+   {
+    "he": "שְׁלוֹשָׁה עָשָׂר",
+    "phon": "shlosha-asar – m."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "14",
+  "gloss": [
+   "Quatorze",
+   "Fourteen"
+  ],
+  "he": [
+   {
+    "he": "אַרְבַּע עֶשְׂרֵה",
+    "phon": "arba-esre – f."
+   },
+   {
+    "he": "אַרְבָּעָה עָשָׂר",
+    "phon": "arba'a-asar – m."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "15",
+  "gloss": [
+   "Quinze",
+   "Fifteen"
+  ],
+  "he": [
+   {
+    "he": "חֲמֵשׁ עֶשְׂרֵה",
+    "phon": "chamesh-esre – f."
+   },
+   {
+    "he": "חֲמִשָּׁה עָשָׂר",
+    "phon": "chamisha-asar – m."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "16",
+  "gloss": [
+   "Seize",
+   "Sixteen"
+  ],
+  "he": [
+   {
+    "he": "שֵׁשׁ עֶשְׂרֵה",
+    "phon": "shesh-esre – f."
+   },
+   {
+    "he": "שִׁשָּׁה עָשָׂר",
+    "phon": "shisha-asar – m."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "17",
+  "gloss": [
+   "Dix-sept",
+   "Seventeen"
+  ],
+  "he": [
+   {
+    "he": "שְׁבַע עֶשְׂרֵה",
+    "phon": "shva-esre – f."
+   },
+   {
+    "he": "שִׁבְעָה עָשָׂר",
+    "phon": "shiv'a-asar – m."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "18",
+  "gloss": [
+   "Dix-huit",
+   "Eighteen"
+  ],
+  "he": [
+   {
+    "he": "שְׁמוֹנֶה עֶשְׂרֵה",
+    "phon": "shmone-esre – f."
+   },
+   {
+    "he": "שְׁמוֹנָה עָשָׂר",
+    "phon": "shmona-asar – m."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "19",
+  "gloss": [
+   "Dix-neuf",
+   "Nineteen"
+  ],
+  "he": [
+   {
+    "he": "תְּשַׁע עֶשְׂרֵה",
+    "phon": "tsha-esre – f."
+   },
+   {
+    "he": "תִּשְׁעָה עָשָׂר",
+    "phon": "tish'a-asar – m."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "20",
+  "gloss": [
+   "Vingt",
+   "Twenty"
+  ],
+  "he": [
+   {
+    "he": "עֶשְׂרִים",
+    "phon": "esrim"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "30",
+  "gloss": [
+   "Trente",
+   "Thirty"
+  ],
+  "he": [
+   {
+    "he": "שְׁלוֹשִׁים",
+    "phon": "shloshim"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "40",
+  "gloss": [
+   "Quarante",
+   "Forty"
+  ],
+  "he": [
+   {
+    "he": "אַרְבָּעִים",
+    "phon": "arba'im"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "50",
+  "gloss": [
+   "Cinquante",
+   "Fifty"
+  ],
+  "he": [
+   {
+    "he": "חֲמִשִּׁים",
+    "phon": "chamishim"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "60",
+  "gloss": [
+   "Soixante",
+   "Sixty"
+  ],
+  "he": [
+   {
+    "he": "שִׁשִּׁים",
+    "phon": "shishim"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "70",
+  "gloss": [
+   "Soixante-dix",
+   "Seventy"
+  ],
+  "he": [
+   {
+    "he": "שִׁבְעִים",
+    "phon": "shiv'im"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "80",
+  "gloss": [
+   "Quatre-vingts",
+   "Eighty"
+  ],
+  "he": [
+   {
+    "he": "שְׁמוֹנִים",
+    "phon": "shmonim"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "90",
+  "gloss": [
+   "Quatre-vingt-dix",
+   "Ninety"
+  ],
+  "he": [
+   {
+    "he": "תִּשְׁעִים",
+    "phon": "tish'im"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "100",
+  "gloss": [
+   "Cent",
+   "One hundred"
+  ],
+  "he": [
+   {
+    "he": "מֵאָה",
+    "phon": "me'a"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "1000",
+  "gloss": [
+   "Mille",
+   "One thousand"
+  ],
+  "he": [
+   {
+    "he": "אֶלֶף",
+    "phon": "elef"
+   }
+  ]
+ }
+]

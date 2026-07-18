@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Vidéos — Ethan</title>
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;}
+  body{font-family:"Varela Round",ui-rounded,"SF Pro Rounded",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    color:#20222b;background:linear-gradient(160deg,#fff2f4 0%,#eef1ff 55%,#eafff7 100%);
+    min-height:100vh;padding:clamp(18px,5vw,44px);}
+  .home-top{position:fixed;top:14px;left:16px;z-index:50;color:#5b4bd6;text-decoration:none;font-weight:700;
+    background:rgba(255,255,255,.9);padding:7px 14px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.14);}
+  header{max-width:720px;margin:0 auto clamp(20px,4vh,34px);text-align:center;}
+  header h1{font-size:clamp(2rem,7vw,3.2rem);font-weight:800;margin:.1em 0;
+    background:linear-gradient(90deg,#ff4d67,#ff8a3a,#4fd1ff);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  header p{color:#5a6070;font-size:clamp(.95rem,2.8vw,1.15rem);margin:6px 0 0;font-weight:600;}
+  .list{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(12px,2.4vh,18px);}
+  .vid{display:flex;align-items:stretch;gap:clamp(12px,3vw,18px);text-decoration:none;color:#20222b;
+    background:#fff;border-radius:20px;overflow:hidden;padding:clamp(10px,2.4vw,14px);
+    box-shadow:0 10px 26px rgba(30,30,60,.10),0 0 0 1px rgba(0,0,0,.03);transition:transform .14s ease,box-shadow .14s ease;}
+  .vid:hover{transform:translateY(-2px) scale(1.01);box-shadow:0 16px 34px rgba(30,30,60,.16);}
+  .thumb{position:relative;flex:none;width:clamp(120px,34vw,180px);aspect-ratio:16/10;border-radius:14px;overflow:hidden;
+    background:#111;}
+  .thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+  .thumb .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+  .thumb .play span{width:clamp(34px,9vw,46px);height:clamp(34px,9vw,46px);border-radius:50%;
+    background:rgba(0,0,0,.55);color:#fff;display:flex;align-items:center;justify-content:center;
+    font-size:clamp(1rem,3.4vw,1.4rem);padding-left:3px;}
+  .meta{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:5px;}
+  .tag{align-self:flex-start;font-size:clamp(.66rem,2vw,.78rem);font-weight:800;letter-spacing:.04em;text-transform:uppercase;
+    color:#fff;background:#ff4d67;padding:2px 10px;border-radius:999px;}
+  .tag.chaine{background:#5b4bd6;}
+  .tag.playlist{background:#2fa84f;}
+  .tag.recette{background:#c2711c;}
+  .subsec{max-width:720px;margin:clamp(30px,6vh,48px) auto 0;}
+  .subtitle{font-size:clamp(1.2rem,4.4vw,1.7rem);font-weight:800;color:#3a4050;margin:0 0 14px;
+    display:flex;flex-wrap:wrap;align-items:baseline;justify-content:center;gap:10px;text-align:center;}
+  .subtitle .sub-he{color:#c2711c;font-weight:800;direction:rtl;font-size:.92em;}
+  .subsec .list.collapsed > a.vid:nth-child(n+3){display:none;}
+  .see-more-wrap{text-align:center;margin-top:16px;}
+  .see-more{display:inline-flex;align-items:center;gap:6px;cursor:pointer;background:#fff;
+    border:1px solid rgba(0,0,0,.08);border-radius:999px;padding:10px 24px;font-family:inherit;
+    font-weight:800;color:#c2711c;font-size:clamp(.9rem,2.6vw,1.05rem);box-shadow:0 4px 12px rgba(0,0,0,.08);
+    transition:background .12s ease;}
+  .see-more:hover{background:#fff6ec;}
+  .vtitle{font-size:clamp(1.05rem,3.4vw,1.4rem);font-weight:800;line-height:1.2;}
+  .vdesc{font-size:clamp(.85rem,2.5vw,1rem);color:#6a6f7d;font-weight:600;line-height:1.3;}
+  footer{max-width:720px;margin:clamp(24px,5vh,44px) auto 8px;text-align:center;}
+  footer a{color:#7a5bff;text-decoration:none;font-weight:700;}
+</style>
+</head>
+<body>
+<a class="home-top" href="/ethan/">🏠 Ethan</a>
+  <header>
+    <h1>Vidéos</h1>
+    <p>Les vidéos autorisées — clique pour ouvrir sur YouTube</p>
+  </header>
+
+  <div class="list">
+
+    <a class="vid" href="https://www.youtube.com/watch?v=DpGVv66ylek" target="_blank" rel="noopener noreferrer">
+      <div class="thumb"><img src="img/video-DpGVv66ylek.jpg" alt="Bisounours">
+        <div class="play"><span>▶</span></div></div>
+      <div class="meta">
+        <span class="tag">Vidéo</span>
+        <div class="vtitle">Bisounours – Arrosage compliqué</div>
+        <div class="vdesc">Épisode complet, dessin animé (en français).</div>
+      </div>
+    </a>
+
+    <a class="vid" href="https://www.youtube.com/watch?v=cKqRqDZ2jQo&list=PLDejx0U9vzPQCFKLMP-h2DUenZkGFbc71" target="_blank" rel="noopener noreferrer">
+      <div class="thumb"><img src="img/video-cKqRqDZ2jQo.jpg" alt="Le Village de Dany">
+        <div class="play"><span>▶</span></div></div>
+      <div class="meta">
+        <span class="tag">Vidéo</span>
+        <div class="vtitle">Le Village de Dany 🐯 – La petite sœur Margaret</div>
+        <div class="vdesc">Meilleurs épisodes pour enfants (en français).</div>
+      </div>
+    </a>
+
+    <a class="vid" href="https://www.youtube.com/watch?v=JEkB2POVthM&list=PLNpKj9isWclM" target="_blank" rel="noopener noreferrer">
+      <div class="thumb"><img src="img/video-JEkB2POVthM.jpg" alt="Le Village de Dany">
+        <div class="play"><span>▶</span></div></div>
+      <div class="meta">
+        <span class="tag">Vidéo</span>
+        <div class="vtitle">Le Village de Dany – Prince Mercredi a un accident</div>
+        <div class="vdesc">Épisode complet, saison 5 (en français).</div>
+      </div>
+    </a>
+
+    <a class="vid" href="https://www.youtube.com/watch?v=SkJIG1X9Fq0&list=PLekzbf8RIvlo" target="_blank" rel="noopener noreferrer">
+      <div class="thumb"><img src="img/video-SkJIG1X9Fq0.jpg" alt="Winnie l'ourson">
+        <div class="play"><span>▶</span></div></div>
+      <div class="meta">
+        <span class="tag">Vidéo</span>
+        <div class="vtitle" dir="auto">אני ופו הדב <span style="font-weight:600;color:#9aa0ac;font-size:.8em">· Winnie l'ourson</span></div>
+        <div class="vdesc">Jeu de danse « stop » (en hébreu).</div>
+      </div>
+    </a>
+
+    <a class="vid" href="https://www.youtube.com/watch?v=v6bWp6ppDnc&list=PLPWc8VdaIIsCccLoTcPkPFcqxBtUUw4j-" target="_blank" rel="noopener noreferrer">
+      <div class="thumb"><img src="img/video-v6bWp6ppDnc.jpg" alt="Rocky">
+        <div class="play"><span>▶</span></div></div>
+      <div class="meta">
+        <span class="tag">Vidéo</span>
+        <div class="vtitle" dir="auto">חצר הגרוטאות של רוקי <span style="font-weight:600;color:#9aa0ac;font-size:.8em">· Rocky</span></div>
+        <div class="vdesc">Nouveaux épisodes (en hébreu).</div>
+      </div>
+    </a>
+
+    <a class="vid" href="https://www.youtube.com/watch?v=FdgiRCN1GlU&list=PLVwL64lSxWWwxYwb9KJCqp9Knh-o70C4V" target="_blank" rel="noopener noreferrer">
+      <div class="thumb"><img src="img/video-FdgiRCN1GlU.jpg" alt="La Maison de Mickey">
+        <div class="play"><span>▶</span></div></div>
+      <div class="meta">
+        <span class="tag">Vidéo</span>
+        <div class="vtitle" dir="auto">מועדון החברים של מיקי מאוס <span style="font-weight:600;color:#9aa0ac;font-size:.8em">· La Maison de Mickey</span></div>
+        <div class="vdesc">Dessin animé (en hébreu).</div>
+      </div>
+    </a>
+
+    <a class="vid" href="https://www.youtube.com/playlist?list=PLoWIhAysYVHhLJ97Lq5rifqprLuEj8yCd" target="_blank" rel="noopener noreferrer">
+      <div class="thumb"><img src="img/playlist-rechovsumsum.jpg" alt="Rechov Sumsum">
+        <div class="play"><span>▶</span></div></div>
+      <div class="meta">
+        <span class="tag playlist">Playlist</span>
+        <div class="vtitle" dir="auto">רְחוֹב סוּמְסוּם <span style="font-weight:600;color:#9aa0ac;font-size:.8em">· Rechov Sumsum</span></div>
+        <div class="vdesc">La « Rue Sésame » israélienne (en hébreu).</div>
+      </div>
+    </a>
+
+    <a class="vid" href="https://www.youtube.com/playlist?list=PLfIZphLtnX6v4isFdICavLR-NMIV1nFfi" target="_blank" rel="noopener noreferrer">
+      <div class="thumb"><img src="img/playlist-tintin.jpg" alt="Les aventures de Tintin">
+        <div class="play"><span>▶</span></div></div>
+      <div class="meta">
+        <span class="tag playlist">Playlist</span>
+        <div class="vtitle">Les aventures de Tintin</div>
+        <div class="vdesc">Dessin animé (playlist, en français).</div>
+      </div>
+    </a>
+
+    <a class="vid" href="https://www.youtube.com/watch?v=gQShzMryW60" target="_blank" rel="noopener noreferrer">
+      <div class="thumb"><img src="img/video-gQShzMryW60.jpg" alt="Questions à Jamy">
+        <div class="play"><span>▶</span></div></div>
+      <div class="meta">
+        <span class="tag">Vidéo</span>
+        <div class="vtitle">Je pose toutes mes questions à Jamy 🤓 – Le plat (Partie 2)</div>
+        <div class="vdesc">Avec Jamy (C'est pas sorcier), en français.</div>
+      </div>
+    </a>
+
+    <a class="vid" href="https://www.youtube.com/watch?v=E2aL4xRzNXI" target="_blank" rel="noopener noreferrer">
+      <div class="thumb"><img src="img/video-E2aL4xRzNXI.jpg" alt="Noam Bettan – Michelle">
+        <div class="play"><span>▶</span></div></div>
+      <div class="meta">
+        <span class="tag">Vidéo</span>
+        <div class="vtitle">Noam Bettan – Michelle (LIVE) 🇮🇱</div>
+        <div class="vdesc">Eurovision 2026 · Grande Finale (Israël).</div>
+      </div>
+    </a>
+
+    <a class="vid" href="https://www.youtube.com/@Cestpassorcierofficiel" target="_blank" rel="noopener noreferrer">
+      <div class="thumb"><img src="img/chaine-cpss.jpg" alt="C'est pas sorcier">
+        <div class="play"><span>▶</span></div></div>
+      <div class="meta">
+        <span class="tag chaine">Chaîne</span>
+        <div class="vtitle">C'est pas sorcier</div>
+        <div class="vdesc">La célèbre émission de science et de découverte.</div>
+      </div>
+    </a>
+
+    <a class="vid" href="https://www.youtube.com/channel/UCQU0xlfONS03g-CsYq3JwLA" target="_blank" rel="noopener noreferrer">
+      <div class="thumb"><img src="img/chaine-mani.jpg" alt="Mani Mamtera">
+        <div class="play"><span>▶</span></div></div>
+      <div class="meta">
+        <span class="tag chaine">Chaîne</span>
+        <div class="vtitle" dir="auto">מני ממטרה <span style="font-weight:600;color:#9aa0ac;font-size:.8em">· Mani Mamtera</span></div>
+        <div class="vdesc">Émission jeunesse israélienne (en hébreu).</div>
+      </div>
+    </a>
+
+    <a class="vid" href="https://www.youtube.com/watch?v=-D7IGLzS8LI" target="_blank" rel="noopener noreferrer">
+      <div class="thumb"><img src="img/video-mishnayot.jpg" alt="Michnayot chantées">
+        <div class="play"><span>▶</span></div></div>
+      <div class="meta">
+        <span class="tag">Vidéo</span>
+        <div class="vtitle" dir="auto">שרים משניות – מחרוזת מסכת אבות, פרק א׳</div>
+        <div class="vdesc" dir="auto">משנת חיים לילדים · Michnayot chantées (en hébreu).</div>
+      </div>
+    </a>
+
+    <a class="vid" href="https://www.youtube.com/@NumberblocksFran%C3%A7ais" target="_blank" rel="noopener noreferrer">
+      <div class="thumb"><img src="img/chaine-numberblocks.jpg" alt="Numberblocks Français">
+        <div class="play"><span>▶</span></div></div>
+      <div class="meta">
+        <span class="tag chaine">Chaîne</span>
+        <div class="vtitle">Numberblocks Français</div>
+        <div class="vdesc">Apprendre les nombres en s'amusant (en français).</div>
+      </div>
+    </a>
+
+    <a class="vid" href="https://www.youtube.com/@SnizelTV" target="_blank" rel="noopener noreferrer">
+      <div class="thumb"><img src="img/chaine-snizel.jpg" alt="Snizel">
+        <div class="play"><span>▶</span></div></div>
+      <div class="meta">
+        <span class="tag chaine">Chaîne</span>
+        <div class="vtitle">Snizel</div>
+        <div class="vdesc">Chaîne de divertissement israélienne (en hébreu).</div>
+      </div>
+    </a>
+
+    <a class="vid" href="https://www.youtube.com/watch?v=iexZXR6h9_k" target="_blank" rel="noopener noreferrer">
+      <div class="thumb"><img src="img/video-iexZXR6h9_k.jpg" alt="Numberblocks en hébreu">
+        <div class="play"><span>▶</span></div></div>
+      <div class="meta">
+        <span class="tag">Vidéo</span>
+        <div class="vtitle" dir="auto">נאמברבלוקס <span style="font-weight:600;color:#9aa0ac;font-size:.8em">· Numberblocks</span></div>
+        <div class="vdesc">Apprendre les nombres, en hébreu.</div>
+      </div>
+    </a>
+
+    <a class="vid" href="https://www.youtube.com/playlist?list=PLG8lFNEP4-083yh3UvjRvLpIkP3tprrzU" target="_blank" rel="noopener noreferrer">
+      <div class="thumb"><img src="img/playlist-mickey.jpg" alt="La Maison de Mickey">
+        <div class="play"><span>▶</span></div></div>
+      <div class="meta">
+        <span class="tag playlist">Playlist</span>
+        <div class="vtitle">La Maison de Mickey</div>
+        <div class="vdesc">Dessin animé (playlist, en français).</div>
+      </div>
+    </a>
+
+    <a class="vid" href="https://www.youtube.com/watch?v=IIuq0tYAvzo&list=PLIfEw7GtDnKWMXQj5TQblyuWTxpCMg29g" target="_blank" rel="noopener noreferrer">
+      <div class="thumb"><img src="img/video-IIuq0tYAvzo.jpg" alt="Il était une fois… la Vie">
+        <div class="play"><span>▶</span></div></div>
+      <div class="meta">
+        <span class="tag">Vidéo</span>
+        <div class="vtitle">Il était une fois… la Vie 🌱 – La naissance 👶</div>
+        <div class="vdesc">Dessin animé éducatif (en français).</div>
+      </div>
+    </a>
+
+    <a class="vid" href="https://www.youtube.com/watch?v=sr4HMp8atcY&list=PLIfEw7GtDnKXkKBFJTjpgtQVIWyKrRhjs" target="_blank" rel="noopener noreferrer">
+      <div class="thumb"><img src="img/video-sr4HMp8atcY.jpg" alt="Il était une fois… l'Homme">
+        <div class="play"><span>▶</span></div></div>
+      <div class="meta">
+        <span class="tag">Vidéo</span>
+        <div class="vtitle">Il était une fois… l'Homme 🧝‍♂️🧝‍♀️ – L'homme de Neandertal 🦖</div>
+        <div class="vdesc">Dessin animé éducatif (en français).</div>
+      </div>
+    </a>
+
+    <a class="vid" href="https://www.youtube.com/watch?v=h8ojSsEfDpY&list=PLIfEw7GtDnKU7_FKW0HxGlJP_dLqsRfph" target="_blank" rel="noopener noreferrer">
+      <div class="thumb"><img src="img/video-h8ojSsEfDpY.jpg" alt="Il était une fois… les Découvreurs">
+        <div class="play"><span>▶</span></div></div>
+      <div class="meta">
+        <span class="tag">Vidéo</span>
+        <div class="vtitle">Il était une fois… les Découvreurs 🔬 – Les premiers scientifiques</div>
+        <div class="vdesc">Compilation d'épisodes (en français).</div>
+      </div>
+    </a>
+
+    <a class="vid" href="https://www.youtube.com/playlist?list=PLIfEw7GtDnKUpRGmahfdp9Bt54qmUictd" target="_blank" rel="noopener noreferrer">
+      <div class="thumb"><img src="img/playlist-espace.jpg" alt="Il était une fois… l'Espace">
+        <div class="play"><span>▶</span></div></div>
+      <div class="meta">
+        <span class="tag playlist">Playlist</span>
+        <div class="vtitle">Il était une fois… l'Espace 🚀</div>
+        <div class="vdesc">Playlist officielle (en français).</div>
+      </div>
+    </a>
+
+    <a class="vid" href="https://www.youtube.com/playlist?list=PLfcYs4SRZfuJV4qyuJbT_T62JACyoQvFS" target="_blank" rel="noopener noreferrer">
+      <div class="thumb"><img src="img/playlist-superwings.jpg" alt="Super Wings">
+        <div class="play"><span>▶</span></div></div>
+      <div class="meta">
+        <span class="tag playlist">Playlist</span>
+        <div class="vtitle" dir="auto">מטוסי על ✈ <span style="font-weight:600;color:#9aa0ac;font-size:.8em">· Super Wings</span></div>
+        <div class="vdesc" dir="auto">פרקים מלאים · ערוץ הופ! (en hébreu).</div>
+      </div>
+    </a>
+
+  </div>
+
+  <section class="subsec">
+    <h2 class="subtitle">Recettes à voir avec Mamie <span class="sub-he" dir="rtl">מַתְכּוֹנִים לִצְפִיָּה עִם סָבְתָא</span></h2>
+    <div class="list collapsed" id="recipes">
+
+      <a class="vid" href="https://www.youtube.com/watch?v=P0lyEdu18Ac" target="_blank" rel="noopener noreferrer">
+        <div class="thumb"><img src="img/video-P0lyEdu18Ac.jpg" alt="Pâtes à la bolognaise">
+          <div class="play"><span>▶</span></div></div>
+        <div class="meta"><span class="tag recette">Recette</span>
+          <div class="vtitle">🍝 Les Pâtes à la bolognaise</div>
+          <div class="vdesc">Recette pas à pas (en français).</div></div>
+      </a>
+
+      <a class="vid" href="https://www.youtube.com/watch?v=bhUdLsmEP4s" target="_blank" rel="noopener noreferrer">
+        <div class="thumb"><img src="img/video-bhUdLsmEP4s.jpg" alt="Fish and Chips">
+          <div class="play"><span>▶</span></div></div>
+        <div class="meta"><span class="tag recette">Recette</span>
+          <div class="vtitle">💂 Les Fish and Chips</div>
+          <div class="vdesc">Recette pas à pas (en français).</div></div>
+      </a>
+
+      <a class="vid" href="https://www.youtube.com/watch?v=NQPcSXTUTH8" target="_blank" rel="noopener noreferrer">
+        <div class="thumb"><img src="img/video-NQPcSXTUTH8.jpg" alt="Truffes au chocolat">
+          <div class="play"><span>▶</span></div></div>
+        <div class="meta"><span class="tag recette">Recette</span>
+          <div class="vtitle">🍫 Les truffes au chocolat</div>
+          <div class="vdesc">Recette pas à pas (en français).</div></div>
+      </a>
+
+      <a class="vid" href="https://www.youtube.com/watch?v=pK7kebZNHRc" target="_blank" rel="noopener noreferrer">
+        <div class="thumb"><img src="img/video-pK7kebZNHRc.jpg" alt="Crème caramel">
+          <div class="play"><span>▶</span></div></div>
+        <div class="meta"><span class="tag recette">Recette</span>
+          <div class="vtitle">🍮 La crème caramel</div>
+          <div class="vdesc">Recette pas à pas (en français).</div></div>
+      </a>
+
+      <a class="vid" href="https://www.youtube.com/watch?v=wOHr6og-C6g" target="_blank" rel="noopener noreferrer">
+        <div class="thumb"><img src="img/video-wOHr6og-C6g.jpg" alt="Soufflé au fromage">
+          <div class="play"><span>▶</span></div></div>
+        <div class="meta"><span class="tag recette">Recette</span>
+          <div class="vtitle">🧀 Le soufflé au fromage</div>
+          <div class="vdesc">Recette pas à pas (en français).</div></div>
+      </a>
+
+      <a class="vid" href="https://www.youtube.com/watch?v=Hs0eC7XVdCM" target="_blank" rel="noopener noreferrer">
+        <div class="thumb"><img src="img/video-Hs0eC7XVdCM.jpg" alt="Bûche de Noël">
+          <div class="play"><span>▶</span></div></div>
+        <div class="meta"><span class="tag recette">Recette</span>
+          <div class="vtitle">🎅 La bûche de Noël, pas à pas</div>
+          <div class="vdesc">Recette pas à pas (en français).</div></div>
+      </a>
+
+      <a class="vid" href="https://www.youtube.com/watch?v=N7kY8vuCbVI" target="_blank" rel="noopener noreferrer">
+        <div class="thumb"><img src="img/video-N7kY8vuCbVI.jpg" alt="Tarte au citron">
+          <div class="play"><span>▶</span></div></div>
+        <div class="meta"><span class="tag recette">Recette</span>
+          <div class="vtitle">🍋 Ma Tarte citron, douce et acidulée</div>
+          <div class="vdesc">Recette pas à pas (en français).</div></div>
+      </a>
+
+      <a class="vid" href="https://www.youtube.com/watch?v=U0tC0-WiRpc" target="_blank" rel="noopener noreferrer">
+        <div class="thumb"><img src="img/video-U0tC0-WiRpc.jpg" alt="Pavlova">
+          <div class="play"><span>▶</span></div></div>
+        <div class="meta"><span class="tag recette">Recette</span>
+          <div class="vtitle">🍓 Ma pavlova</div>
+          <div class="vdesc">Recette pas à pas (en français).</div></div>
+      </a>
+
+      <a class="vid" href="https://www.youtube.com/watch?v=4Pl38UigxK8" target="_blank" rel="noopener noreferrer">
+        <div class="thumb"><img src="img/video-4Pl38UigxK8.jpg" alt="Gougères">
+          <div class="play"><span>▶</span></div></div>
+        <div class="meta"><span class="tag recette">Recette</span>
+          <div class="vtitle">🧀 Mes Gougères</div>
+          <div class="vdesc">Recette pas à pas (en français).</div></div>
+      </a>
+
+      <a class="vid" href="https://www.youtube.com/watch?v=TH7ouuJYohk" target="_blank" rel="noopener noreferrer">
+        <div class="thumb"><img src="img/video-TH7ouuJYohk.jpg" alt="Frites">
+          <div class="play"><span>▶</span></div></div>
+        <div class="meta"><span class="tag recette">Recette</span>
+          <div class="vtitle">🇧🇪 Mes Frites</div>
+          <div class="vdesc">Recette pas à pas (en français).</div></div>
+      </a>
+
+      <a class="vid" href="https://www.youtube.com/watch?v=WMrgYRf2nhk" target="_blank" rel="noopener noreferrer">
+        <div class="thumb"><img src="img/video-WMrgYRf2nhk.jpg" alt="Une journée au Quatrième Mur">
+          <div class="play"><span>▶</span></div></div>
+        <div class="meta"><span class="tag recette">Recette</span>
+          <div class="vtitle">Brasserie le Quatrième Mur – Une journée au Quatrième Mur</div>
+          <div class="vdesc">Une journée en cuisine (en français).</div></div>
+      </a>
+
+    </div>
+    <div class="see-more-wrap"><button type="button" id="see-more" class="see-more"></button></div>
+  </section>
+
+  <footer><a href="/ethan/">← Retour</a></footer>
+
+<script>
+(function(){
+  var list=document.getElementById('recipes');
+  var btn=document.getElementById('see-more');
+  if(!list||!btn) return;
+  var hidden=Math.max(0, list.querySelectorAll('a.vid').length - 2);
+  if(hidden===0){ btn.parentNode.style.display='none'; return; }
+  function label(){ btn.textContent = list.classList.contains('collapsed') ? ('Voir plus (' + hidden + ') ▾') : 'Voir moins ▴'; }
+  label();
+  btn.addEventListener('click', function(){ list.classList.toggle('collapsed'); label(); });
+})();
+</script>
+</body>
+</html>

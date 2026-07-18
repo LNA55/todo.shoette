@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Lettres — Ethan</title>
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;}
+  body{font-family:"Varela Round",ui-rounded,"SF Pro Rounded",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    color:#20222b;background:linear-gradient(160deg,#fff7ec 0%,#eef4ff 55%,#eafff1 100%);
+    min-height:100vh;padding:clamp(18px,5vw,44px);}
+  .home-top{position:fixed;top:14px;left:16px;z-index:50;color:#5b4bd6;text-decoration:none;font-weight:700;
+    background:rgba(255,255,255,.9);padding:7px 14px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.14);}
+  header{max-width:720px;margin:0 auto clamp(22px,4vh,36px);text-align:center;}
+  header h1{font-size:clamp(2rem,7vw,3.2rem);font-weight:800;margin:.1em 0;
+    background:linear-gradient(90deg,#ff8a3a,#ff5d8f,#4fd1ff);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  header .heb{font-size:clamp(1.1rem,3.4vw,1.6rem);font-weight:700;color:#6b4bd6;direction:rtl;}
+  .cards{max-width:720px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,4vw,28px);}
+  @media(max-width:520px){.cards{grid-template-columns:1fr;}}
+  .card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+    text-decoration:none;color:#20222b;background:#fff;border-radius:28px;padding:clamp(24px,6vw,40px);
+    box-shadow:0 12px 30px rgba(30,30,60,.12),0 0 0 1px rgba(0,0,0,.03);
+    transition:transform .14s ease,box-shadow .14s ease;}
+  .card:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 18px 40px rgba(30,30,60,.18);}
+  .card .emoji{font-size:clamp(3rem,12vw,5rem);line-height:1;}
+  .card .lbl{font-size:clamp(1.2rem,4vw,1.7rem);font-weight:800;text-align:center;}
+  .card .heb{font-size:clamp(1rem,3vw,1.35rem);font-weight:700;color:#6b4bd6;direction:rtl;}
+  footer{max-width:720px;margin:clamp(26px,5vh,44px) auto 8px;text-align:center;}
+  footer a{color:#7a5bff;text-decoration:none;font-weight:700;}
+
+  /* Texte à recopier — cursive scolaire limitée aux minuscules :
+     les majuscules retombent sur la police classique (capitale bâton + minuscules liées). */
+  @font-face{font-family:'CursiveMin';src:url('assets/fonts/cursive.ttf') format('truetype');
+    unicode-range:U+0061-007A,U+00E0-00F6,U+00F8-00FF,U+0153;font-display:swap;}
+  .copy{max-width:720px;margin:clamp(24px,5vh,40px) auto 0;}
+  .copy p{margin:0 0 clamp(18px,4vw,30px);}
+  .txt-fr{font-family:'CursiveMin',"Varela Round",ui-rounded,"SF Pro Rounded",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    font-size:clamp(1.35rem,4.6vw,1.9rem);line-height:2.1;font-weight:400;color:#20222b;}
+  .txt-he{direction:rtl;font-size:clamp(1.35rem,4.6vw,1.9rem);line-height:2;font-weight:600;color:#20222b;}
+  .txt-ph{font-size:clamp(1.05rem,3.4vw,1.4rem);line-height:1.8;font-weight:500;color:#a8abb8;}
+</style>
+</head>
+<body>
+<a class="home-top" href="/ethan/">🏠 Ethan</a>
+  <header>
+    <h1>Lettres</h1>
+    <div class="heb" dir="rtl">אוֹתִיּוֹת</div>
+  </header>
+  <div class="cards">
+    <a class="card" href="/ethan/lettres/francais">
+      <div class="emoji">🔤</div>
+      <div class="lbl">Lettres en français</div>
+      <div class="heb" dir="rtl">אוֹתִיּוֹת בְּצָרְפָתִית</div>
+    </a>
+    <a class="card" href="/ethan/lettres/hebreu">
+      <div class="emoji" dir="rtl" style="font-weight:800;color:#20222b;letter-spacing:.06em;">א ב ג</div>
+      <div class="lbl">Lettres en hébreu</div>
+      <div class="heb" dir="rtl">אוֹתִיּוֹת בְּעִבְרִית</div>
+    </a>
+  </div>
+  <section class="copy">
+    <p class="txt-fr">Coucou Ethan&nbsp;! Ceci est un texte à recopier. Tu me manques mon amour. Quand tu verras un nouveau texte, recopie-le.</p>
+    <p class="txt-he" dir="rtl" lang="he">הַיי אֵיתָן! זֶהוּ טֶקְסְט לְהַעְתָּקָה. אֲנִי מִתְגַּעְגַּעַת אֵלֶיךָ, אֲהוּבִי. כְּשֶׁתִּרְאֶה טֶקְסְט חָדָשׁ, תַּעְתִּיק אוֹתוֹ.</p>
+    <p class="txt-ph">Haï Eitan&nbsp;! Zéhou tékst léhaataka. Ani mitgaagaat élékha, ahouvi. Kchétiré tékst 'hadach, taatik oto.</p>
+  </section>
+  <footer><a href="/ethan/">← Retour</a></footer>
+</body>
+</html>

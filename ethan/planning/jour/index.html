@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Ma journée — Ethan</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;}
+  body{font-family:"Varela Round",ui-rounded,"SF Pro Rounded",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    color:#20222b;background:linear-gradient(160deg,#fef6ff 0%,#eef4ff 55%,#eafff3 100%);
+    min-height:100vh;padding:clamp(18px,5vw,44px);}
+  header{max-width:640px;margin:0 auto clamp(20px,4vh,34px);text-align:center;}
+  header .dow{font-size:clamp(1rem,3.4vw,1.3rem);font-weight:700;color:#a2a7b3;text-transform:capitalize;}
+  header h1{font-size:clamp(2rem,8vw,3.4rem);font-weight:800;margin:.05em 0;text-transform:capitalize;
+    background:linear-gradient(90deg,#ff5d8f,#ffb03a,#4fd1ff);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .list{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(12px,2.4vh,18px);}
+  .todo{display:flex;align-items:center;gap:16px;background:#fff;border-radius:20px;cursor:pointer;
+    padding:clamp(16px,4vw,24px);box-shadow:0 8px 22px rgba(30,30,60,.10),0 0 0 1px rgba(0,0,0,.03);
+    transition:transform .12s ease;user-select:none;}
+  .todo:active{transform:scale(.99);}
+  .box{flex:none;width:clamp(38px,9vw,52px);height:clamp(38px,9vw,52px);border-radius:14px;
+    border:3px solid #cfd4e0;display:flex;align-items:center;justify-content:center;
+    font-size:clamp(1.4rem,5vw,2rem);color:#fff;background:#fff;transition:all .15s ease;}
+  .todo.done .box{background:linear-gradient(135deg,#4fd18a,#2fb36a);border-color:#2fb36a;}
+  .todo .box .tick{opacity:0;transform:scale(.5);transition:all .15s ease;}
+  .todo.done .box .tick{opacity:1;transform:scale(1);}
+  .label{font-size:clamp(1.15rem,4.2vw,1.6rem);font-weight:700;line-height:1.25;}
+  .todo.done .label{color:#9aa0ac;text-decoration:line-through;}
+  footer{max-width:640px;margin:clamp(26px,5vh,44px) auto 8px;text-align:center;}
+  footer a{color:#7a5bff;text-decoration:none;font-weight:700;}
+  .err{max-width:640px;margin:40px auto;text-align:center;color:#8a8f9c;font-weight:600;}
+</style>
+</head>
+<body>
+  <header>
+    <div class="dow" id="dow"></div>
+    <h1 id="date">Ma journée</h1>
+  </header>
+  <div class="list" id="list"></div>
+  <div class="err" id="err" style="display:none">Aucun jour choisi. <a href="/ethan/planning/">← Voir le planning</a></div>
+  <div id="msg" class="err" style="display:none"></div>
+  <footer><a href="/ethan/planning/">← Le planning</a></footer>
+
+<script>
+  function esc(s){return String(s).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
+  var msg=document.getElementById('msg');
+  function note(t){ msg.textContent=t; msg.style.display=t?'block':'none'; }
+
+  var d=new URLSearchParams(location.search).get('d')||'';
+  var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(d);
+
+  if(!m){ document.getElementById('err').style.display='block'; }
+  else{
+    var dt=new Date(+m[1], +m[2]-1, +m[3]);
+    var parts=dt.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).split(' ');
+    document.getElementById('dow').textContent=parts[0];
+    document.getElementById('date').textContent=parts.slice(1).join(' ');
+
+    var list=document.getElementById('list');
+
+    function makeRow(item){
+      var row=document.createElement('div');
+      row.className='todo'+(item.done?' done':'');
+      row.innerHTML='<div class="box"><span class="tick">✓</span></div><div class="label">'+esc(item.title)+'</div>';
+      row.addEventListener('click',function(){
+        var want=!row.classList.contains('done');
+        row.classList.toggle('done',want);          // optimiste
+        note('');
+        fetch('../api.php?action=toggle',{method:'POST',headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({d:d,item:item.id,done:want})})
+          .then(function(r){return r.json();})
+          .then(function(j){ if(!j||j.error){ throw new Error(); } })
+          .catch(function(){ row.classList.toggle('done',!want); note('Enregistrement impossible. Réessaie.'); });
+      });
+      list.appendChild(row);
+    }
+
+    fetch('../api.php?action=day&d='+encodeURIComponent(d))
+      .then(function(r){return r.json();})
+      .then(function(j){
+        if(!j||j.error){ throw new Error(); }
+        (j.items||[]).forEach(makeRow);
+        if(!j.items||!j.items.length){ note('Aucune tâche pour l\'instant.'); }
+      })
+      .catch(function(){ note('Chargement impossible. Vérifie la connexion.'); });
+  }
+</script>
+</body>
+</html>

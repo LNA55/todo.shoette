@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Le dico Pokémon d'Ethan</title>
+<style>
+  *{box-sizing:border-box;}
+  :root{
+    --plante:#3CB043; --vol:#5FA8E0; --feu:#F0642E; --eau:#2A6FDB; --insecte:#93A824;
+    --tenebres:#524d5e; --poison:#8A3FA0; --dragon:#4E5AC7; --spectre:#6C5A9E; --normal:#A8A18C;
+    --electrik:#C79400; --fee:#D95F92; --roche:#9C8235; --sol:#B08636;
+  }
+  html,body{margin:0;}
+  body{
+    font-family:"Varela Round",ui-rounded,"SF Pro Rounded",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    color:#20222b;line-height:1.5;
+    background:linear-gradient(160deg,#fef6ff 0%,#eef4ff 55%,#eafff3 100%);
+    padding:clamp(16px,4vw,40px);
+  }
+  header.top{max-width:900px;margin:0 auto clamp(20px,4vh,40px);text-align:center;}
+  .pokeball{width:56px;height:56px;border-radius:50%;margin:0 auto 10px;
+    background:linear-gradient(#ff3b3b 0 50%,#fff 50% 100%);border:4px solid #222;position:relative;overflow:hidden;}
+  .pokeball::before{content:"";position:absolute;top:calc(50% - 3px);left:0;width:100%;height:6px;background:#222;}
+  .pokeball::after{content:"";position:absolute;top:50%;left:50%;width:32%;height:32%;transform:translate(-50%,-50%);
+    border-radius:50%;background:#fff;border:4px solid #222;}
+  header.top h1{margin:.1em 0;font-size:clamp(1.8rem,6vw,3rem);font-weight:800;
+    background:linear-gradient(90deg,#ff5d8f,#ffb03a,#4fd1ff);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  header.top .sub{color:#6a6f7d;font-size:clamp(1rem,3vw,1.25rem);font-weight:600;}
+  header.top .intro{max-width:660px;margin:14px auto 0;color:#4a4f5c;font-size:clamp(.95rem,2.6vw,1.1rem);}
+
+  .region{max-width:900px;margin:0 auto clamp(30px,6vh,54px);}
+  .region-title{display:flex;align-items:center;gap:12px;justify-content:center;
+    font-size:clamp(1.4rem,5vw,2.3rem);font-weight:800;color:#2b2f3a;margin:0 0 clamp(16px,3vh,26px);
+    text-align:center;}
+  .region-title .mini-ball{width:clamp(24px,5vw,34px);height:clamp(24px,5vw,34px);border-radius:50%;flex:none;
+    background:linear-gradient(#ff3b3b 0 50%,#fff 50% 100%);border:3px solid #222;position:relative;overflow:hidden;}
+  .region-title .mini-ball::before{content:"";position:absolute;top:calc(50% - 2px);left:0;width:100%;height:4px;background:#222;}
+
+  .grid{display:flex;flex-direction:column;gap:clamp(18px,3vh,28px);}
+
+  article.mon{background:#fff;border-radius:24px;overflow:hidden;
+    box-shadow:0 10px 30px rgba(30,30,60,.10),0 0 0 1px rgba(0,0,0,.03);}
+  .mon-head{display:flex;align-items:center;gap:16px;padding:clamp(14px,3vw,22px);color:#fff;}
+  .mon-imgwrap{flex:none;width:clamp(92px,23vw,136px);height:clamp(92px,23vw,136px);border-radius:50%;
+    background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 16px rgba(0,0,0,.22),inset 0 0 0 3px rgba(255,255,255,.6);}
+  .mon-img{width:86%;height:86%;object-fit:contain;filter:drop-shadow(0 2px 3px rgba(0,0,0,.2));}
+  .mon-title{flex:1;min-width:0;}
+  .mon-title h3{margin:0;font-size:clamp(1.4rem,5vw,2.1rem);font-weight:800;letter-spacing:.01em;}
+  .badges{margin-top:6px;display:flex;flex-wrap:wrap;gap:6px;}
+  .badge{background:rgba(255,255,255,.28);border:1.5px solid rgba(255,255,255,.6);
+    padding:2px 12px;border-radius:999px;font-size:clamp(.8rem,2.4vw,1rem);font-weight:700;}
+  .mon-body{padding:clamp(14px,3vw,22px);}
+  .mon-body p{margin:0 0 .7em;}
+  .idcard{color:#555b68;font-weight:600;font-size:clamp(.92rem,2.5vw,1.05rem);}
+  .desc{font-size:clamp(1rem,2.8vw,1.18rem);color:#20222b;}
+  .evo{margin-top:.4em;font-weight:700;color:#3a4050;font-size:clamp(.92rem,2.6vw,1.08rem);}
+  .evo .arrow{color:#c07a2a;padding:0 4px;}
+  .evo .now{background:#fff2cc;border-radius:8px;padding:1px 8px;}
+
+  footer.foot{max-width:900px;margin:clamp(24px,5vh,44px) auto 8px;text-align:center;color:#8a8f9c;font-size:.9rem;}
+  a.back{color:#7a5bff;text-decoration:none;font-weight:700;}
+</style>
+</head>
+<body>
+<a href="/ethan/" style="position:fixed;top:14px;left:16px;z-index:50;color:#5b4bd6;text-decoration:none;font-weight:700;background:rgba(255,255,255,.9);padding:7px 14px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.14);font-family:'Varela Round',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;">🏠 Ethan</a>
+
+<header class="top">
+  <div class="pokeball" aria-hidden="true"></div>
+  <h1>Le dico Pokémon d'Ethan</h1>
+  <div class="sub">Mon Pokédex illustré</div>
+  <p class="intro">Voici des Pokémon de quatre régions : Alola, Johto, Hoenn et Paldea. Pour chacun, tu découvres son nom,
+  son type, sa taille, son poids, ce qu'il aime faire, et ses évolutions.</p>
+</header>
+
+<main>
+
+<!-- ===================== ALOLA ===================== -->
+<section class="region">
+  <h2 class="region-title"><span class="mini-ball" aria-hidden="true"></span>Les Pokémon d'Alola</h2>
+  <div class="grid">
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--plante)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/brindibou.png" alt="Brindibou" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Brindibou</h3><div class="badges"><span class="badge">Plante</span><span class="badge">Vol</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Plumefeuille. Il mesure 0,3 mètre et pèse 1,5 kilo.</p>
+        <p class="desc">Il attaque en tirant des plumes acérées. La force de ses coups de patte est également redoutable.</p>
+        <p class="evo"><span class="now">Brindibou</span><span class="arrow">➜</span>Efflèche<span class="arrow">➜</span>Archéduc</p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--feu)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/flamiaou.png" alt="Flamiaou" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Flamiaou</h3><div class="badges"><span class="badge">Feu</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Chat Feu. Il mesure 0,4 mètre et pèse 4,3 kilos.</p>
+        <p class="desc">Laissez ce Pokémon respirer, ou il se renfermera sur lui-même. Même s'il devient affectueux, allez-y doucement avec les caresses.</p>
+        <p class="evo"><span class="now">Flamiaou</span><span class="arrow">➜</span>Matoufeu<span class="arrow">➜</span>Félinferno</p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--eau)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/otaquin.png" alt="Otaquin" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Otaquin</h3><div class="badges"><span class="badge">Eau</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Otarie. Il mesure 0,4 mètre et pèse 7,5 kilos.</p>
+        <p class="desc">À force de s'entraîner quotidiennement, les ballons qu'il gonfle avec son nez grossissent de jour en jour.</p>
+        <p class="evo"><span class="now">Otaquin</span><span class="arrow">➜</span>Otarlette<span class="arrow">➜</span>Oratoria</p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--tenebres)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/miaouss-alola.png" alt="Miaouss d'Alola" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Miaouss d'Alola</h3><div class="badges"><span class="badge">Ténèbres</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est un Pokémon de type Ténèbres. Il mesure 0,4 mètre et pèse 4,2 kilos.</p>
+        <p class="desc">Par le passé, il menait une vie de luxe auprès de la famille royale d'Alola, et il en a gardé des goûts alimentaires très sélectifs.</p>
+        <p class="evo"><span class="now">Miaouss d'Alola</span><span class="arrow">➜</span>Persian d'Alola</p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--poison)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/tadmorv-alola.png" alt="Tadmorv d'Alola" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Tadmorv d'Alola</h3><div class="badges"><span class="badge">Poison</span><span class="badge">Ténèbres</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Dégueu. Il mesure 0,7 mètre et pèse 42 kilos.</p>
+        <p class="desc">Il aime passionnément les ordures. Il les digère à toute vitesse pour créer d'étincelants cristaux de matière toxique.</p>
+        <p class="evo"><span class="now">Tadmorv d'Alola</span><span class="arrow">➜</span>Grotadmorv d'Alola</p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--dragon)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/noadkoko-alola.png" alt="Noadkoko d'Alola" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Noadkoko d'Alola</h3><div class="badges"><span class="badge">Plante</span><span class="badge">Dragon</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Fruitpalme. Il mesure 10,9 mètres et pèse 415,6 kilos.</p>
+        <p class="desc">L'exposition aux rayons éblouissants du soleil a révélé sa véritable apparence et son potentiel réel.</p>
+        <p class="evo">Noeunoeuf<span class="arrow">➜</span><span class="now">Noadkoko d'Alola</span></p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--spectre)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/ossatueur-alola.png" alt="Ossatueur d'Alola" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Ossatueur d'Alola</h3><div class="badges"><span class="badge">Feu</span><span class="badge">Spectre</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Gard'Os. Il mesure 1 mètre et pèse 34 kilos.</p>
+        <p class="desc">Le soir venu, il enflamme son os, puis se met à danser jusqu'au petit matin, à la mémoire de ses compagnons disparus.</p>
+        <p class="evo">Osselait<span class="arrow">➜</span><span class="now">Ossatueur d'Alola</span></p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--normal)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/bazoucan.png" alt="Bazoucan" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Bazoucan</h3><div class="badges"><span class="badge">Vol</span><span class="badge">Normal</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Canon. Il mesure 1,1 mètre et pèse 26 kilos.</p>
+        <p class="desc">Ils communiquent entre eux en se frappant mutuellement sur le bec. La force et la cadence des coups en disent long sur leur état d'esprit.</p>
+        <p class="evo">Picassaut<span class="arrow">➜</span>Piclairon<span class="arrow">➜</span><span class="now">Bazoucan</span></p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ===================== JOHTO ===================== -->
+<section class="region">
+  <h2 class="region-title"><span class="mini-ball" aria-hidden="true"></span>Les Pokémon de Johto</h2>
+  <div class="grid">
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--insecte)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/coxyclaque.png" alt="Coxyclaque" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Coxyclaque</h3><div class="badges"><span class="badge">Insecte</span><span class="badge">Vol</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon 5 Étoiles. Il mesure 1,4 mètre et pèse 35,6 kilos.</p>
+        <p class="desc">Le motif qui orne son dos aurait un lien avec les étoiles, mais nul ne sait encore en quoi consiste ce lien.</p>
+        <p class="evo">Coxy<span class="arrow">➜</span><span class="now">Coxyclaque</span></p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--plante)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/germignon.png" alt="Germignon" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Germignon</h3><div class="badges"><span class="badge">Plante</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Feuille. Il mesure 0,9 mètre et pèse 6,4 kilos.</p>
+        <p class="desc">Lorsqu'il se bat, Germignon secoue sa feuille pour tenir son ennemi à distance. Un doux parfum s'en dégage également, apaisant les Pokémon qui se battent et créant une atmosphère agréable et amicale.</p>
+        <p class="evo"><span class="now">Germignon</span><span class="arrow">➜</span>Macronium<span class="arrow">➜</span>Méganium</p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--feu)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/hericendre.png" alt="Héricendre" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Héricendre</h3><div class="badges"><span class="badge">Feu</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Souris Feu. Il mesure 0,5 mètre et pèse 7,9 kilos.</p>
+        <p class="desc">Héricendre se protège en faisant jaillir des flammes de son dos. Ces flammes peuvent être violentes s'il est en colère. Cependant, s'il est fatigué, seules quelques flammèches vacillent laborieusement.</p>
+        <p class="evo"><span class="now">Héricendre</span><span class="arrow">➜</span>Feurisson<span class="arrow">➜</span>Typhlosion</p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--eau)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/hyporoi.png" alt="Hyporoi" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Hyporoi</h3><div class="badges"><span class="badge">Eau</span><span class="badge">Dragon</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Dragon. Il mesure 1,8 mètre et pèse 152 kilos.</p>
+        <p class="desc">Il apparaît à la surface de l'océan lorsqu'une tempête arrive. Dès qu'il croise un Dracolosse, un combat féroce s'ensuit.</p>
+        <p class="evo">Hypotrempe<span class="arrow">➜</span>Hypocéan<span class="arrow">➜</span><span class="now">Hyporoi</span></p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--plante)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/joliflor.png" alt="Joliflor" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Joliflor</h3><div class="badges"><span class="badge">Plante</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Fleur. Il mesure 0,4 mètre et pèse 5,8 kilos.</p>
+        <p class="desc">Ce Pokémon vit en nombre dans les tropiques. Quand il danse, ses pétales frottent les uns contre les autres et émettent un son mélodieux.</p>
+        <p class="evo">Mystherbe<span class="arrow">➜</span>Ortide<span class="arrow">➜</span><span class="now">Joliflor</span></p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--eau)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/kaiminus.png" alt="Kaiminus" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Kaiminus</h3><div class="badges"><span class="badge">Eau</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Mâchoire. Il mesure 0,6 mètre et pèse 9,5 kilos.</p>
+        <p class="desc">Malgré son tout petit corps, la mâchoire de Kaiminus est très puissante. Parfois, ce Pokémon mordille les gens pour jouer, sans se rendre compte que sa morsure peut gravement blesser quelqu'un.</p>
+        <p class="evo"><span class="now">Kaiminus</span><span class="arrow">➜</span>Crocodil<span class="arrow">➜</span>Aligatueur</p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--feu)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/malosse.png" alt="Malosse" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Malosse</h3><div class="badges"><span class="badge">Feu</span><span class="badge">Ténèbres</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Sombre. Il mesure 0,6 mètre et pèse 10,8 kilos.</p>
+        <p class="desc">Ce Pokémon est rusé. Il chasse en meute en communiquant avec les siens grâce à une variété de cris.</p>
+        <p class="evo"><span class="now">Malosse</span><span class="arrow">➜</span>Démolosse</p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--normal)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/ursaring.png" alt="Ursaring" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Ursaring</h3><div class="badges"><span class="badge">Normal</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Hibernant. Il mesure 1,8 mètre et pèse 125,8 kilos.</p>
+        <p class="desc">Son visage austère s'illumine de joie lorsqu'il savoure du miel, un aliment qu'il adore.</p>
+        <p class="evo">Teddiursa<span class="arrow">➜</span><span class="now">Ursaring</span></p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ===================== HOENN ===================== -->
+<section class="region">
+  <h2 class="region-title"><span class="mini-ball" aria-hidden="true"></span>Les Pokémon de Hoenn</h2>
+  <div class="grid">
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--plante)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/arcko.png" alt="Arcko" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Arcko</h3><div class="badges"><span class="badge">Plante</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Bois Gecko. Il mesure 0,5 mètre et pèse 5 kilos.</p>
+        <p class="desc">Arcko est doté de petits crochets sous les pattes, ce qui lui permet de grimper aux murs. Ce Pokémon attaque en frappant ses ennemis avec son épaisse queue.</p>
+        <p class="evo"><span class="now">Arcko</span><span class="arrow">➜</span>Massko<span class="arrow">➜</span>Jungko</p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--eau)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/gobou.png" alt="Gobou" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Gobou</h3><div class="badges"><span class="badge">Eau</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Poissonboue. Il mesure 0,4 mètre et pèse 7,6 kilos.</p>
+        <p class="desc">La nageoire sur la tête de Gobou lui sert de radar hypersensible. Il l'utilise pour sentir les mouvements de l'eau et de l'air. Ainsi, ce Pokémon peut savoir ce qui se passe autour de lui sans avoir à se servir de ses yeux.</p>
+        <p class="evo"><span class="now">Gobou</span><span class="arrow">➜</span>Flobio<span class="arrow">➜</span>Laggron</p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--normal)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/kecleon.png" alt="Kecleon" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Kecleon</h3><div class="badges"><span class="badge">Normal</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Multicolor. Il mesure 1 mètre et pèse 22 kilos.</p>
+        <p class="desc">Il change de couleur pour se camoufler, mais si on cesse de lui prêter attention pendant trop longtemps, il se vexe et ne se montre plus…</p>
+        <p class="evo">Pas d'évolution.</p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--eau)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/ludicolo.png" alt="Ludicolo" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Ludicolo</h3><div class="badges"><span class="badge">Eau</span><span class="badge">Plante</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Insouciant. Il mesure 1,5 mètre et pèse 55 kilos.</p>
+        <p class="desc">Les cellules de Ludicolo s'activent s'il entend une musique entraînante, le rendant encore plus puissant.</p>
+        <p class="evo">Nénupiot<span class="arrow">➜</span>Lombre<span class="arrow">➜</span><span class="now">Ludicolo</span></p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--vol)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/nirondelle.png" alt="Nirondelle" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Nirondelle</h3><div class="badges"><span class="badge">Normal</span><span class="badge">Vol</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Minirondel. Il mesure 0,3 mètre et pèse 2,3 kilos.</p>
+        <p class="desc">Nirondelle défend courageusement son territoire contre ses ennemis, même les plus puissants. Ce vaillant Pokémon est toujours prêt à relever un défi, mais s'il a faim, il se met à pleurer à chaudes larmes.</p>
+        <p class="evo"><span class="now">Nirondelle</span><span class="arrow">➜</span>Hélédelle</p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--feu)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/poussifeu.png" alt="Poussifeu" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Poussifeu</h3><div class="badges"><span class="badge">Feu</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Poussin. Il mesure 0,4 mètre et pèse 2,5 kilos.</p>
+        <p class="desc">Poussifeu ne lâche pas son Dresseur, marchant maladroitement d'une semelle derrière lui. Ce Pokémon crache des flammes à 1 000 °C et des boules de feu pouvant carboniser l'ennemi.</p>
+        <p class="evo"><span class="now">Poussifeu</span><span class="arrow">➜</span>Galifeu<span class="arrow">➜</span>Braségali</p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--normal)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/ramboum.png" alt="Ramboum" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Ramboum</h3><div class="badges"><span class="badge">Normal</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Grosse Voix. Il mesure 1 mètre et pèse 40,5 kilos.</p>
+        <p class="desc">Ses oreilles lui servant de haut-parleurs peuvent émettre des ondes sonores dont la puissance suffit à balayer une maison.</p>
+        <p class="evo">Chuchmur<span class="arrow">➜</span><span class="now">Ramboum</span><span class="arrow">➜</span>Brouhabam</p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--eau)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/wailmer.png" alt="Wailmer" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Wailmer</h3><div class="badges"><span class="badge">Eau</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Baleinboule. Il mesure 2 mètres et pèse 130 kilos.</p>
+        <p class="desc">Il aime faire le beau en recrachant par son évent l'eau qu'il a avalée. Il gobe une tonne de Froussardine chaque jour.</p>
+        <p class="evo"><span class="now">Wailmer</span><span class="arrow">➜</span>Wailord</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ===================== PALDEA ===================== -->
+<section class="region">
+  <h2 class="region-title"><span class="mini-ball" aria-hidden="true"></span>Les Pokémon de Paldea</h2>
+  <div class="grid">
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--plante)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/poussacha.png" alt="Poussacha" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Poussacha</h3><div class="badges"><span class="badge">Plante</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Chat Plante. Il mesure 0,4 mètre et pèse 4,1 kilos.</p>
+        <p class="desc">Ce Pokémon lave assidûment son visage pour éviter qu'il ne s'assèche. La composition de son pelage soyeux est proche de celle des plantes.</p>
+        <p class="evo"><span class="now">Poussacha</span><span class="arrow">➜</span>Matourgeon<span class="arrow">➜</span>Miascarade</p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--feu)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/chochodile.png" alt="Chochodile" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Chochodile</h3><div class="badges"><span class="badge">Feu</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Croco Feu. Il mesure 0,4 mètre et pèse 9,8 kilos.</p>
+        <p class="desc">Il s'allonge sur des pierres chaudes et produit de l'énergie de type Feu grâce à la chaleur absorbée par ses écailles rectangulaires.</p>
+        <p class="evo"><span class="now">Chochodile</span><span class="arrow">➜</span>Crocogril<span class="arrow">➜</span>Flâmigator</p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--eau)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/coiffeton.png" alt="Coiffeton" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Coiffeton</h3><div class="badges"><span class="badge">Eau</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Caneton. Il mesure 0,5 mètre et pèse 6,1 kilos.</p>
+        <p class="desc">Originaire d'une contrée lointaine, il est venu s'installer dans la région il y a longtemps. Ses ailes sécrètent un gel qui repousse l'eau et les saletés.</p>
+        <p class="evo"><span class="now">Coiffeton</span><span class="arrow">➜</span>Canarbello<span class="arrow">➜</span>Palmaval</p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--electrik)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/pohm.png" alt="Pohm" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Pohm</h3><div class="badges"><span class="badge">Électrik</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Souris. Il mesure 0,3 mètre et pèse 2,5 kilos.</p>
+        <p class="desc">Les poches sur ses joues sont peu développées. Elles ne produisent de l'électricité que lorsqu'il les frotte avec ses coussinets.</p>
+        <p class="evo"><span class="now">Pohm</span><span class="arrow">➜</span>Pohmotte<span class="arrow">➜</span>Pohmarmotte</p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--fee)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/patachiot.png" alt="Pâtachiot" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Pâtachiot</h3><div class="badges"><span class="badge">Fée</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Chiot. Il mesure 0,3 mètre et pèse 10,9 kilos.</p>
+        <p class="desc">Ce Pokémon est moite et lisse au toucher. Il fait fermenter ce qui se trouve à proximité grâce à la levure que contient son souffle.</p>
+        <p class="evo"><span class="now">Pâtachiot</span><span class="arrow">➜</span>Briochien</p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--roche)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/craparoi.png" alt="Craparoi" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Craparoi</h3><div class="badges"><span class="badge">Roche</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Embuscade. Il mesure 1,3 mètre et pèse 79 kilos.</p>
+        <p class="desc">Il se poste la tête en bas sur une falaise, dans l'attente d'une proie, mais il ne peut pas rester longtemps ainsi, car le sang lui monte à la tête.</p>
+        <p class="evo">Pas d'évolution.</p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--poison)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/tag-tag.png" alt="Tag-Tag" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Tag-Tag</h3><div class="badges"><span class="badge">Poison</span><span class="badge">Normal</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Singe Venin. Il mesure 0,7 mètre et pèse 27,2 kilos.</p>
+        <p class="desc">Sa salive toxique change de couleur selon son alimentation. Il en enduit ses doigts pour dessiner des motifs sur les arbres de la forêt.</p>
+        <p class="evo">Gribouraigne<span class="arrow">➜</span><span class="now">Tag-Tag</span></p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--dragon)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/motorizard.png" alt="Motorizard" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Motorizard</h3><div class="badges"><span class="badge">Dragon</span><span class="badge">Normal</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Monture. Il mesure 1,6 mètre et pèse 63 kilos.</p>
+        <p class="desc">Des fresques vieilles de 10 000 ans laissent penser que ce Pokémon transportait des êtres humains sur son dos depuis les temps anciens.</p>
+        <p class="evo">Pas d'évolution.</p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--sol)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/roue-de-fer.png" alt="Roue-de-Fer" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Roue-de-Fer</h3><div class="badges"><span class="badge">Sol</span><span class="badge">Acier</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Paradoxe. Il mesure 0,9 mètre et pèse 240 kilos.</p>
+        <p class="desc">Il ressemble beaucoup à une arme sophistiquée qui serait d'origine extraterrestre, selon une revue consacrée aux phénomènes paranormaux.</p>
+        <p class="evo">Pas d'évolution.</p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--plante)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/olivini.png" alt="Olivini" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Olivini</h3><div class="badges"><span class="badge">Plante</span><span class="badge">Normal</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Olive. Il mesure 0,3 mètre et pèse 6,5 kilos.</p>
+        <p class="desc">Le fruit qui surmonte sa tête sécrète une huile qui le protège de ses adversaires. Ce liquide a un goût si désagréable qu'il fait grimacer.</p>
+        <p class="evo"><span class="now">Olivini</span><span class="arrow">➜</span>Olivado<span class="arrow">➜</span>Arboliva</p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--plante)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/olivado.png" alt="Olivado" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Olivado</h3><div class="badges"><span class="badge">Plante</span><span class="badge">Normal</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Olive. Il mesure 0,6 mètre et pèse 11,9 kilos.</p>
+        <p class="desc">Ce Pokémon partage volontiers son huile fraîche et délicieuse. Il vit en harmonie avec les êtres humains depuis les temps anciens.</p>
+        <p class="evo">Olivini<span class="arrow">➜</span><span class="now">Olivado</span><span class="arrow">➜</span>Arboliva</p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--plante)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/arboliva.png" alt="Arboliva" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Arboliva</h3><div class="badges"><span class="badge">Plante</span><span class="badge">Normal</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Olive. Il mesure 1,4 mètre et pèse 48,2 kilos.</p>
+        <p class="desc">Calme et bienveillant, il partage son huile délicieuse et riche en nutriments avec les Pokémon affaiblis.</p>
+        <p class="evo">Olivini<span class="arrow">➜</span>Olivado<span class="arrow">➜</span><span class="now">Arboliva</span></p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--sol)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/fort-ivoire.png" alt="Fort-Ivoire" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Fort-Ivoire</h3><div class="badges"><span class="badge">Sol</span><span class="badge">Combat</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Paradoxe. Il mesure 2,2 mètres et pèse 320 kilos.</p>
+        <p class="desc">Ce Pokémon a été aperçu à plusieurs reprises ces dernières années. Son nom s'inspire d'une créature évoquée dans un certain livre.</p>
+        <p class="evo">Pas d'évolution.</p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--normal)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/gourmelet.png" alt="Gourmelet" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Gourmelet</h3><div class="badges"><span class="badge">Normal</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Pourceau. Il mesure 0,5 mètre et pèse 10,2 kilos.</p>
+        <p class="desc">Il possède un sens de l'odorat développé qu'il utilise uniquement pour chercher de la nourriture, ce qu'il fait à longueur de journée.</p>
+        <p class="evo"><span class="now">Gourmelet</span><span class="arrow">➜</span>Fragroin</p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--eau)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/taupikeau.png" alt="Taupikeau" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Taupikeau</h3><div class="badges"><span class="badge">Eau</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Congre. Il mesure 1,2 mètre et pèse 1,8 kilo.</p>
+        <p class="desc">Il détecte l'odeur de Délestin à plus de vingt mètres, ce qui lui donne le temps de s'enfouir dans le sable.</p>
+        <p class="evo"><span class="now">Taupikeau</span><span class="arrow">➜</span>Triopikeau</p>
+      </div>
+    </article>
+
+    <article class="mon">
+      <div class="mon-head" style="background:var(--feu)">
+        <div class="mon-imgwrap"><img class="mon-img" src="img/malvalame.png" alt="Malvalame" loading="lazy" decoding="async"></div>
+        <div class="mon-title"><h3>Malvalame</h3><div class="badges"><span class="badge">Feu</span><span class="badge">Spectre</span></div></div>
+      </div>
+      <div class="mon-body">
+        <p class="idcard">C'est le Pokémon Feu Bretteur. Il mesure 1,6 mètre et pèse 62 kilos.</p>
+        <p class="desc">Les lames de ses épées sont animées par le courroux d'une âme guerrière qui a péri avant de pouvoir accomplir son but.</p>
+        <p class="evo">Charbambin<span class="arrow">➜</span><span class="now">Malvalame</span></p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <a class="back" href="/ethan/">← Retour</a>
+</footer>
+
+</body>
+</html>

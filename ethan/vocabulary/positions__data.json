@@ -1,0 +1,932 @@
+[
+ {
+  "k": "title",
+  "title": "Les Positions",
+  "sub": "sur · sous · devant · derrière · nord · sud · bâbord · tribord…"
+ },
+ {
+  "k": "v",
+  "cat": "PRÉPOSITION DE POSITION",
+  "main": "Sur",
+  "gloss": [
+   "on  ·  above  ·  on top of"
+  ],
+  "he": [
+   {
+    "he": "עַל  ·  מֵעַל",
+    "phon": "al · me'al"
+   }
+  ],
+  "notes": [
+   "aussi : Au-dessus de"
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Le livre est sur la table.",
+    "en": "The book is on the table.",
+    "he": "הַסֵּפֶר עַל הַשֻּׁלְחָן.",
+    "phon": "hasefer al hashulchan."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "PRÉPOSITION DE POSITION",
+  "main": "Sous",
+  "gloss": [
+   "under  ·  below  ·  beneath"
+  ],
+  "he": [
+   {
+    "he": "מִתַּחַת  ·  תַּחַת",
+    "phon": "mitachat · tachat"
+   }
+  ],
+  "notes": [
+   "aussi : En dessous de, Dessous"
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Le chat est sous la chaise.",
+    "en": "The cat is under the chair.",
+    "he": "הֶחָתוּל מִתַּחַת לַכִּסֵּא.",
+    "phon": "hechatul mitachat lakise."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "PRÉPOSITION DE POSITION",
+  "main": "Devant",
+  "gloss": [
+   "in front of"
+  ],
+  "he": [
+   {
+    "he": "לִפְנֵי",
+    "phon": "lifnei"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Je suis devant la porte.",
+    "en": "I am in front of the door.",
+    "he": "אֲנִי לִפְנֵי הַדֶּלֶת.",
+    "phon": "ani lifnei hadelet."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "PRÉPOSITION DE POSITION",
+  "main": "Derrière",
+  "gloss": [
+   "behind"
+  ],
+  "he": [
+   {
+    "he": "מֵאֲחוֹרֵי  ·  אַחֲרֵי",
+    "phon": "me'achorei · acharei"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Le jardin est derrière la maison.",
+    "en": "The garden is behind the house.",
+    "he": "הַגַּן מֵאֲחוֹרֵי הַבַּיִת.",
+    "phon": "hagan me'achorei habayit."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "PRÉPOSITION DE POSITION",
+  "main": "Dans",
+  "gloss": [
+   "in  ·  inside  ·  within"
+  ],
+  "he": [
+   {
+    "he": "בְּ  ·  בְּתוֹךְ",
+    "phon": "be · betoch"
+   }
+  ],
+  "notes": [
+   "aussi : À l'intérieur de"
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Les jouets sont dans la boîte.",
+    "en": "The toys are in the box.",
+    "he": "הַצַּעֲצוּעִים בְּתוֹךְ הַקֻּפְסָה.",
+    "phon": "hatsa'atzu'im betoch hakufsa."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "PRÉPOSITION DE POSITION",
+  "main": "À côté de",
+  "gloss": [
+   "next to  ·  beside  ·  near"
+  ],
+  "he": [
+   {
+    "he": "לְיַד  ·  עַל יַד  ·  קָרוֹב לְ",
+    "phon": "leyad · al-yad · karov le"
+   }
+  ],
+  "notes": [
+   "aussi : Près de, Auprès de"
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "La chaise est à côté du lit.",
+    "en": "The chair is next to the bed.",
+    "he": "הַכִּסֵּא לְיַד הַמִּטָּה.",
+    "phon": "hakise leyad hamita."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "PRÉPOSITION DE POSITION",
+  "main": "En face de",
+  "gloss": [
+   "opposite  ·  facing  ·  across from"
+  ],
+  "he": [
+   {
+    "he": "מוּל  ·  נֹכַח",
+    "phon": "mul · nochach"
+   }
+  ],
+  "notes": [
+   "aussi : Face à, Vis-à-vis"
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "L'école est en face du parc.",
+    "en": "The school is opposite the park.",
+    "he": "בֵּית הַסֵּפֶר מוּל הַפַּארְק.",
+    "phon": "beit hasefer mul hapark."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "PRÉPOSITION DE POSITION",
+  "main": "Entre",
+  "gloss": [
+   "between"
+  ],
+  "he": [
+   {
+    "he": "בֵּין",
+    "phon": "bein"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Le chat est entre les deux boîtes.",
+    "en": "The cat is between the two boxes.",
+    "he": "הֶחָתוּל בֵּין שְׁתֵּי הַקֻּפְסָאוֹת.",
+    "phon": "hechatul bein shtei hakufsaot."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "PRÉPOSITION DE POSITION",
+  "main": "Parmi",
+  "gloss": [
+   "among  ·  amid"
+  ],
+  "he": [
+   {
+    "he": "בֵּין  ·  בְּקֶרֶב",
+    "phon": "bein · bekerev"
+   }
+  ],
+  "notes": [
+   "aussi : Au milieu de"
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Il est parmi ses amis.",
+    "en": "He is among his friends.",
+    "he": "הוּא בֵּין חֲבֵרָיו.",
+    "phon": "hu bein chaverav."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "PRÉPOSITION DE POSITION",
+  "main": "Au milieu de",
+  "gloss": [
+   "in the middle of  ·  in the center of"
+  ],
+  "he": [
+   {
+    "he": "בְּאֶמְצַע  ·  בַּמֶּרְכָּז",
+    "phon": "be'emtsa · bamerkaz"
+   }
+  ],
+  "notes": [
+   "aussi : Au centre de"
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "La table est au milieu de la pièce.",
+    "en": "The table is in the middle of the room.",
+    "he": "הַשֻּׁלְחָן בְּאֶמְצַע הַחֶדֶר.",
+    "phon": "hashulchan be'emtsa hacheder."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "PRÉPOSITION DE POSITION",
+  "main": "Autour de",
+  "gloss": [
+   "around"
+  ],
+  "he": [
+   {
+    "he": "מִסָּבִיב לְ  ·  סְבִיב",
+    "phon": "misaviv le · sviv"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Les enfants sont autour de la table.",
+    "en": "The children are around the table.",
+    "he": "הַיְלָדִים מִסָּבִיב לַשֻּׁלְחָן.",
+    "phon": "hayeladim misaviv lashulchan."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "PRÉPOSITION DE POSITION",
+  "main": "Le long de",
+  "gloss": [
+   "along"
+  ],
+  "he": [
+   {
+    "he": "לְאֹרֶךְ",
+    "phon": "le'orech"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Nous marchons le long de la rivière.",
+    "en": "We walk along the river.",
+    "he": "אֲנַחְנוּ הוֹלְכִים לְאֹרֶךְ הַנָּהָר.",
+    "phon": "anachnu holchim le'orech hanahar."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "PRÉPOSITION DE POSITION",
+  "main": "À travers",
+  "gloss": [
+   "through  ·  across"
+  ],
+  "he": [
+   {
+    "he": "דֶּרֶךְ  ·  מִבַּעַד לְ",
+    "phon": "derech · miba'ad le"
+   }
+  ],
+  "notes": [
+   "aussi : Au travers de"
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Il regarde à travers la fenêtre.",
+    "en": "He looks through the window.",
+    "he": "הוּא מַבִּיט דֶּרֶךְ הַחַלּוֹן.",
+    "phon": "hu mabit derech hachalon."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "PRÉPOSITION DE POSITION",
+  "main": "Vers",
+  "gloss": [
+   "toward  ·  towards"
+  ],
+  "he": [
+   {
+    "he": "אֶל  ·  לְעֵבֶר",
+    "phon": "el · le'ever"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Il court vers la maison.",
+    "en": "He runs toward the house.",
+    "he": "הוּא רָץ אֶל הַבַּיִת.",
+    "phon": "hu ratz el habayit."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "PRÉPOSITION DE POSITION",
+  "main": "Loin de",
+  "gloss": [
+   "far from"
+  ],
+  "he": [
+   {
+    "he": "רָחוֹק מִ",
+    "phon": "rachok mi"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "L'école est loin de la maison.",
+    "en": "The school is far from home.",
+    "he": "בֵּית הַסֵּפֶר רָחוֹק מֵהַבַּיִת.",
+    "phon": "beit hasefer rachok mehabayit."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "PRÉPOSITION DE POSITION",
+  "main": "Contre",
+  "gloss": [
+   "against"
+  ],
+  "he": [
+   {
+    "he": "צָמוּד לְ  ·  נֶגֶד",
+    "phon": "tsamud le · neged"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "L'échelle est contre le mur.",
+    "en": "The ladder is against the wall.",
+    "he": "הַסֻּלָּם צָמוּד לַקִּיר.",
+    "phon": "hasulam tsamud lakir."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "PRÉPOSITION DE POSITION",
+  "main": "Chez",
+  "gloss": [
+   "at (someone's)"
+  ],
+  "he": [
+   {
+    "he": "אֵצֶל",
+    "phon": "etzel"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Je suis chez ma grand-mère.",
+    "en": "I am at my grandmother's.",
+    "he": "אֲנִי אֵצֶל סָבְתָא.",
+    "phon": "ani etzel savta."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "PRÉPOSITION DE POSITION",
+  "main": "Hors de",
+  "gloss": [
+   "outside  ·  out of"
+  ],
+  "he": [
+   {
+    "he": "מִחוּץ לְ  ·  בַּחוּץ",
+    "phon": "michutz le · bachutz"
+   }
+  ],
+  "notes": [
+   "aussi : En dehors de, Dehors"
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Le chien est dehors.",
+    "en": "The dog is outside.",
+    "he": "הַכֶּלֶב בַּחוּץ.",
+    "phon": "hakelev bachutz."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "HAUT · BAS · CÔTÉS",
+  "main": "En haut",
+  "gloss": [
+   "up  ·  top  ·  above"
+  ],
+  "he": [
+   {
+    "he": "לְמַעְלָה",
+    "phon": "lema'la"
+   }
+  ],
+  "notes": [
+   "aussi : Le haut, Au-dessus"
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "L'oiseau vole en haut.",
+    "en": "The bird flies up high.",
+    "he": "הַצִּפּוֹר עָפָה לְמַעְלָה.",
+    "phon": "hatsipor afa lema'la."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "HAUT · BAS · CÔTÉS",
+  "main": "En bas",
+  "gloss": [
+   "down  ·  bottom  ·  below"
+  ],
+  "he": [
+   {
+    "he": "לְמַטָּה",
+    "phon": "lemata"
+   }
+  ],
+  "notes": [
+   "aussi : Le bas, Au-dessous"
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "La balle roule en bas.",
+    "en": "The ball rolls down.",
+    "he": "הַכַּדּוּר מִתְגַּלְגֵּל לְמַטָּה.",
+    "phon": "hakadur mitgalgel lemata."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "HAUT · BAS · CÔTÉS",
+  "main": "À gauche",
+  "gloss": [
+   "left  ·  on the left"
+  ],
+  "he": [
+   {
+    "he": "שְׂמֹאל  ·  מִשְּׂמֹאל",
+    "phon": "smol · mismol"
+   }
+  ],
+  "notes": [
+   "aussi : La gauche"
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Tourne à gauche.",
+    "en": "Turn left.",
+    "he": "פְּנֵה שְׂמֹאלָה.",
+    "phon": "pneh smola."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "HAUT · BAS · CÔTÉS",
+  "main": "À droite",
+  "gloss": [
+   "right  ·  on the right"
+  ],
+  "he": [
+   {
+    "he": "יָמִין  ·  מִיָּמִין",
+    "phon": "yamin · miyamin"
+   }
+  ],
+  "notes": [
+   "aussi : La droite"
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Tourne à droite.",
+    "en": "Turn right.",
+    "he": "פְּנֵה יָמִינָה.",
+    "phon": "pneh yamina."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "HAUT · BAS · CÔTÉS",
+  "main": "À l'intérieur",
+  "gloss": [
+   "inside  ·  indoors"
+  ],
+  "he": [
+   {
+    "he": "בִּפְנִים  ·  בְּתוֹךְ",
+    "phon": "bifnim · betoch"
+   }
+  ],
+  "notes": [
+   "aussi : Dedans"
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Reste à l'intérieur.",
+    "en": "Stay inside.",
+    "he": "הִשָּׁאֵר בִּפְנִים.",
+    "phon": "hisha'er bifnim."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "HAUT · BAS · CÔTÉS",
+  "main": "À l'extérieur",
+  "gloss": [
+   "outside  ·  outdoors"
+  ],
+  "he": [
+   {
+    "he": "בַּחוּץ",
+    "phon": "bachutz"
+   }
+  ],
+  "notes": [
+   "aussi : Dehors"
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "On joue à l'extérieur.",
+    "en": "We play outside.",
+    "he": "מְשַׂחֲקִים בַּחוּץ.",
+    "phon": "mesachakim bachutz."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "POINTS CARDINAUX",
+  "main": "Le nord",
+  "gloss": [
+   "(the) north"
+  ],
+  "he": [
+   {
+    "he": "צָפוֹן",
+    "phon": "tsafon"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "La boussole indique le nord.",
+    "en": "The compass points north.",
+    "he": "הַמַּצְפֵּן מַרְאֶה צָפוֹן.",
+    "phon": "hamatzpen mar'eh tsafon."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "POINTS CARDINAUX",
+  "main": "Le sud",
+  "gloss": [
+   "south"
+  ],
+  "he": [
+   {
+    "he": "דָּרוֹם",
+    "phon": "darom"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Les oiseaux volent vers le sud.",
+    "en": "Birds fly south.",
+    "he": "הַצִּפּוֹרִים עָפוֹת דָּרוֹמָה.",
+    "phon": "hatsiporim afot daroma."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "POINTS CARDINAUX",
+  "main": "L'est",
+  "gloss": [
+   "east"
+  ],
+  "he": [
+   {
+    "he": "מִזְרָח",
+    "phon": "mizrach"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Le soleil se lève à l'est.",
+    "en": "The sun rises in the east.",
+    "he": "הַשֶּׁמֶשׁ זוֹרַחַת בַּמִּזְרָח.",
+    "phon": "hashemesh zorachat bamizrach."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "POINTS CARDINAUX",
+  "main": "L'ouest",
+  "gloss": [
+   "west"
+  ],
+  "he": [
+   {
+    "he": "מַעֲרָב",
+    "phon": "ma'arav"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Le soleil se couche à l'ouest.",
+    "en": "The sun sets in the west.",
+    "he": "הַשֶּׁמֶשׁ שׁוֹקַעַת בַּמַּעֲרָב.",
+    "phon": "hashemesh shoka'at bama'arav."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "POINTS CARDINAUX",
+  "main": "Le nord-est",
+  "gloss": [
+   "northeast"
+  ],
+  "he": [
+   {
+    "he": "צְפוֹן מִזְרָח",
+    "phon": "tsfon-mizrach"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Le vent vient du nord-est.",
+    "en": "The wind comes from the northeast.",
+    "he": "הָרוּחַ בָּאָה מִצְּפוֹן מִזְרָח.",
+    "phon": "haruach ba'a mitsfon-mizrach."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "POINTS CARDINAUX",
+  "main": "Le nord-ouest",
+  "gloss": [
+   "northwest"
+  ],
+  "he": [
+   {
+    "he": "צְפוֹן מַעֲרָב",
+    "phon": "tsfon-ma'arav"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Une île est au nord-ouest.",
+    "en": "An island is to the northwest.",
+    "he": "אִי נִמְצָא בִּצְפוֹן מַעֲרָב.",
+    "phon": "i nimtsa bitsfon-ma'arav."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "POINTS CARDINAUX",
+  "main": "Le sud-est",
+  "gloss": [
+   "southeast"
+  ],
+  "he": [
+   {
+    "he": "דְּרוֹם מִזְרָח",
+    "phon": "drom-mizrach"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Le port est au sud-est.",
+    "en": "The harbor is to the southeast.",
+    "he": "הַנָּמֵל בִּדְרוֹם מִזְרָח.",
+    "phon": "hanamel bidrom-mizrach."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "POINTS CARDINAUX",
+  "main": "Le sud-ouest",
+  "gloss": [
+   "southwest"
+  ],
+  "he": [
+   {
+    "he": "דְּרוֹם מַעֲרָב",
+    "phon": "drom-ma'arav"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "La plage est au sud-ouest.",
+    "en": "The beach is to the southwest.",
+    "he": "הַחוֹף בִּדְרוֹם מַעֲרָב.",
+    "phon": "hachof bidrom-ma'arav."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "POINTS CARDINAUX",
+  "main": "La boussole",
+  "gloss": [
+   "compass"
+  ],
+  "he": [
+   {
+    "he": "מַצְפֵּן",
+    "phon": "matzpen"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "J'utilise une boussole.",
+    "en": "I use a compass.",
+    "he": "אֲנִי מִשְׁתַּמֵּשׁ בְּמַצְפֵּן.",
+    "phon": "ani mishtamesh bematzpen."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "POINTS CARDINAUX",
+  "main": "Les points cardinaux",
+  "gloss": [
+   "the cardinal points"
+  ],
+  "he": [
+   {
+    "he": "רוּחוֹת הַשָּׁמַיִם",
+    "phon": "ruchot hashamayim"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Il y a quatre points cardinaux.",
+    "en": "There are four cardinal points.",
+    "he": "יֵשׁ אַרְבַּע רוּחוֹת שָׁמַיִם.",
+    "phon": "yesh arba ruchot shamayim."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "MARINE · BATEAU",
+  "main": "Bâbord",
+  "gloss": [
+   "port (left side)"
+  ],
+  "he": [
+   {
+    "he": "צַד שְׂמֹאל",
+    "phon": "tsad smol"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Regarde à bâbord !",
+    "en": "Look to port!",
+    "he": "תִּסְתַּכֵּל לְצַד שְׂמֹאל!",
+    "phon": "tistakel letsad smol!"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "MARINE · BATEAU",
+  "main": "Tribord",
+  "gloss": [
+   "starboard (right side)"
+  ],
+  "he": [
+   {
+    "he": "צַד יָמִין",
+    "phon": "tsad yamin"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Le phare est à tribord.",
+    "en": "The lighthouse is to starboard.",
+    "he": "הַמִּגְדַּלּוֹר לְצַד יָמִין.",
+    "phon": "hamigdalor letsad yamin."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "MARINE · BATEAU",
+  "main": "La proue",
+  "gloss": [
+   "bow  ·  front"
+  ],
+  "he": [
+   {
+    "he": "חַרְטוֹם  ·  חֲזִית",
+    "phon": "chartom · chazit"
+   }
+  ],
+  "notes": [
+   "aussi : L'avant"
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "La proue fend les vagues.",
+    "en": "The bow cuts the waves.",
+    "he": "הַחַרְטוֹם חוֹתֵךְ אֶת הַגַּלִּים.",
+    "phon": "hachartom chotech et hagalim."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "MARINE · BATEAU",
+  "main": "La poupe",
+  "gloss": [
+   "stern  ·  back"
+  ],
+  "he": [
+   {
+    "he": "יַרְכְּתַיִם",
+    "phon": "yarketayim"
+   }
+  ],
+  "notes": [
+   "aussi : L'arrière"
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Le drapeau est à la poupe.",
+    "en": "The flag is at the stern.",
+    "he": "הַדֶּגֶל בַּיַּרְכְּתַיִם.",
+    "phon": "hadegel bayarketayim."
+   }
+  ]
+ }
+]

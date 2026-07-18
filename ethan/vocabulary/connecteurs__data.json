@@ -1,0 +1,371 @@
+[
+ {
+  "k": "title",
+  "title": "Connecteurs",
+  "sub": "Mais · où · et · donc · or · ni · car"
+ },
+ {
+  "k": "v",
+  "cat": "COORDINATION",
+  "main": "Et",
+  "gloss": [
+   "and"
+  ],
+  "he": [
+   {
+    "he": "וְ",
+    "phon": "ve"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "COORDINATION",
+  "main": "Ou",
+  "gloss": [
+   "or"
+  ],
+  "he": [
+   {
+    "he": "אוֹ",
+    "phon": "o"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "COORDINATION",
+  "main": "Mais",
+  "gloss": [
+   "but"
+  ],
+  "he": [
+   {
+    "he": "אֲבָל",
+    "phon": "aval"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "COORDINATION",
+  "main": "Donc",
+  "gloss": [
+   "so, therefore"
+  ],
+  "he": [
+   {
+    "he": "לָכֵן",
+    "phon": "lakhen"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "COORDINATION",
+  "main": "Or",
+  "gloss": [
+   "now, yet"
+  ],
+  "he": [
+   {
+    "he": "אוּלָם",
+    "phon": "ulam"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "COORDINATION",
+  "main": "Ni",
+  "gloss": [
+   "nor"
+  ],
+  "he": [
+   {
+    "he": "וְלֹא",
+    "phon": "ve-lo"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "COORDINATION",
+  "main": "Car",
+  "gloss": [
+   "for, because"
+  ],
+  "he": [
+   {
+    "he": "כִּי",
+    "phon": "ki"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "ADDITION / ORDRE",
+  "main": "Puis",
+  "gloss": [
+   "then"
+  ],
+  "he": [
+   {
+    "he": "אַחַר כָּךְ",
+    "phon": "achar kakh"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "ADDITION / ORDRE",
+  "main": "Ensuite",
+  "gloss": [
+   "next, afterwards"
+  ],
+  "he": [
+   {
+    "he": "לְאַחַר מִכֵּן",
+    "phon": "le'achar miken"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "ADDITION / ORDRE",
+  "main": "D'abord",
+  "gloss": [
+   "first of all"
+  ],
+  "he": [
+   {
+    "he": "קוֹדֶם כֹּל",
+    "phon": "kodem kol"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "ADDITION / ORDRE",
+  "main": "Enfin",
+  "gloss": [
+   "finally, at last"
+  ],
+  "he": [
+   {
+    "he": "לְבַסּוֹף",
+    "phon": "levasof"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "ADDITION / ORDRE",
+  "main": "also, too",
+  "he": [
+   {
+    "he": "גַּם",
+    "phon": "gam"
+   }
+  ],
+  "notes": [
+   "Aussi"
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "ADDITION / ORDRE",
+  "main": "De plus",
+  "gloss": [
+   "moreover, in addition"
+  ],
+  "he": [
+   {
+    "he": "בְּנוֹסָף",
+    "phon": "benosaf"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "OPPOSITION",
+  "main": "Cependant",
+  "gloss": [
+   "however"
+  ],
+  "he": [
+   {
+    "he": "עִם זֹאת",
+    "phon": "im zot"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "OPPOSITION",
+  "main": "Pourtant",
+  "gloss": [
+   "yet, and yet"
+  ],
+  "he": [
+   {
+    "he": "וּבְכָל זֹאת",
+    "phon": "uvkhol zot"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "OPPOSITION",
+  "main": "Néanmoins",
+  "gloss": [
+   "nevertheless"
+  ],
+  "he": [
+   {
+    "he": "אַף עַל פִּי כֵן",
+    "phon": "af al pi khen"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "OPPOSITION",
+  "main": "Toutefois",
+  "gloss": [
+   "nonetheless"
+  ],
+  "he": [
+   {
+    "he": "עִם כָּל זֹאת",
+    "phon": "im kol zot"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "OPPOSITION",
+  "main": "En revanche",
+  "gloss": [
+   "on the other hand"
+  ],
+  "he": [
+   {
+    "he": "לְעֻמַּת זֹאת",
+    "phon": "le'umat zot"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "CONSÉQUENCE",
+  "main": "Ainsi",
+  "gloss": [
+   "thus, so"
+  ],
+  "he": [
+   {
+    "he": "כָּךְ",
+    "phon": "kakh"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "CONSÉQUENCE",
+  "main": "Alors",
+  "gloss": [
+   "so, then"
+  ],
+  "he": [
+   {
+    "he": "אָז",
+    "phon": "az"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "CONSÉQUENCE",
+  "main": "Par conséquent",
+  "gloss": [
+   "consequently"
+  ],
+  "he": [
+   {
+    "he": "לְפִיכָךְ",
+    "phon": "lefikhakh"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "CONSÉQUENCE",
+  "main": "Finalement",
+  "gloss": [
+   "in the end"
+  ],
+  "he": [
+   {
+    "he": "בְּסוֹפוֹ שֶׁל דָּבָר",
+    "phon": "besofo shel davar"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "CAUSE",
+  "main": "Parce que",
+  "gloss": [
+   "because"
+  ],
+  "he": [
+   {
+    "he": "מִשּׁוּם שֶׁ",
+    "phon": "mishum she"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "CAUSE",
+  "main": "Puisque",
+  "gloss": [
+   "since, given that"
+  ],
+  "he": [
+   {
+    "he": "מִכֵּיוָן שֶׁ",
+    "phon": "mikeivan she"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "CAUSE",
+  "main": "En effet",
+  "gloss": [
+   "indeed, in fact"
+  ],
+  "he": [
+   {
+    "he": "אָכֵן",
+    "phon": "akhen"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "OPPOSITION",
+  "main": "Malgré tout",
+  "gloss": [
+   "nonetheless, despite all"
+  ],
+  "he": [
+   {
+    "he": "לַמְרוֹת הַכֹּל",
+    "phon": "lamrot hakol"
+   }
+  ]
+ }
+]

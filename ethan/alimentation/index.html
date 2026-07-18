@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Alimentation — Ethan</title>
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;}
+  body{font-family:"Varela Round",ui-rounded,"SF Pro Rounded",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    color:#20222b;background:linear-gradient(160deg,#fff7ec 0%,#ffeede 45%,#eafff1 100%);
+    min-height:100vh;padding:clamp(18px,5vw,44px);}
+  header{max-width:1080px;margin:0 auto clamp(20px,4vh,34px);text-align:center;}
+  header h1{font-size:clamp(2rem,7vw,3.2rem);font-weight:800;margin:.1em 0;
+    background:linear-gradient(90deg,#ff8a3a,#ff5d8f,#3CB043);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  header p{color:#6a6f5e;font-size:clamp(.95rem,2.8vw,1.15rem);margin:6px 0 0;font-weight:600;}
+  section{max-width:1080px;margin:0 auto clamp(26px,5vh,40px);}
+  h2.sec{font-size:clamp(1.3rem,5vw,2rem);font-weight:800;color:#3a4030;margin:0 0 14px;display:flex;align-items:center;gap:10px;}
+  .meals{display:flex;flex-direction:column;gap:clamp(12px,2.4vh,18px);}
+  .meal,.rule{display:flex;align-items:flex-start;gap:16px;border-radius:20px;
+    padding:clamp(14px,3.4vw,22px);box-shadow:0 8px 22px rgba(60,50,20,.08),0 0 0 1px rgba(0,0,0,.03);}
+  .meal{background:#fff;border-left:8px solid #ff9f4a;}
+  .rule{background:#fffbea;border-left:8px solid #f2b705;}
+  .ico,.rico{font-size:clamp(1.7rem,6vw,2.6rem);line-height:1;flex:none;}
+  .mbody{display:flex;flex-direction:column;gap:5px;min-width:0;flex:1;}
+  .txt,.rtxt{font-size:clamp(1.02rem,3vw,1.25rem);font-weight:700;line-height:1.4;color:#2a2d24;}
+  .he-line{font-size:clamp(.98rem,2.9vw,1.22rem);font-weight:600;color:#9a6a1a;direction:rtl;text-align:left;line-height:1.6;}
+  .mfoods{display:flex;flex-wrap:wrap;gap:clamp(8px,1.8vw,16px);margin-top:clamp(8px,1.6vh,14px);
+    font-size:clamp(2rem,6.5vw,2.9rem);line-height:1;}
+  .foods{display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(150px,23vw,230px),1fr));
+    gap:clamp(10px,2.2vw,16px);}
+  .food{display:flex;align-items:center;gap:12px;background:#fff;border-radius:16px;
+    padding:clamp(12px,2.6vw,16px);box-shadow:0 6px 16px rgba(60,50,20,.08),0 0 0 1px rgba(0,0,0,.03);}
+  .fico{font-size:clamp(1.6rem,5vw,2.1rem);line-height:1;flex:none;}
+  .fbody{display:flex;flex-direction:column;gap:1px;min-width:0;}
+  .fname{font-size:clamp(1rem,2.8vw,1.15rem);font-weight:700;line-height:1.2;}
+  .fsub{font-size:clamp(.74rem,2.1vw,.9rem);font-weight:400;color:#8a8f7e;line-height:1.3;margin-top:1px;}
+  .fhe{font-size:clamp(.85rem,2.5vw,1.05rem);font-weight:600;color:#9a6a1a;direction:rtl;text-align:left;line-height:1.5;}
+  .food.no{border-left:6px solid #ff7a7a;}
+  .food.no .fhe{color:#c0524a;}
+  .food.avoid{position:relative;overflow:hidden;background:linear-gradient(135deg,#ff7a7a 0%,#e23b3b 100%);
+    box-shadow:0 8px 22px rgba(200,40,40,.3);}
+  .food.avoid .fname{color:#fff;}
+  .food.avoid .fhe{color:rgba(255,255,255,.92);}
+  .food.avoid .fico{filter:drop-shadow(0 1px 2px rgba(0,0,0,.25));}
+  .food.avoid .wm{position:absolute;inset:0;display:flex;align-items:flex-start;justify-content:center;
+    padding-top:clamp(5px,1.8vw,10px);
+    font-size:clamp(1.15rem,4.8vw,1.7rem);font-weight:900;letter-spacing:.16em;color:rgba(255,255,255,.5);
+    transform:rotate(-8deg);pointer-events:none;text-transform:uppercase;}
+  footer{max-width:1080px;margin:clamp(24px,5vh,44px) auto 8px;text-align:center;}
+  footer a{color:#e07a2a;text-decoration:none;font-weight:700;}
+</style>
+</head>
+<body>
+<a href="/ethan/" style="position:fixed;top:14px;left:16px;z-index:50;color:#5b4bd6;text-decoration:none;font-weight:700;background:rgba(255,255,255,.9);padding:7px 14px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.14);font-family:'Varela Round',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;">🏠 Ethan</a>
+  <header>
+    <h1>Alimentation</h1>
+    <p>Pour les vacances chez papy &amp; mamie</p>
+  </header>
+
+  <section>
+    <h2 class="sec">⭐ Règles d'or</h2>
+    <div class="meals">
+      <div class="rule"><div class="rico">🍴</div><div class="mbody">
+        <div class="rtxt">Au restaurant, il peut prendre tout ce qu'il veut.</div>
+        <div class="he-line" dir="rtl">בַּמִּסְעָדָה הוּא יָכוֹל לְהַזְמִין כָּל מַה שֶּׁהוּא רוֹצֶה.</div>
+      </div></div>
+      <div class="rule"><div class="rico">🥔</div><div class="mbody">
+        <div class="rtxt">Pas de frites à la maison. Autorisés au restaurant.</div>
+        <div class="he-line" dir="rtl">אֵין צִ'יפְּס בַּבַּיִת. מֻתָּר בַּמִּסְעָדָה.</div>
+      </div></div>
+      <div class="rule"><div class="rico">🥫</div><div class="mbody">
+        <div class="rtxt">Ketchup autorisé uniquement sur les steaks hachés et les frites.</div>
+        <div class="he-line" dir="rtl">קֶטְשׁוֹפּ מֻתָּר רַק עַל סְטֵייקִים טְחוּנִים וְעַל צִ'יפְּס.</div>
+      </div></div>
+      <div class="rule"><div class="rico">🚫</div><div class="mbody">
+        <div class="rtxt">PAS DE CHARCUTERIE. Pas de Bonbons à la maison, pas de viennoiserie, pas de Danette ou autre laitage transformé hyper sucré. Pas d'apéritif salé type Chips ou ceux qu'on sert aux invités.</div>
+        <div class="he-line" dir="rtl">אֵין בָּשָׂר מְעֻבָּד. אֵין סֻכָּרִיּוֹת בַּבַּיִת, אֵין מַאֲפִים מְתוּקִים, אֵין דָּנֶט אוֹ מוּצְרֵי חָלָב מְעֻבָּדִים וּמְתוּקִים מְאוֹד. אֵין חֲטִיפִים מְלוּחִים כְּמוֹ צִ'יפְּס אוֹ אֵלּוּ שֶׁמַּגִּישִׁים לָאוֹרְחִים.</div>
+      </div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec">🍽️ Les repas</h2>
+    <div class="meals">
+      <div class="meal"><div class="mbody">
+        <div class="txt">Petit déjeuner : fruits et tartine pain et beurre.</div>
+        <div class="he-line" dir="rtl">אֲרוּחַת בּוֹקֶר: פֵּרוֹת וּפְרוּסַת לֶחֶם עִם חֶמְאָה.</div>
+        <div class="mfoods">🍓 🥭 🍑 🍌 🍇 🍞 🧈</div>
+      </div></div>
+      <div class="meal"><div class="mbody">
+        <div class="txt">Déjeuner copieux et construit, avec entrée crudités, plat et salade verte, et dessert.</div>
+        <div class="he-line" dir="rtl">אֲרוּחַת צָהֳרַיִם גְּדוֹלָה וּמְסֻדֶּרֶת, עִם מָנָה רִאשׁוֹנָה שֶׁל יְרָקוֹת חַיִּים, מָנָה עִקָּרִית וְסָלָט יָרֹק, וְקִנּוּחַ.</div>
+        <div class="mfoods">🥬 🍅 🥒 🥩 🍝 🐟 🍦 🍰</div>
+      </div></div>
+      <div class="meal"><div class="mbody">
+        <div class="txt">Dîner tôt, assiettes de fruits variés coupés, ou soupe. Si faim, omelette (peut contenir du fromage), ou poire-parmesan.</div>
+        <div class="he-line" dir="rtl">אֲרוּחַת עֶרֶב מֻקְדֶּמֶת: צַלַּחַת פֵּרוֹת מְגֻוָּנִים חֲתוּכִים, אוֹ מָרָק. אִם רָעֵב, חֲבִיתָה (יְכוֹלָה לְהָכִיל גְּבִינָה), אוֹ אַגָּס עִם פַּרְמֵזָן.</div>
+        <div class="mfoods">🍲 🍳 🥚</div>
+      </div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec">😋 Ce qu'il aime</h2>
+    <div class="foods">
+      <div class="food"><span class="fico">🧀</span><span class="fbody"><span class="fname">Scamorza fumée</span><span class="fhe" dir="rtl">סְקָמוֹרְצָה מְעֻשֶּׁנֶת</span></span></div>
+      <div class="food"><span class="fico">🍓</span><span class="fbody"><span class="fname">Fraises</span><span class="fhe" dir="rtl">תּוּתִים</span></span></div>
+      <div class="food"><span class="fico">🥭</span><span class="fbody"><span class="fname">Mangue</span><span class="fhe" dir="rtl">מַנְגּוֹ</span></span></div>
+      <div class="food"><span class="fico">🍑</span><span class="fbody"><span class="fname">Pêches</span><span class="fhe" dir="rtl">אֲפַרְסְקִים</span></span></div>
+      <div class="food"><span class="fico">🍇</span><span class="fbody"><span class="fname">Raisins verts</span><span class="fhe" dir="rtl">עֲנָבִים יְרוּקִים</span></span></div>
+      <div class="food"><span class="fico">🍌</span><span class="fbody"><span class="fname">Bananes</span><span class="fhe" dir="rtl">בָּנָנוֹת</span></span></div>
+      <div class="food"><span class="fico">🥬</span><span class="fbody"><span class="fname">Salade verte</span><span class="fhe" dir="rtl">סָלָט יָרֹק</span></span></div>
+      <div class="food"><span class="fico">🍅</span><span class="fbody"><span class="fname">Tomates</span><span class="fhe" dir="rtl">עַגְבָנִיּוֹת</span></span></div>
+      <div class="food"><span class="fico">🥒</span><span class="fbody"><span class="fname">Concombres</span><span class="fhe" dir="rtl">מְלָפְפוֹנִים</span></span></div>
+      <div class="food"><span class="fico">🫛</span><span class="fbody"><span class="fname">Haricots verts</span><span class="fhe" dir="rtl">שְׁעוּעִית יְרוּקָה</span></span></div>
+      <div class="food"><span class="fico">🐟</span><span class="fbody"><span class="fname">Poisson</span><span class="fhe" dir="rtl">דָּג</span></span></div>
+      <div class="food"><span class="fico">🥩</span><span class="fbody"><span class="fname">Steak haché</span><span class="fhe" dir="rtl">סְטֵייק טָחוּן</span></span></div>
+      <div class="food"><span class="fico">🥩</span><span class="fbody"><span class="fname">Viande rouge</span><span class="fhe" dir="rtl">בָּשָׂר אָדֹם</span></span></div>
+      <div class="food"><span class="fico">🍝</span><span class="fbody"><span class="fname">Pâtes</span><span class="fhe" dir="rtl">פַּסְטָה</span></span></div>
+      <div class="food"><span class="fico">🍚</span><span class="fbody"><span class="fname">Riz</span><span class="fhe" dir="rtl">אֹרֶז</span></span></div>
+      <div class="food"><span class="fico">🫘</span><span class="fbody"><span class="fname">Lentilles au fromage</span><span class="fsub">comté ou gruyère râpé</span><span class="fhe" dir="rtl">עֲדָשִׁים עִם גְּבִינָה</span></span></div>
+      <div class="food avoid"><span class="fico">🥣</span><span class="fbody"><span class="fname">Lait et Céréales</span><span class="fhe" dir="rtl">חָלָב וּדְגָנֵי בּוֹקֶר</span></span><span class="wm">Éviter</span></div>
+      <div class="food"><span class="fico">🍦</span><span class="fbody"><span class="fname">Glaces et Sorbets</span><span class="fhe" dir="rtl">גְּלִידָה וְסוֹרְבֶּה</span></span></div>
+      <div class="food"><span class="fico">☕</span><span class="fbody"><span class="fname">Éclair et Affogato</span><span class="fsub">au café décaféiné</span><span class="fhe" dir="rtl">אֶקְלֶר וְאַפּוֹגָטוֹ עִם קָפֶה נְטוּל קָפֵאִין</span></span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec">🙅 Ce qu'il n'aime pas du tout</h2>
+    <div class="foods">
+      <div class="food no"><span class="fico">🥒</span><span class="fbody"><span class="fname">Courgettes</span><span class="fhe" dir="rtl">קִישׁוּאִים</span></span></div>
+      <div class="food no"><span class="fico">🫜</span><span class="fbody"><span class="fname">Betteraves</span><span class="fhe" dir="rtl">סֶלֶק</span></span></div>
+      <div class="food no"><span class="fico">🍄</span><span class="fbody"><span class="fname">Champignons</span><span class="fhe" dir="rtl">פִּטְרִיּוֹת</span></span></div>
+      <div class="food no"><span class="fico">🧅</span><span class="fbody"><span class="fname">Oignons</span><span class="fhe" dir="rtl">בְּצָלִים</span></span></div>
+      <div class="food no"><span class="fico">🫑</span><span class="fbody"><span class="fname">Poivrons</span><span class="fhe" dir="rtl">פִּלְפְּלִים</span></span></div>
+      <div class="food no"><span class="fico">🍆</span><span class="fbody"><span class="fname">Aubergines</span><span class="fhe" dir="rtl">חֲצִילִים</span></span></div>
+      <div class="food no"><span class="fico">🥛</span><span class="fbody"><span class="fname">Toutes les crèmes</span><span class="fhe" dir="rtl">כָּל סוּגֵי הַשַּׁמֶּנֶת</span></span></div>
+      <div class="food no"><span class="fico">🫙</span><span class="fbody"><span class="fname">Mayonnaise</span><span class="fhe" dir="rtl">מָיוֹנֵז</span></span></div>
+      <div class="food no"><span class="fico">🌿</span><span class="fbody"><span class="fname">Les herbes</span><span class="fhe" dir="rtl">עִשְׂבֵי תִּבּוּל</span></span></div>
+    </div>
+  </section>
+
+  <footer><a href="/ethan/">← Retour</a></footer>
+</body>
+</html>

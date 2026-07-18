@@ -26,10 +26,11 @@
   #stage{position:absolute;inset:0;}
   .slide{
     position:absolute;inset:0;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    display:flex;flex-direction:column;align-items:center;justify-content:safe center;
     gap:clamp(18px,4vh,40px);
     padding:clamp(16px,5vw,48px);
     text-align:center;
+    overflow-y:auto;-webkit-overflow-scrolling:touch;
   }
   .slide.light{background:var(--light-bg);}
   .slide.dark{background:var(--dark-bg);color:#fff;}
@@ -95,10 +96,23 @@
   .sline{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;
     gap:clamp(5px,1.4vw,12px);font-size:clamp(1.4rem,5vw,2.4rem);font-weight:800;color:#6b6259;
     opacity:0;animation:fadein .5s ease both;}
-  .sline:nth-child(1){animation-delay:.15s;}
-  .sline:nth-child(2){animation-delay:.45s;}
-  .sline:nth-child(3){animation-delay:.75s;}
   @keyframes fadein{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+  .secret{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;
+    gap:clamp(22px,6vw,64px);background:rgba(255,255,255,.6);border:2px dashed #e0cfa8;
+    border-radius:18px;padding:clamp(7px,1.5vh,13px) clamp(16px,3.5vw,30px);
+    margin-bottom:clamp(4px,1.4vh,12px);}
+  .secret-lbl{font-size:clamp(.9rem,2.4vw,1.3rem);font-weight:800;color:#a07d3f;
+    margin-inline-end:clamp(2px,1vw,10px);}
+  .recipe{display:inline-flex;align-items:center;gap:5px;}
+  .rop{font-size:clamp(.85rem,2.2vw,1.2rem);font-weight:800;color:#a89f93;}
+  .minidot.sm{width:clamp(24px,5.4vw,42px);height:clamp(24px,5.4vw,42px);}
+  .arrow{font-size:clamp(1.3rem,4.4vw,2rem);color:#d08a34;font-weight:800;line-height:1;}
+  .trio{display:inline-flex;align-items:center;gap:5px;padding:5px 9px;border-radius:999px;
+    background:#fff;box-shadow:0 0 0 3px #ffd25e,0 6px 14px rgba(0,0,0,.12);}
+  .punch{margin-top:clamp(6px,1.8vh,16px);font-size:clamp(1.5rem,5.4vw,2.6rem);
+    font-weight:800;color:#8B5A2B;text-align:center;}
+  .punch-en{display:block;font-size:.42em;color:#b6ada2;font-weight:600;font-style:italic;
+    letter-spacing:.04em;margin-top:2px;}
   .minidot{display:inline-block;width:clamp(26px,6.5vw,46px);height:clamp(26px,6.5vw,46px);
     border-radius:50%;box-shadow:0 0 0 3px #fff,0 4px 10px rgba(0,0,0,.18);vertical-align:middle;}
   .paren{font-size:1.1em;color:#9a948c;}
@@ -106,6 +120,19 @@
   /* cluster of all colors on final question */
   .cluster{display:flex;flex-wrap:wrap;gap:clamp(6px,1.8vw,14px);justify-content:center;
     max-width:min(90vw,620px);align-items:center;}
+  .bigcluster{display:flex;flex-wrap:wrap;gap:clamp(10px,2.2vw,22px);justify-content:center;
+    align-items:center;max-width:min(58vw,720px);}
+  .bigdot{width:clamp(54px,8.5vw,90px);height:clamp(54px,8.5vw,90px);border-radius:50%;
+    box-shadow:0 10px 22px rgba(0,0,0,.18),0 0 0 5px #fff,0 0 0 7px rgba(0,0,0,.05);
+    animation-name:floaty;animation-timing-function:ease-in-out;animation-iteration-count:infinite;
+    will-change:transform;}
+  @keyframes floaty{0%{transform:translateY(0) rotate(0deg);}
+    25%{transform:translateY(-13px) rotate(-6deg);}
+    50%{transform:translateY(6px) rotate(4deg);}
+    75%{transform:translateY(-8px) rotate(-3deg);}
+    100%{transform:translateY(0) rotate(0deg);}}
+  .finaleq .dot.huge.mystery{animation:pulse 2.4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
 
   /* planning / agenda */
   .planning{justify-content:flex-start;overflow-y:auto;
@@ -164,6 +191,9 @@ const C = {
   brown:      {hex:'8B5A2B', heb:'חוּם',         en:'Brown',        ph:'khum'},
   white:      {hex:'FFFFFF', heb:'לָבָן',        en:'White',        ph:'lavan'},
   black:      {hex:'2B2B2B', heb:'שָׁחֹר',       en:'Black',        ph:'shakhor'},
+  pink:       {hex:'FF6FAE', heb:'וָרֹד',        en:'Pink',         ph:'varod'},
+  salmon:     {hex:'FA8072', heb:'סַלְמוֹן',      en:'Salmon',       ph:'salmon'},
+  grey:       {hex:'959595', heb:'אָפֹר',        en:'Grey',         ph:'afor'},
 };
 
 /* ---------- hex math for level 4 ---------- */
@@ -185,7 +215,7 @@ function pastille(c,opt){
   }
   return `<div class="item"><div class="dot ${size}" style="background:#${c.hex}"></div>${labelHtml(c)}</div>`;
 }
-function mini(c){return `<span class="minidot" style="background:#${c.hex}"></span>`;}
+function mini(c,sz){const s=(typeof sz==='string')?' '+sz:'';return `<span class="minidot${s}" style="background:#${c.hex}"></span>`;}
 function host(level,text){
   const chip=level?`<span class="chip">${level}</span>`:'';
   return `<div class="host">${chip}${text}</div>`;
@@ -212,15 +242,8 @@ slides.push({kind:'a1'});
   slides.push({kind:'mix',lvl:'2',a:C[a],b:C[b],r:C[r],reveal:true});
 });
 
-// level 3a : primary + composed that contains it
-[['red','orange','redorange'],['red','purple','redviolet'],
- ['yellow','green','yellowgreen'],['yellow','orange','yelloworange'],
- ['blue','green','bluegreen'],['blue','purple','blueviolet']].forEach(([a,b,r])=>{
-  slides.push({kind:'mix',lvl:'3',a:C[a],b:C[b],r:C[r],reveal:false});
-  slides.push({kind:'mix',lvl:'3',a:C[a],b:C[b],r:C[r],reveal:true});
-});
-
-// level 3b : primary + composed that does NOT contain it = brown
+// level 3 : primary + composed that does NOT contain it = brown
+// (les mélanges donnant une couleur tertiaire — ex-niveau 3a — ont été retirés)
 [['red','green'],['yellow','purple'],['blue','orange']].forEach(([a,b])=>{
   slides.push({kind:'mix',lvl:'3',a:C[a],b:C[b],r:C.brown,reveal:false});
   slides.push({kind:'mix',lvl:'3',a:C[a],b:C[b],r:C.brown,reveal:true});
@@ -230,8 +253,7 @@ slides.push({kind:'a1'});
 slides.push({kind:'surprise'});
 
 // level 4 : lighten (+white) and darken (+black) of all 13 colors
-['red','yellow','blue','orange','green','purple','redorange','redviolet',
- 'yellowgreen','yelloworange','bluegreen','blueviolet','brown'].forEach(k=>{
+['red','yellow','blue','orange','redorange','redviolet','brown'].forEach(k=>{
   const base=C[k];
   const light={hex:lighten(base.hex),heb:base.heb+' בָּהִיר',en:'Light '+base.en,ph:base.ph+' bahir'};
   const dark={hex:darken(base.hex),heb:base.heb+' כֵּהֶה',en:'Dark '+base.en,ph:base.ph+' kehe'};
@@ -239,29 +261,43 @@ slides.push({kind:'surprise'});
   slides.push({kind:'mix2',base:base,light:light,dark:dark,reveal:true});
 });
 
+// juste après : Rose + Orange = Saumon
+slides.push({kind:'mix',lvl:'4',a:C.pink,b:C.orange,r:C.salmon,reveal:false});
+slides.push({kind:'mix',lvl:'4',a:C.pink,b:C.orange,r:C.salmon,reveal:true});
+
+// paires supplémentaires : rose, noir/blanc, gris
+const PEACH  ={hex:'FFA157', heb:'אֲפַרְסֵק',    en:'Peach',        ph:'afarsek'};
+const TAUPE  ={hex:'9D8F78', heb:'אָפֹר־חוּם',   en:'Greyish brown', ph:'afor-khum'};
+const MYELLOW={hex:'CAB44A', heb:'צָהֹב עָמוּם',  en:'Muted yellow',  ph:'tsahov amum'};
+const MBLUE  ={hex:'6082B8', heb:'כָּחֹל עָמוּם',  en:'Muted blue',    ph:'kakhol amum'};
+[[C.pink,C.yellow,PEACH],
+ [C.pink,C.green,TAUPE],
+ [C.black,C.white,C.grey],
+ [C.grey,C.yellow,MYELLOW],
+ [C.grey,C.blue,MBLUE]].forEach(([a,b,r])=>{
+  slides.push({kind:'mix',lvl:'4',a:a,b:b,r:r,reveal:false});
+  slides.push({kind:'mix',lvl:'4',a:a,b:b,r:r,reveal:true});
+});
+
 // final : all colors together
 slides.push({kind:'qfinal'});
 slides.push({kind:'afinal'});
 slides.push({kind:'congrats'});
 
-// agenda de la séance : tout premier écran
-slides.unshift({kind:'planning'});
-
-const ALL13=['red','yellow','blue','orange','green','purple','redorange','redviolet',
- 'yellowgreen','yelloworange','bluegreen','blueviolet','brown'].map(k=>C[k]);
+// couleurs réellement étudiées et conservées dans le site (ordre alterné pour bien les distinguer)
+const FINAL_PALETTE=['red','yellow','blue','green','orange','purple','pink','salmon','redorange','redviolet','brown'].map(k=>C[k]);
 const FINAL={hex:'3A2E28',heb:'חוּם כֵּהֶה מְאֹד',en:'Almost black',ph:"khum kehe me'od"};
 
 /* ---------- agenda de la séance (texte reproduit tel quel) ---------- */
 const PLAN=[
- {he:'לוֹבְשִׁים כְּפָפוֹת.', ph:'Lovshim kpafot', fr:'Les gants'},
- {he:'צוֹבְעִים אֶת הַלּוּחַ בְּצֶבַע אַקְרִילִי. זֶה יִהְיֶה צֶבַע הָרֶקַע.', ph:'Tzov\'im et ha-luah be-tseva akrili. Ze yihye tseva ha-reka.', fr:'Acrylique sèche vite et tient fort'},
- {he:'הוֹלְכִים לֶאֱכוֹל אֲרוּחַת צָהֳרַיִם וּמְחַכִּים שֶׁיִּתְיַבֵּשׁ.', ph:'Holkhim le-ekhol arukhat tsohorayim u-mekhakhim she-yityabesh.', fr:'Déjeuner'},
- {he:'מְסַדְּרִים יַחַד אֶת הָאוֹתִיּוֹת. כָּל אֶחָד מַנִּיחַ אוֹתָן עַל הַלּוּחַ שֶׁלּוֹ.', ph:'Mesadrim yahad et ha-otiyot. Kol ehad maniah otan al ha-luah shelo.', fr:'Ordonner les lettres, les poser sur plaques'},
- {he:'מַדְבִּיקִים מַסְקִינְג טֵייפ. אֶפְשָׁר גַּם לְהוֹסִיף צוּרוֹת.', ph:'Madbikim masking teip. Efshar gam lehosif tsurot.', fr:'Scotch et formes'},
- {he:'צוֹבְעִים אֶת כָּל הַלּוּחַ בְּגוּאָשׁ.', ph:'Tzov\'im et kol ha-luah be-guash', fr:'Peindre les plaques'},
- {he:'מְחַכִּים שֶׁיִּתְיַבֵּשׁ. בַּזְּמַן הַזֶּה נְשַׂחֵק חִידוֹן עַל צְבָעִים!', ph:'Mekhakhim she-yityabesh. Ba-zman ha-ze nesahek hidon al tseva\'im', fr:'pendant que ça sèche, quiz sur les couleurs', quiz:true},
- {he:'מְקַלְּפִים אֶת הַמַּסְקִינְג טֵייפ וְאֶת הַצּוּרוֹת.', ph:'Mekalfim et ha-masking teip ve-et ha-tsurot', fr:'Retirer les éléments collés.'},
- {he:'עוֹשִׂים אֶת הַנְּגִיעוֹת הָאַחֲרוֹנוֹת – וְסִיַּמְנוּ!', ph:'Osim et ha-negi\'ot ha-aharonot – ve-siyamnu!', fr:'Mettre au net'},
+ {he:'כְּפָפוֹת', ph:'kpafot', fr:'Les gants'},
+ {he:'אַקְרִילִיק', ph:'akrilik', fr:'Acrylique sèche vite et tient fort'},
+ {he:'אֲרוּחַת צָהֳרַיִם', ph:'arukhat tsohorayim', fr:'Déjeuner'},
+ {he:'אוֹתִיּוֹת', ph:'otiyot', fr:'Ordonner les lettres, les poser sur plaques'},
+ {he:'צְבִיעָה', ph:'tsvia', fr:'Peindre les plaques'},
+ {he:'חִידוֹן צְבָעִים', ph:'hidon tseva\'im', fr:'pendant que ça sèche, quiz sur les couleurs', quiz:true},
+ {he:'מְקַלְּפִים', ph:'mekalfim', fr:'Retirer les éléments collés.'},
+ {he:'נְגִיעוֹת אַחֲרוֹנוֹת', ph:'negi\'ot aharonot', fr:'Mettre au net'},
 ];
 
 /* ---------- render ---------- */
@@ -313,27 +349,37 @@ function renderSlide(s){
     }
 
     case 'surprise':{
-      const sline=(p,comp,x,y)=>`<div class="sline">
-        ${mini(p)}<span class="op">+</span>${mini(comp)}
-        <span class="op">=</span>
-        ${mini(p)}<span class="paren">(</span>${mini(x)}<span class="op">+</span>${mini(y)}<span class="paren">)</span>
-        <span class="op">=</span>
-        ${mini(C.red)}${mini(C.yellow)}${mini(C.blue)}
-        <span class="op">=</span>${mini(C.brown)}</div>`;
+      const recipe=(res,x,y)=>`<span class="recipe">${mini(res,'sm')}<span class="rop">=</span>${mini(x,'sm')}<span class="rop">+</span>${mini(y,'sm')}</span>`;
+      const trio=`<span class="trio">${mini(C.red,'sm')}${mini(C.yellow,'sm')}${mini(C.blue,'sm')}</span>`;
+      const row=(p,comp,d)=>`<div class="sline" style="animation-delay:${d}s">
+        ${mini(p,'sm')}<span class="op">+</span>${mini(comp,'sm')}
+        <span class="arrow">➜</span>${trio}
+        <span class="op">=</span>${mini(C.brown,'sm')}</div>`;
       return `<div class="slide light enter">${host('Level 3','Why is it always brown?')}
         <div class="surprise">
-          ${sline(C.red,C.green,C.yellow,C.blue)}
-          ${sline(C.yellow,C.purple,C.red,C.blue)}
-          ${sline(C.blue,C.orange,C.red,C.yellow)}
+          <div class="secret">
+            <span class="secret-lbl" dir="rtl">הַסּוֹד</span>
+            ${recipe(C.green,C.yellow,C.blue)}
+            ${recipe(C.purple,C.red,C.blue)}
+            ${recipe(C.orange,C.red,C.yellow)}
+          </div>
+          ${row(C.red,C.green,0.15)}
+          ${row(C.yellow,C.purple,0.35)}
+          ${row(C.blue,C.orange,0.55)}
+          <div class="punch" dir="rtl">תָּמִיד חוּם! <span class="punch-en">Always brown</span></div>
         </div></div>`;
     }
 
-    case 'qfinal':
+    case 'qfinal':{
+      const dots=FINAL_PALETTE.map(function(c,idx){
+        return `<span class="bigdot" style="background:#${c.hex};animation-delay:${(idx*0.19).toFixed(2)}s;animation-duration:${(2.6+(idx%4)*0.5).toFixed(2)}s"></span>`;
+      }).join('');
       return `<div class="slide light enter">${host('Final',"Mix ALL the colors?")}
-        <div class="eq">
-          <div class="cluster">${ALL13.map(mini).join('')}</div>
+        <div class="eq finaleq">
+          <div class="bigcluster">${dots}</div>
           <span class="op">=</span>${pastille(null,{mystery:true,size:'huge'})}
         </div></div>`;
+    }
     case 'afinal':
       return `<div class="slide light enter"><canvas class="fw"></canvas>${host('Final','All colors = almost black')}
         <div class="item"><div class="dot huge" style="background:#${FINAL.hex}"></div>${labelHtml(FINAL)}</div></div>`;

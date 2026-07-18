@@ -1,0 +1,70 @@
+/* Polices d'écriture : cursive scolaire française (liée) + écriture manuscrite hébraïque */
+@font-face{font-family:'CursiveStd';src:url('fonts/cursive.ttf') format('truetype');font-display:swap;}
+@font-face{font-family:'KtavYad';src:url('fonts/ktavyad.ttf') format('truetype');font-display:swap;}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;}
+body{font-family:"Varela Round",ui-rounded,"SF Pro Rounded",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  color:#1c1e26;background:#f6f4fb;min-height:100vh;user-select:none;-webkit-user-select:none;}
+.topbar{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:12px;
+  padding:clamp(10px,2.4vw,18px) clamp(12px,3vw,24px);
+  background:rgba(246,244,251,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);}
+.tb-link{color:#5b4bd6;text-decoration:none;font-weight:800;font-family:inherit;
+  font-size:clamp(.85rem,2.6vw,1.05rem);background:#fff;padding:9px 18px;border-radius:999px;
+  box-shadow:0 2px 10px rgba(0,0,0,.1);border:none;cursor:pointer;}
+.tb-link:active{transform:scale(.97);}
+
+/* --baseYr, --capHr, --glyphBottom : ratios (× taille de police) mesurés par JS. Valeurs par défaut de repli. */
+.alpha{--fs:clamp(1.9rem,10vw,4.4rem);
+  --glyphBottom:0.26;--baseYr:0.40;--capHr:0.71;
+  max-width:min(820px,96vw);margin:0 auto;padding:clamp(8px,2vw,18px);}
+.row{margin-bottom:clamp(4px,1vw,10px);}
+
+.cells{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(4px,1.4vw,14px);}
+.cells::before,.cells::after{content:'';position:absolute;left:1.5%;right:1.5%;height:1.5px;
+  background:#d6d0e6;pointer-events:none;z-index:0;}
+.cells::before{bottom:calc(var(--fs) * var(--baseYr));}
+.cells::after{bottom:calc(var(--fs) * (var(--baseYr) + var(--capHr)));}
+
+.letter{position:relative;height:calc(var(--fs) * (var(--baseYr) + var(--capHr) + 0.34));z-index:1;}
+.letter.has-variants{cursor:pointer;}
+.letter .glyphs{position:absolute;left:0;right:0;bottom:calc(var(--fs) * var(--glyphBottom));
+  display:flex;justify-content:center;align-items:flex-end;gap:calc(var(--fs) * 0.08);}
+.letter .glyph{line-height:1;font-size:var(--fs);font-weight:800;color:#1c1e26;}
+/* --shift-<style> : décalage (× --fs) mesuré par JS pour caler la ligne de base
+   de chaque police d'écriture sur celle des capitales (donc sur la ligne d'écriture). */
+.low{display:none;position:relative;line-height:1;font-size:var(--fs);font-weight:500;color:#3a3742;}
+.low.style-script{top:calc(var(--fs) * var(--shift-script, 0));}
+.low.style-cursive{font-family:'CursiveStd',cursive;font-weight:400;top:calc(var(--fs) * var(--shift-cursive, 0));}
+.low.style-hand{font-family:'KtavYad',cursive;font-weight:400;top:calc(var(--fs) * var(--shift-hand, 0));}
+.alpha.on-script .low.style-script{display:block;}
+.alpha.on-cursive .low.style-cursive{display:block;}
+.alpha.on-hand .low.style-hand{display:block;}
+
+/* filtres (pastilles à bascule) */
+.filters{display:flex;flex-wrap:wrap;gap:clamp(8px,2vw,14px);justify-content:center;
+  padding:clamp(6px,1.5vw,12px) clamp(12px,3vw,24px) 0;}
+.chip{border:2px solid #d8d2ea;background:#fff;color:#5b4bd6;font-weight:800;font-family:inherit;cursor:pointer;
+  padding:8px 18px;border-radius:999px;font-size:clamp(.82rem,2.4vw,1rem);display:inline-flex;gap:8px;align-items:center;}
+.chip[aria-pressed="true"]{background:#5b4bd6;color:#fff;border-color:#5b4bd6;}
+.chip .he{direction:rtl;font-weight:700;opacity:.92;}
+.letter .mark{position:absolute;right:15%;bottom:calc(var(--fs) * (var(--baseYr) + var(--capHr) + 0.05));
+  font-size:calc(var(--fs) * 0.24);font-weight:900;color:#e85d9e;transition:transform .15s ease;line-height:1;z-index:2;}
+.letter.active .mark{transform:rotate(180deg);}
+
+.sec{display:none;}
+.sec.show{display:flex;justify-content:center;margin:clamp(4px,1vw,10px) 0 clamp(6px,1.4vw,12px);}
+.sec-inner{position:relative;display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-end;
+  gap:clamp(6px,1.6vw,16px) clamp(16px,4vw,34px);background:#ece7fa;border-radius:22px;overflow:hidden;
+  padding:0 clamp(16px,4vw,30px);width:100%;--vfs:clamp(2rem,7vw,4rem);}
+.sec-inner::before,.sec-inner::after{content:'';position:absolute;left:3%;right:3%;height:1.5px;
+  background:#b6a6e6;z-index:0;pointer-events:none;}
+.sec-inner::before{bottom:calc(var(--vfs) * var(--baseYr));}
+.sec-inner::after{bottom:calc(var(--vfs) * (var(--baseYr) + var(--capHr)));}
+.vgroup{display:flex;align-items:flex-end;gap:clamp(2px,.9vw,9px);position:relative;z-index:1;}
+.vcell{position:relative;height:calc(var(--vfs) * (var(--baseYr) + var(--capHr) + 0.34));width:calc(var(--vfs) * 1.02);flex:none;}
+.vg{position:absolute;left:0;right:0;text-align:center;line-height:1;font-weight:800;
+  font-size:var(--vfs);bottom:calc(var(--vfs) * var(--glyphBottom));}
+.vg.vbase{color:#a6abbb;}
+.vg.vletter{color:#5b4bd6;}
+.vg.vletter.sofit{color:#e07a2a;}

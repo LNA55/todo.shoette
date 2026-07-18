@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Lettres en hébreu — Ethan</title>
+<link rel="stylesheet" href="../assets/alpha.css?v=8">
+</head>
+<body>
+  <div class="topbar">
+    <a class="tb-link" href="/ethan/lettres">← Lettres</a>
+    <button class="tb-link" id="toggleAll" type="button">Version complète</button>
+  </div>
+  <div class="alpha" id="alpha"></div>
+  <script>
+    window.ALPHA = {
+      dir: 'rtl',
+      letters: ['א','ב','ג','ד','ה','ו','ז','ח','ט','י','כ','ל','מ','נ','ס','ע','פ','צ','ק','ר','ש','ת'],
+      variants: {
+        'ב': ['בּ', 'ב'],
+        'כ': ['כּ', 'כ', { v:'ך', sofit:true }],
+        'ש': ['שׁ', 'שׂ'],
+        'מ': [{ v:'ם', sofit:true }],
+        'נ': [{ v:'ן', sofit:true }],
+        'פ': [{ v:'ף', sofit:true }],
+        'צ': [{ v:'ץ', sofit:true }]
+      },
+      styles: [
+        { key: 'hand', label: 'écriture manuscrite', he: 'כְּתָב יָד' }
+      ],
+      forms: { hand: (function(){ var o = {}; ['א','ב','ג','ד','ה','ו','ז','ח','ט','י','כ','ל','מ','נ','ס','ע','פ','צ','ק','ר','ש','ת'].forEach(function(c){ o[c] = c; }); return o; })() }
+    };
+  </script>
+  <script src="../assets/alpha.js?v=8"></script>
+</body>
+</html>

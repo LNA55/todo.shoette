@@ -1,0 +1,1007 @@
+[
+ {
+  "k": "title",
+  "title": "Le Temps",
+  "sub": "Jours · Mois · Dates · Quand ?"
+ },
+ {
+  "k": "v",
+  "cat": "LA DATE",
+  "main": "Date",
+  "gloss": [
+   "date"
+  ],
+  "he": [
+   {
+    "he": "תַּאֲרִיךְ",
+    "phon": "ta'arikh"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "LA DATE",
+  "main": "Jour",
+  "gloss": [
+   "day"
+  ],
+  "he": [
+   {
+    "he": "יוֹם",
+    "phon": "yom"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "LA DATE",
+  "main": "Semaine",
+  "gloss": [
+   "week"
+  ],
+  "he": [
+   {
+    "he": "שָׁבוּעַ",
+    "phon": "shavua"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "LA DATE",
+  "main": "Mois",
+  "gloss": [
+   "month"
+  ],
+  "he": [
+   {
+    "he": "חוֹדֶשׁ",
+    "phon": "chodesh"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "LA DATE",
+  "main": "Année",
+  "gloss": [
+   "year"
+  ],
+  "he": [
+   {
+    "he": "שָׁנָה",
+    "phon": "shana"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "LA DATE",
+  "main": "Saison",
+  "gloss": [
+   "season"
+  ],
+  "he": [
+   {
+    "he": "עוֹנָה",
+    "phon": "ona"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "LA DATE",
+  "main": "Week-end",
+  "gloss": [
+   "weekend"
+  ],
+  "he": [
+   {
+    "he": "סוֹף שָׁבוּעַ",
+    "phon": "sof shavua"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "LA DATE",
+  "main": "Calendrier",
+  "gloss": [
+   "calendar"
+  ],
+  "he": [
+   {
+    "he": "לוּחַ שָׁנָה",
+    "phon": "luach shana"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "MOMENTS DE LA JOURNÉE",
+  "main": "Matin",
+  "gloss": [
+   "morning"
+  ],
+  "he": [
+   {
+    "he": "בּוֹקֶר",
+    "phon": "boker"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "MOMENTS DE LA JOURNÉE",
+  "main": "Midi",
+  "gloss": [
+   "noon"
+  ],
+  "he": [
+   {
+    "he": "צָהֳרַיִם",
+    "phon": "tsohorayim"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "MOMENTS DE LA JOURNÉE",
+  "main": "Après-midi",
+  "gloss": [
+   "afternoon"
+  ],
+  "he": [
+   {
+    "he": "אַחַר הַצָּהֳרַיִם",
+    "phon": "achar hatsohorayim"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "MOMENTS DE LA JOURNÉE",
+  "main": "Soir",
+  "gloss": [
+   "evening"
+  ],
+  "he": [
+   {
+    "he": "עֶרֶב",
+    "phon": "erev"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "MOMENTS DE LA JOURNÉE",
+  "main": "Soirée",
+  "gloss": [
+   "evening (party)"
+  ],
+  "he": [
+   {
+    "he": "עֶרֶב",
+    "phon": "erev"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "MOMENTS DE LA JOURNÉE",
+  "main": "Nuit",
+  "gloss": [
+   "night"
+  ],
+  "he": [
+   {
+    "he": "לַיְלָה",
+    "phon": "layla"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "MOMENTS DE LA JOURNÉE",
+  "main": "Minuit",
+  "gloss": [
+   "midnight"
+  ],
+  "he": [
+   {
+    "he": "חֲצוֹת",
+    "phon": "chatsot"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "MOMENTS DE LA JOURNÉE",
+  "main": "Aube",
+  "gloss": [
+   "daybreak"
+  ],
+  "he": [
+   {
+    "he": "עֲלוֹת הַשַּׁחַר",
+    "phon": "alot hashachar"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "MOMENTS DE LA JOURNÉE",
+  "main": "Aurore",
+  "gloss": [
+   "dawn"
+  ],
+  "he": [
+   {
+    "he": "שַׁחַר",
+    "phon": "shachar"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "MOMENTS DE LA JOURNÉE",
+  "main": "Crépuscule",
+  "gloss": [
+   "dusk, twilight"
+  ],
+  "he": [
+   {
+    "he": "דִּמְדּוּמִים",
+    "phon": "dimdumim"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "MOMENTS DE LA JOURNÉE",
+  "main": "Lever du soleil",
+  "gloss": [
+   "sunrise"
+  ],
+  "he": [
+   {
+    "he": "זְרִיחָה",
+    "phon": "zricha"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "MOMENTS DE LA JOURNÉE",
+  "main": "Coucher du soleil",
+  "gloss": [
+   "sunset"
+  ],
+  "he": [
+   {
+    "he": "שְׁקִיעָה",
+    "phon": "shki'a"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "JOURS DE LA SEMAINE",
+  "main": "Lundi",
+  "gloss": [
+   "Monday"
+  ],
+  "he": [
+   {
+    "he": "יוֹם שֵׁנִי",
+    "phon": "yom sheni"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "JOURS DE LA SEMAINE",
+  "main": "Mardi",
+  "gloss": [
+   "Tuesday"
+  ],
+  "he": [
+   {
+    "he": "יוֹם שְׁלִישִׁי",
+    "phon": "yom shlishi"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "JOURS DE LA SEMAINE",
+  "main": "Mercredi",
+  "gloss": [
+   "Wednesday"
+  ],
+  "he": [
+   {
+    "he": "יוֹם רְבִיעִי",
+    "phon": "yom revi'i"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "JOURS DE LA SEMAINE",
+  "main": "Jeudi",
+  "gloss": [
+   "Thursday"
+  ],
+  "he": [
+   {
+    "he": "יוֹם חֲמִישִׁי",
+    "phon": "yom chamishi"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "JOURS DE LA SEMAINE",
+  "main": "Vendredi",
+  "gloss": [
+   "Friday"
+  ],
+  "he": [
+   {
+    "he": "יוֹם שִׁישִׁי",
+    "phon": "yom shishi"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "JOURS DE LA SEMAINE",
+  "main": "Samedi",
+  "gloss": [
+   "Saturday"
+  ],
+  "he": [
+   {
+    "he": "שַׁבָּת",
+    "phon": "shabat"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "JOURS DE LA SEMAINE",
+  "main": "Dimanche",
+  "gloss": [
+   "Sunday"
+  ],
+  "he": [
+   {
+    "he": "יוֹם רִאשׁוֹן",
+    "phon": "yom rishon"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "MOIS DE L'ANNÉE",
+  "main": "Janvier",
+  "gloss": [
+   "January"
+  ],
+  "he": [
+   {
+    "he": "יָנוּאָר",
+    "phon": "yanuar"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "MOIS DE L'ANNÉE",
+  "main": "Février",
+  "gloss": [
+   "February"
+  ],
+  "he": [
+   {
+    "he": "פֶבְּרוּאָר",
+    "phon": "februar"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "MOIS DE L'ANNÉE",
+  "main": "Mars",
+  "gloss": [
+   "March"
+  ],
+  "he": [
+   {
+    "he": "מֶרְץ",
+    "phon": "merts"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "MOIS DE L'ANNÉE",
+  "main": "Avril",
+  "gloss": [
+   "April"
+  ],
+  "he": [
+   {
+    "he": "אַפְּרִיל",
+    "phon": "april"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "MOIS DE L'ANNÉE",
+  "main": "Mai",
+  "gloss": [
+   "May"
+  ],
+  "he": [
+   {
+    "he": "מַאי",
+    "phon": "mai"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "MOIS DE L'ANNÉE",
+  "main": "Juin",
+  "gloss": [
+   "June"
+  ],
+  "he": [
+   {
+    "he": "יוּנִי",
+    "phon": "yuni"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "MOIS DE L'ANNÉE",
+  "main": "Juillet",
+  "gloss": [
+   "July"
+  ],
+  "he": [
+   {
+    "he": "יוּלִי",
+    "phon": "yuli"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "MOIS DE L'ANNÉE",
+  "main": "Août",
+  "gloss": [
+   "August"
+  ],
+  "he": [
+   {
+    "he": "אוֹגוּסְט",
+    "phon": "ogust"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "MOIS DE L'ANNÉE",
+  "main": "Septembre",
+  "gloss": [
+   "September"
+  ],
+  "he": [
+   {
+    "he": "סֶפְּטֶמְבֶּר",
+    "phon": "september"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "MOIS DE L'ANNÉE",
+  "main": "Octobre",
+  "gloss": [
+   "October"
+  ],
+  "he": [
+   {
+    "he": "אוֹקְטוֹבֶּר",
+    "phon": "oktober"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "MOIS DE L'ANNÉE",
+  "main": "Novembre",
+  "gloss": [
+   "November"
+  ],
+  "he": [
+   {
+    "he": "נוֹבֶמְבֶּר",
+    "phon": "november"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "MOIS DE L'ANNÉE",
+  "main": "Décembre",
+  "gloss": [
+   "December"
+  ],
+  "he": [
+   {
+    "he": "דֵּצֶמְבֶּר",
+    "phon": "detsember"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "LES SAISONS",
+  "main": "Printemps",
+  "gloss": [
+   "spring"
+  ],
+  "he": [
+   {
+    "he": "אָבִיב",
+    "phon": "aviv"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "LES SAISONS",
+  "main": "Été",
+  "gloss": [
+   "summer"
+  ],
+  "he": [
+   {
+    "he": "קַיִץ",
+    "phon": "kayitz"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "LES SAISONS",
+  "main": "Automne",
+  "gloss": [
+   "autumn, fall"
+  ],
+  "he": [
+   {
+    "he": "סְתָיו",
+    "phon": "stav"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "LES SAISONS",
+  "main": "Hiver",
+  "gloss": [
+   "winter"
+  ],
+  "he": [
+   {
+    "he": "חוֹרֶף",
+    "phon": "choref"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "QUAND ?",
+  "main": "Aujourd'hui",
+  "gloss": [
+   "today"
+  ],
+  "he": [
+   {
+    "he": "הַיּוֹם",
+    "phon": "hayom"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "QUAND ?",
+  "main": "Hier",
+  "gloss": [
+   "yesterday"
+  ],
+  "he": [
+   {
+    "he": "אֶתְמוֹל",
+    "phon": "etmol"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "QUAND ?",
+  "main": "Demain",
+  "gloss": [
+   "tomorrow"
+  ],
+  "he": [
+   {
+    "he": "מָחָר",
+    "phon": "machar"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "QUAND ?",
+  "main": "Avant-hier",
+  "gloss": [
+   "the day before yesterday"
+  ],
+  "he": [
+   {
+    "he": "שִׁלְשׁוֹם",
+    "phon": "shilshom"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "QUAND ?",
+  "main": "Après-demain",
+  "gloss": [
+   "the day after tomorrow"
+  ],
+  "he": [
+   {
+    "he": "מָחֳרָתַיִם",
+    "phon": "mochrotayim"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "QUAND ?",
+  "main": "Maintenant",
+  "gloss": [
+   "now"
+  ],
+  "he": [
+   {
+    "he": "עַכְשָׁיו",
+    "phon": "akhshav"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "QUAND ?",
+  "main": "Bientôt",
+  "gloss": [
+   "soon"
+  ],
+  "he": [
+   {
+    "he": "בְּקָרוֹב",
+    "phon": "bekarov"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "QUAND ?",
+  "main": "Tôt",
+  "gloss": [
+   "early"
+  ],
+  "he": [
+   {
+    "he": "מֻקְדָּם",
+    "phon": "mukdam"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "QUAND ?",
+  "main": "Tard",
+  "gloss": [
+   "late"
+  ],
+  "he": [
+   {
+    "he": "מְאֻחָר",
+    "phon": "me'uchar"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "QUAND ?",
+  "main": "Souvent",
+  "gloss": [
+   "often"
+  ],
+  "he": [
+   {
+    "he": "לְעִתִּים קְרוֹבוֹת",
+    "phon": "le'itim krovot"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "QUAND ?",
+  "main": "Toujours",
+  "gloss": [
+   "always"
+  ],
+  "he": [
+   {
+    "he": "תָּמִיד",
+    "phon": "tamid"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "QUAND ?",
+  "main": "Jamais",
+  "gloss": [
+   "never"
+  ],
+  "he": [
+   {
+    "he": "אַף פַּעַם",
+    "phon": "af pa'am"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "DANS LE TEMPS",
+  "main": "La semaine dernière",
+  "gloss": [
+   "last week"
+  ],
+  "he": [
+   {
+    "he": "הַשָּׁבוּעַ שֶׁעָבַר",
+    "phon": "hashavua she'avar"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "DANS LE TEMPS",
+  "main": "La semaine prochaine",
+  "gloss": [
+   "next week"
+  ],
+  "he": [
+   {
+    "he": "הַשָּׁבוּעַ הַבָּא",
+    "phon": "hashavua haba"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "DANS LE TEMPS",
+  "main": "Le mois dernier",
+  "gloss": [
+   "last month"
+  ],
+  "he": [
+   {
+    "he": "הַחוֹדֶשׁ שֶׁעָבַר",
+    "phon": "hachodesh she'avar"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "DANS LE TEMPS",
+  "main": "Le mois prochain",
+  "gloss": [
+   "next month"
+  ],
+  "he": [
+   {
+    "he": "הַחוֹדֶשׁ הַבָּא",
+    "phon": "hachodesh haba"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "DANS LE TEMPS",
+  "main": "L'année dernière",
+  "gloss": [
+   "last year"
+  ],
+  "he": [
+   {
+    "he": "הַשָּׁנָה שֶׁעָבְרָה",
+    "phon": "hashana she'avra"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "DANS LE TEMPS",
+  "main": "L'année prochaine",
+  "gloss": [
+   "next year"
+  ],
+  "he": [
+   {
+    "he": "הַשָּׁנָה הַבָּאָה",
+    "phon": "hashana haba'a"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "DANS LE TEMPS",
+  "main": "Mardi en huit",
+  "gloss": [
+   "a week on Tuesday"
+  ],
+  "he": [
+   {
+    "he": "יוֹם שְׁלִישִׁי בְּעוֹד שָׁבוּעַ",
+    "phon": "yom shlishi be'od shavua"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "main": "Les mois du calendrier hébraïque",
+  "gloss": [
+   "#",
+   "Hébreu",
+   "Translittération",
+   "Période (≈ grégorien)",
+   "1",
+   "Tishrei",
+   "sept – oct",
+   "2",
+   "Cheshvan",
+   "oct – nov",
+   "3",
+   "Kislev",
+   "nov – déc",
+   "4",
+   "Tevet",
+   "déc – janv",
+   "5",
+   "Shvat",
+   "janv – févr",
+   "6",
+   "Adar",
+   "févr – mars",
+   "7",
+   "Nisan",
+   "mars – avr",
+   "8",
+   "Iyar",
+   "avr – mai",
+   "9",
+   "Sivan",
+   "mai – juin",
+   "10",
+   "Tammuz",
+   "juin – juil",
+   "11",
+   "Av",
+   "juil – août",
+   "12",
+   "Elul",
+   "août – sept"
+  ],
+  "he": [
+   {
+    "he": "תִּשְׁרֵי",
+    "phon": null
+   },
+   {
+    "he": "חֶשְׁוָן",
+    "phon": null
+   },
+   {
+    "he": "כִּסְלֵו",
+    "phon": null
+   },
+   {
+    "he": "טֵבֵת",
+    "phon": null
+   },
+   {
+    "he": "שְׁבָט",
+    "phon": null
+   },
+   {
+    "he": "אֲדָר",
+    "phon": null
+   },
+   {
+    "he": "נִיסָן",
+    "phon": null
+   },
+   {
+    "he": "אִיָּיר",
+    "phon": null
+   },
+   {
+    "he": "סִיוָן",
+    "phon": null
+   },
+   {
+    "he": "תַּמּוּז",
+    "phon": null
+   },
+   {
+    "he": "אָב",
+    "phon": null
+   },
+   {
+    "he": "אֱלוּל",
+    "phon": null
+   }
+  ],
+  "notes": [
+   "Année bissextile : un 13ᵉ mois, Adar I (אֲדָר א׳), est ajouté avant Adar."
+  ]
+ },
+ {
+  "k": "v",
+  "main": "Correspondance des deux calendriers",
+  "gloss": [
+   "Grégorien",
+   "Hébraïque (≈)",
+   "Janvier",
+   "Tevet – Shvat",
+   "Février",
+   "Shvat – Adar",
+   "Mars",
+   "Adar – Nisan",
+   "Avril",
+   "Nisan – Iyar",
+   "Mai",
+   "Iyar – Sivan",
+   "Juin",
+   "Sivan – Tammuz",
+   "Juillet",
+   "Tammuz – Av",
+   "Août",
+   "Av – Elul",
+   "Septembre",
+   "Elul – Tishrei",
+   "Octobre",
+   "Tishrei – Cheshvan",
+   "Novembre",
+   "Cheshvan – Kislev",
+   "Décembre",
+   "Kislev – Tevet",
+   "Le calendrier hébraïque est lunaire : les correspondances se décalent chaque année."
+  ]
+ }
+]

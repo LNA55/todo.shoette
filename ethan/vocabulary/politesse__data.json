@@ -1,0 +1,614 @@
+[
+ {
+  "k": "title",
+  "title": "Politesse",
+  "sub": "bonjour · merci · pardon · s'il te plaît · au revoir…"
+ },
+ {
+  "k": "v",
+  "cat": "SALUTATIONS",
+  "main": "Bonjour",
+  "gloss": [
+   "Hello  ·  Good morning"
+  ],
+  "he": [
+   {
+    "he": "שָׁלוֹם  ·  בּוֹקֶר טוֹב",
+    "phon": "shalom · boker tov"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Bonjour, comment ça va ?",
+    "en": "Hello, how are you?",
+    "he": "שָׁלוֹם, מָה שְׁלוֹמְךָ?",
+    "phon": "shalom, ma shlomcha?"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "SALUTATIONS",
+  "main": "Bonsoir",
+  "gloss": [
+   "Good evening"
+  ],
+  "he": [
+   {
+    "he": "עֶרֶב טוֹב",
+    "phon": "erev tov"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Bonsoir, bienvenue !",
+    "en": "Good evening, welcome!",
+    "he": "עֶרֶב טוֹב, בָּרוּךְ הַבָּא!",
+    "phon": "erev tov, baruch haba!"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "SALUTATIONS",
+  "main": "Bonne nuit",
+  "gloss": [
+   "Good night"
+  ],
+  "he": [
+   {
+    "he": "לַיְלָה טוֹב",
+    "phon": "layla tov"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Bonne nuit, dors bien.",
+    "en": "Good night, sleep well.",
+    "he": "לַיְלָה טוֹב, תִּישַׁן טוֹב.",
+    "phon": "layla tov, tishan tov."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "SALUTATIONS",
+  "main": "Au revoir",
+  "gloss": [
+   "Goodbye"
+  ],
+  "he": [
+   {
+    "he": "לְהִתְרָאוֹת",
+    "phon": "lehitra'ot"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Au revoir, à demain !",
+    "en": "Goodbye, see you tomorrow!",
+    "he": "לְהִתְרָאוֹת, נִתְרָאֶה מָחָר!",
+    "phon": "lehitra'ot, nitra'eh machar!"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "SALUTATIONS",
+  "main": "Salut",
+  "gloss": [
+   "Familier.",
+   "Hi  ·  Bye"
+  ],
+  "he": [
+   {
+    "he": "הַיי  ·  שָׁלוֹם",
+    "phon": "hai · shalom"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Salut, ça va ?",
+    "en": "Hi, how's it going?",
+    "he": "הַיי, מָה נִשְׁמָע?",
+    "phon": "hai, ma nishma?"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "SALUTATIONS",
+  "main": "À bientôt",
+  "gloss": [
+   "See you soon"
+  ],
+  "he": [
+   {
+    "he": "לְהִתְרָאוֹת בְּקָרוֹב",
+    "phon": "lehitra'ot bekarov"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "À bientôt, prends soin de toi.",
+    "en": "See you soon, take care.",
+    "he": "לְהִתְרָאוֹת, תִּשְׁמֹר עַל עַצְמְךָ.",
+    "phon": "lehitra'ot, tishmor al atzmecha."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "SALUTATIONS",
+  "main": "Bienvenue",
+  "gloss": [
+   "m. / f.",
+   "Welcome"
+  ],
+  "he": [
+   {
+    "he": "בָּרוּךְ הַבָּא  ·  בְּרוּכָה הַבָּאָה",
+    "phon": "baruch haba · brucha haba'a"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Bienvenue chez nous !",
+    "en": "Welcome to our home!",
+    "he": "בָּרוּךְ הַבָּא אֵלֵינוּ!",
+    "phon": "baruch haba eleinu!"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "REMERCIER",
+  "main": "Merci",
+  "gloss": [
+   "Thank you"
+  ],
+  "he": [
+   {
+    "he": "תּוֹדָה",
+    "phon": "toda"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Merci pour ton aide.",
+    "en": "Thank you for your help.",
+    "he": "תּוֹדָה עַל הָעֶזְרָה.",
+    "phon": "toda al ha'ezra."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "REMERCIER",
+  "main": "Merci beaucoup",
+  "gloss": [
+   "Thank you very much"
+  ],
+  "he": [
+   {
+    "he": "תּוֹדָה רַבָּה",
+    "phon": "toda raba"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Merci beaucoup pour le cadeau !",
+    "en": "Thank you very much for the gift!",
+    "he": "תּוֹדָה רַבָּה עַל הַמַּתָּנָה!",
+    "phon": "toda raba al hamatana!"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "REMERCIER",
+  "main": "De rien",
+  "gloss": [
+   "You're welcome"
+  ],
+  "he": [
+   {
+    "he": "עַל לֹא דָּבָר  ·  בְּבַקָּשָׁה",
+    "phon": "al lo davar · bevakasha"
+   }
+  ],
+  "notes": [
+   "aussi : Je t'en prie  —  Réponse à « merci »."
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "« Merci ! » « De rien. »",
+    "en": "\"Thanks!\" \"You're welcome.\"",
+    "he": "תּוֹדָה! עַל לֹא דָּבָר.",
+    "phon": "toda! al lo davar."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "DEMANDER · S'EXCUSER",
+  "main": "S'il te plaît",
+  "gloss": [
+   "Please"
+  ],
+  "he": [
+   {
+    "he": "בְּבַקָּשָׁה",
+    "phon": "bevakasha"
+   }
+  ],
+  "notes": [
+   "aussi : S'il vous plaît  —  tutoiement / vouvoiement."
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Un verre d'eau, s'il te plaît.",
+    "en": "A glass of water, please.",
+    "he": "כּוֹס מַיִם, בְּבַקָּשָׁה.",
+    "phon": "kos mayim, bevakasha."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "DEMANDER · S'EXCUSER",
+  "main": "Pardon",
+  "gloss": [
+   "Sorry  ·  Excuse me"
+  ],
+  "he": [
+   {
+    "he": "סְלִיחָה",
+    "phon": "slicha"
+   }
+  ],
+  "notes": [
+   "aussi : Excuse-moi, Excusez-moi"
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Pardon, je suis en retard.",
+    "en": "Sorry, I'm late.",
+    "he": "סְלִיחָה, אֲנִי מְאַחֵר.",
+    "phon": "slicha, ani me'acher."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "DEMANDER · S'EXCUSER",
+  "main": "Je suis désolé",
+  "gloss": [
+   "I'm sorry"
+  ],
+  "he": [
+   {
+    "he": "אֲנִי מִצְטַעֵר  ·  מִצְטַעֶרֶת",
+    "phon": "ani mitsta'er · mitsta'eret"
+   }
+  ],
+  "notes": [
+   "aussi : Je suis désolée  —  m. / f."
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Je suis désolé, c'est ma faute.",
+    "en": "I'm sorry, it's my fault.",
+    "he": "אֲנִי מִצְטַעֵר, זֹאת אַשְׁמָתִי.",
+    "phon": "ani mitsta'er, zot ashmati."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "DEMANDER · S'EXCUSER",
+  "main": "Puis-je ?",
+  "gloss": [
+   "May I?"
+  ],
+  "he": [
+   {
+    "he": "אֶפְשָׁר?",
+    "phon": "efshar?"
+   }
+  ],
+  "notes": [
+   "aussi : Est-ce que je peux ?"
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Puis-je entrer ?",
+    "en": "May I come in?",
+    "he": "אֶפְשָׁר לְהִכָּנֵס?",
+    "phon": "efshar lehikanes?"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "DEMANDER · S'EXCUSER",
+  "main": "Pas de problème",
+  "gloss": [
+   "No problem"
+  ],
+  "he": [
+   {
+    "he": "אֵין בְּעָיָה",
+    "phon": "ein be'aya"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "« Désolé ! » « Pas de problème. »",
+    "en": "\"Sorry!\" \"No problem.\"",
+    "he": "סְלִיחָה! אֵין בְּעָיָה.",
+    "phon": "slicha! ein be'aya."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "BIENSÉANCE",
+  "main": "Enchanté",
+  "gloss": [
+   "Nice to meet you"
+  ],
+  "he": [
+   {
+    "he": "נָעִים מְאוֹד",
+    "phon": "na'im me'od"
+   }
+  ],
+  "notes": [
+   "aussi : Enchantée  —  m. / f."
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Enchanté de te rencontrer.",
+    "en": "Nice to meet you.",
+    "he": "נָעִים מְאוֹד לְהַכִּיר.",
+    "phon": "na'im me'od lehakir."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "BIENSÉANCE",
+  "main": "Comment ça va ?",
+  "gloss": [
+   "How are you?"
+  ],
+  "he": [
+   {
+    "he": "מָה שְׁלוֹמְךָ?  ·  מָה נִשְׁמָע?",
+    "phon": "ma shlomcha? · ma nishma?"
+   }
+  ],
+  "notes": [
+   "aussi : Comment allez-vous ?  —  שְׁלוֹמֵךְ (f. : shlomekh)."
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Bonjour ! Comment ça va ?",
+    "en": "Hello! How are you?",
+    "he": "שָׁלוֹם! מָה שְׁלוֹמְךָ?",
+    "phon": "shalom! ma shlomcha?"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "BIENSÉANCE",
+  "main": "Ça va bien, merci",
+  "gloss": [
+   "I'm fine, thank you"
+  ],
+  "he": [
+   {
+    "he": "שְׁלוֹמִי טוֹב, תּוֹדָה",
+    "phon": "shlomi tov, toda"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Ça va bien, merci, et toi ?",
+    "en": "I'm fine, thank you, and you?",
+    "he": "שְׁלוֹמִי טוֹב, תּוֹדָה, וְאַתָּה?",
+    "phon": "shlomi tov, toda, ve'ata?"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "BIENSÉANCE",
+  "main": "Avec plaisir",
+  "gloss": [
+   "With pleasure  ·  Gladly"
+  ],
+  "he": [
+   {
+    "he": "בְּשִׂמְחָה  ·  בְּחֵפֶץ לֵב",
+    "phon": "besimcha · bechefetz lev"
+   }
+  ],
+  "notes": [
+   "aussi : Volontiers"
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "« Tu viens ? » « Avec plaisir ! »",
+    "en": "\"Coming?\" \"With pleasure!\"",
+    "he": "בָּא? בְּשִׂמְחָה!",
+    "phon": "ba? besimcha!"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "BIENSÉANCE",
+  "main": "Après vous",
+  "gloss": [
+   "After you"
+  ],
+  "he": [
+   {
+    "he": "אַחֲרֶיךָ  ·  אַחֲרַיִךְ",
+    "phon": "acharecha · acharayich"
+   }
+  ],
+  "notes": [
+   "aussi : Après toi  —  m. / f."
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Après vous, je vous en prie.",
+    "en": "After you, please.",
+    "he": "אַחֲרֶיךָ, בְּבַקָּשָׁה.",
+    "phon": "acharecha, bevakasha."
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "OCCASIONS",
+  "main": "Bon appétit",
+  "gloss": [
+   "Enjoy your meal"
+  ],
+  "he": [
+   {
+    "he": "בְּתֵאָבוֹן",
+    "phon": "bete'avon"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Bon appétit à tous !",
+    "en": "Enjoy your meal, everyone!",
+    "he": "בְּתֵאָבוֹן לְכֻלָּם!",
+    "phon": "bete'avon lekulam!"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "OCCASIONS",
+  "main": "Santé",
+  "gloss": [
+   "Cheers  ·  Bless you"
+  ],
+  "he": [
+   {
+    "he": "לְחַיִּים  ·  לַבְּרִיאוּת",
+    "phon": "lechayim · labri'ut"
+   }
+  ],
+  "notes": [
+   "aussi : À ta santé  —  לְחַיִּים (trinquer) ; לַבְּרִיאוּת (éternuement)."
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Santé ! À la tienne !",
+    "en": "Cheers! To you!",
+    "he": "לְחַיִּים!",
+    "phon": "lechayim!"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "OCCASIONS",
+  "main": "Félicitations",
+  "gloss": [
+   "Congratulations"
+  ],
+  "he": [
+   {
+    "he": "מַזָּל טוֹב  ·  בִּרְכוֹתַי",
+    "phon": "mazal tov · birchotai"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Félicitations pour ta réussite !",
+    "en": "Congratulations on your success!",
+    "he": "מַזָּל טוֹב עַל הַהַצְלָחָה!",
+    "phon": "mazal tov al hahatslacha!"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "OCCASIONS",
+  "main": "Bonne chance",
+  "gloss": [
+   "Good luck"
+  ],
+  "he": [
+   {
+    "he": "בְּהַצְלָחָה",
+    "phon": "behatslacha"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Bonne chance pour l'examen !",
+    "en": "Good luck on the exam!",
+    "he": "בְּהַצְלָחָה בַּמִּבְחָן!",
+    "phon": "behatslacha bamivchan!"
+   }
+  ]
+ },
+ {
+  "k": "v",
+  "cat": "OCCASIONS",
+  "main": "Joyeux anniversaire",
+  "gloss": [
+   "Happy birthday"
+  ],
+  "he": [
+   {
+    "he": "יוֹם הֻלֶּדֶת שָׂמֵחַ",
+    "phon": "yom huledet sameach"
+   }
+  ],
+  "ex": [
+   {
+    "label": "Ex",
+    "fr": "Joyeux anniversaire à toi !",
+    "en": "Happy birthday to you!",
+    "he": "יוֹם הֻלֶּדֶת שָׂמֵחַ!",
+    "phon": "yom huledet sameach!"
+   }
+  ]
+ }
+]

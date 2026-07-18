@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Lettres en français — Ethan</title>
+<link rel="stylesheet" href="../assets/alpha.css?v=8">
+</head>
+<body>
+  <div class="topbar">
+    <a class="tb-link" href="/ethan/lettres">← Lettres</a>
+    <button class="tb-link" id="toggleAll" type="button">Version complète</button>
+  </div>
+  <div class="alpha" id="alpha"></div>
+  <script>
+    window.ALPHA = {
+      dir: 'ltr',
+      letters: Array.from({length:26}, function(_, i){ return String.fromCharCode(65 + i); }),
+      variants: {
+        'A': ['À','Â','Æ'],
+        'C': ['Ç'],
+        'E': ['É','È','Ê','Ë'],
+        'I': ['Î','Ï'],
+        'O': ['Ô','Œ'],
+        'U': ['Ù','Û','Ü'],
+        'Y': ['Ÿ']
+      },
+      styles: [
+        { key: 'script', label: 'lettres script' },
+        { key: 'cursive', label: 'lettres cursives' }
+      ],
+      forms: (function(){ var o = {}; for (var c = 65; c <= 90; c++) o[String.fromCharCode(c)] = String.fromCharCode(c + 32); return { script: o, cursive: o }; })()
+    };
+  </script>
+  <script src="../assets/alpha.js?v=8"></script>
+</body>
+</html>
