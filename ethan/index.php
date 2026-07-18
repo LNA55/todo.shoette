@@ -72,10 +72,25 @@
 <main>
   <h1>Ethan</h1>
   <div class="cards">
+    <a class="card" href="/ethan/planning">
+      <div class="emoji">📅</div>
+      <div class="lbl">Planning</div>
+      <div class="heb" dir="rtl">לוּחַ זְמַנִּים</div>
+    </a>
     <a class="card" href="/ethan/lettres">
       <div class="emoji">🔤</div>
       <div class="lbl">Lettres</div>
       <div class="heb" dir="rtl">אוֹתִיּוֹת</div>
+    </a>
+    <a class="card" href="/ethan/fables">
+      <div class="emoji">🦊</div>
+      <div class="lbl">Fables de La Fontaine</div>
+      <div class="heb" dir="rtl">מִשְׁלֵי לָה פוֹנְטֵן</div>
+    </a>
+    <a class="card" href="/ethan/vocabulary">
+      <div class="emoji">📚</div>
+      <div class="lbl">Vocabulaire</div>
+      <div class="heb" dir="rtl">אוֹצַר מִלִּים</div>
     </a>
     <a class="card" href="/ethan/QuizColors/">
       <div class="palette">
@@ -90,25 +105,15 @@
       <div class="lbl">Pokémon</div>
       <div class="heb" dir="rtl">פּוֹקֵמוֹן</div>
     </a>
-    <a class="card" href="/ethan/vocabulary">
-      <div class="emoji">📚</div>
-      <div class="lbl">Vocabulaire</div>
-      <div class="heb" dir="rtl">אוֹצַר מִלִּים</div>
-    </a>
-    <a class="card" href="/ethan/planning">
-      <div class="emoji">📅</div>
-      <div class="lbl">Planning</div>
-      <div class="heb" dir="rtl">לוּחַ זְמַנִּים</div>
+    <a class="card" href="/ethan/videos">
+      <div class="emoji">🎬</div>
+      <div class="lbl">Vidéos</div>
+      <div class="heb" dir="rtl">סְרָטוֹנִים</div>
     </a>
     <a class="card" href="/ethan/alimentation">
       <div class="emoji">🥗</div>
       <div class="lbl">Alimentation</div>
       <div class="heb" dir="rtl">תְּזוּנָה</div>
-    </a>
-    <a class="card" href="/ethan/videos">
-      <div class="emoji">🎬</div>
-      <div class="lbl">Vidéos</div>
-      <div class="heb" dir="rtl">סְרָטוֹנִים</div>
     </a>
   </div>
 </main>

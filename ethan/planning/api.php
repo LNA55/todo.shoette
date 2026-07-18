@@ -20,8 +20,21 @@ try {
     if ($action === 'day') {
         $d = $_GET['d'] ?? '';
         if (!validDate($d)) fail('date invalide');
-        // items récurrents (d IS NULL) + items propres à ce jour (d = date). Récurrents d'abord.
-        $sel = $pdo->prepare("SELECT id, title FROM plan_tasks WHERE active = 1 AND (d IS NULL OR d = ?) ORDER BY (d IS NULL) DESC, position, id");
+        // Jours passés : « Chill » est le seul item (item spécial active = 0, cf. migrate_plan5).
+        if ($d < date('Y-m-d')) {
+            $sel = $pdo->prepare("SELECT id, title FROM plan_tasks WHERE d IS NULL AND title = 'Chill' AND active = 0 LIMIT 1");
+            $sel->execute();
+            if ($chill = $sel->fetch()) {
+                $chill['id'] = (int) $chill['id'];
+                $st = $pdo->prepare("SELECT COUNT(*) FROM plan_done WHERE d = ? AND task_id = ?");
+                $st->execute([$d, $chill['id']]);
+                $chill['done'] = (bool) (int) $st->fetchColumn();
+                out(['date' => $d, 'items' => [$chill]]);
+            }
+        }
+        // items récurrents (d IS NULL) + items propres à ce jour (d = date), triés par
+        // position globale (un item du jour en position négative passe avant les récurrents).
+        $sel = $pdo->prepare("SELECT id, title FROM plan_tasks WHERE active = 1 AND (d IS NULL OR d = ?) ORDER BY position, (d IS NULL) DESC, id");
         $sel->execute([$d]);
         $items = $sel->fetchAll();
         $st = $pdo->prepare("SELECT task_id FROM plan_done WHERE d = ?");
