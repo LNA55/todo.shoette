@@ -25,6 +25,7 @@
     transition:transform .14s ease,box-shadow .14s ease;}
   .card:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 18px 40px rgba(30,30,60,.18);}
   .card .emoji{font-size:clamp(3rem,12vw,5rem);line-height:1;}
+  .card .ltrs{font-weight:800;color:#20222b;letter-spacing:.06em;}
   .card .lbl{font-size:clamp(1.2rem,4vw,1.7rem);font-weight:800;text-align:center;}
   .card .heb{font-size:clamp(1rem,3vw,1.35rem);font-weight:700;color:#6b4bd6;direction:rtl;}
   footer{max-width:720px;margin:clamp(26px,5vh,44px) auto 8px;text-align:center;}
@@ -50,12 +51,12 @@
   </header>
   <div class="cards">
     <a class="card" href="/ethan/lettres/francais">
-      <div class="emoji">🔤</div>
+      <div class="emoji ltrs">A B C</div>
       <div class="lbl">Lettres en français</div>
       <div class="heb" dir="rtl">אוֹתִיּוֹת בְּצָרְפָתִית</div>
     </a>
     <a class="card" href="/ethan/lettres/hebreu">
-      <div class="emoji" dir="rtl" style="font-weight:800;color:#20222b;letter-spacing:.06em;">א ב ג</div>
+      <div class="emoji ltrs" dir="rtl">א ב ג</div>
       <div class="lbl">Lettres en hébreu</div>
       <div class="heb" dir="rtl">אוֹתִיּוֹת בְּעִבְרִית</div>
     </a>
